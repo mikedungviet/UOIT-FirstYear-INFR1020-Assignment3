@@ -2,19 +2,16 @@
 #include "cocos2d.h"
 #include "SpaceShip.h"
 
-class Game:public cocos2d::Scene
+class Game : public cocos2d::Scene
 {
 public:
-	static cocos2d::Scene* Create();
+	static Scene* Create();
 	bool init() override;
-	void update(const float deltaTime) override;
+	void update(float deltaTime) override;
 
-	
 
 	CREATE_FUNC(Game);
 private:
 	cocos2d::Layer *pr_MapLayer, *pr_CameraLayer;
-	SpaceShip *pr_SpaceShip;
-
+	SpaceShip* pr_SpaceShip;
 };
-

@@ -3,7 +3,7 @@
 /*
  * @brief Constructor for GameEntities class.
  */
-GameEntities::GameEntities(const std::string &ar_FileName)
+GameEntities::GameEntities(const std::string& ar_FileName)
 {
 	//Initialize member variables
 	pr_ObjectGraphic = cocos2d::Sprite::create(ar_FileName);
@@ -53,7 +53,7 @@ MovementComponent* GameEntities::GetMovementComponent()
 /*
  * @brief This function sets the entity new position
  * (both physics and location on screen)
- * 
+ *
  * @param ar_NewPosition The reference to Vector2 to set the
  * new position to
  */
@@ -79,7 +79,6 @@ void GameEntities::SetPosition(const float& ar_NewX, const float& ar_NewY) const
 }
 
 
-
 /*
  * @brief This function calculate the radius base
  * on the Sprite size
@@ -87,6 +86,6 @@ void GameEntities::SetPosition(const float& ar_NewX, const float& ar_NewY) const
 float GameEntities::CalculateSpriteRadius() const
 {
 	const auto lo_Size = pr_ObjectGraphic->getBoundingBox().size;
-	return std::sqrt(std::pow(lo_Size.width / 2, 2) + 
+	return std::sqrt(std::pow(lo_Size.width / 2, 2) +
 		std::pow(lo_Size.height / 2, 2));
 }

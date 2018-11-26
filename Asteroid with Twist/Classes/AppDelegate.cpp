@@ -3,18 +3,20 @@
 
 USING_NS_CC;
 
-AppDelegate::AppDelegate() {
-
+AppDelegate::AppDelegate()
+{
 }
 
 AppDelegate::~AppDelegate()
 {
 }
 
-bool AppDelegate::applicationDidFinishLaunching() {
+bool AppDelegate::applicationDidFinishLaunching()
+{
 	auto lo_Director = Director::getInstance();
 	auto lo_GlView = lo_Director->getOpenGLView();
-	if (!lo_GlView) {
+	if (!lo_GlView)
+	{
 		lo_GlView = GLViewImpl::createWithFullScreen("Hello World");
 		lo_Director->setOpenGLView(lo_GlView);
 	}
@@ -25,8 +27,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	return true;
 }
 
-void AppDelegate::applicationDidEnterBackground() {
+void AppDelegate::applicationDidEnterBackground()
+{
 }
 
-void AppDelegate::applicationWillEnterForeground() {
+void AppDelegate::applicationWillEnterForeground()
+{
 }

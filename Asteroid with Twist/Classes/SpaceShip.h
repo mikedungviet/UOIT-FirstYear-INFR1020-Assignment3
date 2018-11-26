@@ -1,5 +1,6 @@
 #pragma once
 #include "GameEntities.h"
+
 class SpaceShip :
 	public GameEntities
 {
@@ -9,5 +10,5 @@ public:
 	~SpaceShip();
 
 	//Member Functions
-	void Update(const float &ar_DeltaTime) override;
+	void Update(const float& ar_DeltaTime) override;
 };

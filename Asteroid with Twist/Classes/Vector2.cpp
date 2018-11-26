@@ -3,7 +3,7 @@
 #include <math.h>
 
 
-Vector2::Vector2(const float ar_XY): x{ ar_XY }, y{ ar_XY }
+Vector2::Vector2(const float ar_XY): x{ar_XY}, y{ar_XY}
 {
 	/*Empty*/
 }
@@ -49,7 +49,7 @@ Vector2 Vector2::operator*(const Vector2 a) const
 Vector2 Vector2::operator*(const float& ar_ScalarNumber) const
 {
 	Vector2 lo_TempVec;
-	lo_TempVec.x = this->x * ar_ScalarNumber;;
+	lo_TempVec.x = this->x * ar_ScalarNumber;
 	lo_TempVec.y = this->y * ar_ScalarNumber;
 	return lo_TempVec;
 }
@@ -88,18 +88,16 @@ Vector2 Vector2::operator/=(const Vector2 a)
 	return *this;
 }
 
-const float & Vector2::operator[](int index) const
-{
-	if (index == 0)
-		return x;
-	return y;
-	
-}
-
-float & Vector2::operator[](int index)
+const float& Vector2::operator[](int index) const
 {
 	if (index == 0)
 		return x;
 	return y;
 }
 
+float& Vector2::operator[](int index)
+{
+	if (index == 0)
+		return x;
+	return y;
+}

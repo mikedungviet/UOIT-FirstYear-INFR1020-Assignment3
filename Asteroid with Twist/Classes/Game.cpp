@@ -1,10 +1,10 @@
 #include "Game.h"
 using namespace cocos2d;
 
-cocos2d::Scene* Game::Create()
+Scene* Game::Create()
 {
 	auto lo_Scene = Scene::create();
-	const auto lo_Layer = Game::create();
+	const auto lo_Layer = create();
 
 	lo_Scene->addChild(lo_Layer);
 	return lo_Scene;
@@ -30,7 +30,8 @@ bool Game::init()
 
 
 	//Testing Label
-	auto lo_Label = Label::createWithSystemFont("X: " + std::to_string((*pr_SpaceShip->GetCollisionComponent()->GetRadius())) , "Times New Roman", 50);
+	auto lo_Label = Label::createWithSystemFont(
+		"X: " + std::to_string((*pr_SpaceShip->GetCollisionComponent()->GetRadius())), "Times New Roman", 50);
 	lo_Label->setAnchorPoint(Vec2(0.f, 0.f));
 	this->addChild(lo_Label);
 

@@ -9,20 +9,20 @@ public:
 	Vector2 data[2];
 
 	Mat2();
-	Mat2(const Vector2 row, const Vector2 column);
+	Mat2(Vector2 row, Vector2 column);
 
 	const Vector2& operator[](int index) const;
 	Vector2& operator[](int index);
 
-	Mat2 operator+(const Mat2 &m) const;
-	Mat2 operator*(const Mat2 &m) const;
-	Vector2 operator*(Vector2 &m) const;
+	Mat2 operator+(const Mat2& m) const;
+	Mat2 operator*(const Mat2& m) const;
+	Vector2 operator*(Vector2& m) const;
 
 	Mat2 getTranspose();
 	static void flipOnX(Vector2&);
 	static void flipOnY(Vector2&);
-	static void scale(Vector2 &a, int onX, int onY);
-	static void scale(Vector2 &a, int xy);
+	static void scale(Vector2& a, int onX, int onY);
+	static void scale(Vector2& a, int xy);
 };
 
 
@@ -37,5 +37,4 @@ inline std::ostream& operator<<(std::ostream& os, const Mat2& m)
 		os << "\n";
 	}
 	return os;
-
 }
