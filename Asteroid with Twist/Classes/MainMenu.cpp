@@ -28,17 +28,23 @@ bool MainMenu::init()
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	auto backgroundSprite = Sprite::create("CloseNormal.png");
+	/*auto backgroundSprite = Sprite::create("CloseNormal.png");
 	backgroundSprite->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-	this->addChild(backgroundSprite);
+	this->addChild(backgroundSprite);*/
 
 	auto playButton = MenuItemImage::create("PlayButton.png", "PlayButtonClicked.png", CC_CALLBACK_1(MainMenu::goToGameScene, this));
 	playButton->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 
-	auto menu = Menu::create(playButton, NULL);
+	auto exitButton = MenuItemImage::create("CloseNormal.png", "CloseSelected.png", CC_CALLBACK_1(MainMenu::goToGameScene, this));
+	exitButton->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+	
+
+	auto menu = Menu::create(exitButton, NULL);
+	
 	menu->setPosition(Point::ZERO);
 
 	this->addChild(menu); 
+
 
 	return true;
 }
