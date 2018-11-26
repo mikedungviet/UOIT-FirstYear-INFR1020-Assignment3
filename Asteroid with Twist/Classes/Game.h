@@ -1,5 +1,6 @@
 #pragma once
 #include "cocos2d.h"
+#include "SpaceShip.h"
 
 class Game:public cocos2d::Scene
 {
@@ -13,8 +14,7 @@ public:
 	CREATE_FUNC(Game);
 private:
 	cocos2d::Layer *pr_MapLayer, *pr_CameraLayer;
-	cocos2d::Sprite *pr_SpaceShip;
-	cocos2d::Camera *pr_Camera;
+	SpaceShip *pr_SpaceShip;
 
 };
 

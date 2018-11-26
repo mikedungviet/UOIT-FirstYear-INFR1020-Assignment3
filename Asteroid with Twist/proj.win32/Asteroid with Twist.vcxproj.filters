@@ -10,6 +10,21 @@
     <Filter Include="src">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{27a187ba-61c0-4b9e-97ba-8d5825fa7d4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Entities">
+      <UniqueIdentifier>{99cc709f-f330-450b-b1b6-73e9d4b30b09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Entities\SpaceShip">
+      <UniqueIdentifier>{b3091d1b-767c-4081-950c-8cbfc38e3b3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Entities\Enemies">
+      <UniqueIdentifier>{c27d9a8d-c4f4-4e6a-95f8-d15028462078}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Entities\Misc">
+      <UniqueIdentifier>{28c7c12c-1b49-4c10-b75e-86fa68eb935c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,6 +36,24 @@
     <ClCompile Include="..\Classes\Game.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Matrix2.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Vector2.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MovementComponent.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CollisionComponent.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameEntities.cpp">
+      <Filter>Game Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SpaceShip.cpp">
+      <Filter>Game Entities\SpaceShip</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -31,6 +64,24 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Game.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Matrix2.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Vector2.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MovementComponent.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CollisionComponent.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameEntities.h">
+      <Filter>Game Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpaceShip.h">
+      <Filter>Game Entities\SpaceShip</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
