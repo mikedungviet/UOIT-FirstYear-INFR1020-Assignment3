@@ -4,14 +4,17 @@
 
 class Game : public cocos2d::Scene
 {
-public:
-	static Scene* Create();
-	bool init() override;
-	void update(float deltaTime) override;
-
-
-	CREATE_FUNC(Game);
 private:
 	cocos2d::Layer *pr_MapLayer, *pr_CameraLayer;
 	SpaceShip* pr_SpaceShip;
+public:
+	static Scene* Create();
+	bool init() override;
+
+	//Member Functions
+	void update(float ar_DeltaTime) override;
+	void OnKeyPressed(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Event* ar_Event);
+	void OnKeyReleased(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Event *ar_Event);
+
+	CREATE_FUNC(Game);
 };

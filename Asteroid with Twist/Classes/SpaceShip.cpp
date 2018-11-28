@@ -20,12 +20,5 @@ SpaceShip::~SpaceShip()
  */
 void SpaceShip::Update(const float& ar_DeltaTime)
 {
-	pr_Movement->Update(ar_DeltaTime); //Update the kinematics equations
-
-	//Update the collision
-	pr_Collision->Update(ar_DeltaTime, pr_Movement->GetVelocity());
-
-	//Update the sprite position to draw on screen
-	pr_ObjectGraphic->setPosition((*pr_Collision->GetPosition()).x,
-	                              (*pr_Collision->GetPosition()).y);
+	GameEntities::Update(ar_DeltaTime);
 }

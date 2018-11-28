@@ -1,6 +1,6 @@
 #include "Vector2.h"
 #include "Matrix2.h"
-#include <math.h>
+#include <cmath>
 
 
 Vector2::Vector2(const float ar_XY): x{ar_XY}, y{ar_XY}
@@ -13,29 +13,16 @@ Vector2::Vector2(const float ar_X, const float ar_Y): x{ar_X}, y{ar_Y}
 	/*Empty*/
 }
 
-Vector2 Vector2::operator+(const Vector2 a) const
+Vector2 Vector2::operator+(const Vector2& ar_OtherVector) const
 {
-	Vector2 temp;
-	temp.x = x + a.x;
-	temp.y = y + a.y;
-
-	return temp;
+	return Vector2{ x + ar_OtherVector.x, y + ar_OtherVector.y };
 }
 
-Vector2 Vector2::operator-(const Vector2 a) const
+Vector2 Vector2::operator-(const Vector2& ar_OtherVector) const
 {
 	Vector2 temp;
-	temp.x = x - a.x;
-	temp.y = y - a.y;
-
-	return temp;
-}
-
-Vector2 Vector2::operator*(const Vector2 a) const
-{
-	Vector2 temp;
-	temp.x = x * a.x;
-	temp.y = y * a.y;
+	temp.x = x - ar_OtherVector.x;
+	temp.y = y - ar_OtherVector.y;
 
 	return temp;
 }
@@ -55,38 +42,83 @@ Vector2 Vector2::operator*(const float& ar_ScalarNumber) const
 }
 
 
-Vector2 Vector2::operator/(const Vector2 a) const
-{
-	Vector2 temp;
-	temp.x = x / a.x;
-	temp.y = y / a.y;
 
-	return temp;
-}
 
-Vector2 Vector2::operator+=(const Vector2 a)
+Vector2 Vector2::operator+=(const Vector2& ar_OtherVector)
 {
-	*this = *this + a;
+	*this = *this + ar_OtherVector;
 	return *this;
 }
 
-Vector2 Vector2::operator-=(const Vector2 a)
+Vector2 Vector2::operator-=(const Vector2& ar_OtherVector)
 {
-	*this = *this - a;
+	*this = *this - ar_OtherVector;
 	return *this;
 }
 
-Vector2 Vector2::operator*=(const Vector2 a)
+/*
+ * @brief Calculate the length of the Vector
+ * 
+ * @return Returns the length of the Vector as float
+ */
+float Vector2::CalculateLength() const
 {
-	*this = *this * a;
-	return *this;
+	return std::sqrt(x*x + y * y);
 }
 
-Vector2 Vector2::operator/=(const Vector2 a)
+/*
+ * @brief Calculate the normalized vector of the vector
+ * 
+ * @return Return the normalized Vector as Vector2
+ */
+Vector2 Vector2::NormalizeVector() const
 {
-	*this = *this / a;
-	return *this;
+	return *this * (1 / CalculateLength());
 }
+
+/*
+ * @brief Calculate the dot product of the vector
+ * 
+ * @return Return the dot product as float
+ */
+float Vector2::CalculateDotProduct(const Vector2& ar_OtherVec2) const
+{
+	return (*this).x * ar_OtherVec2.x + (*this).y * ar_OtherVec2.y;
+}
+
+
+/*
+ * @brief Calculate the normalized vector of the vector
+ * without having to create an object
+ * 
+ * @return Return the normalized Vector as Vector2
+ */
+Vector2 Vector2::CalculateNormalizedVector(const Vector2* ar_VectorToCalculate)
+{
+	return *ar_VectorToCalculate * (1 / ar_VectorToCalculate->CalculateLength());
+}
+
+
+/*
+ * @brief Calculate the distance square between two vectors
+ * 
+ * @return Return the length between two vectors
+ */
+float Vector2::CalculateDistanceSquareBetweenTwoVectors(const Vector2& ar_Vec1, const Vector2& ar_Vec2)
+{
+	return pow(ar_Vec1.x - ar_Vec2.x, 2) + pow(ar_Vec1.y - ar_Vec2.y, 2);
+}
+
+/*
+ * @brief Calculate the distance  between two vectors
+ *
+ * @return Return the length between two vectors
+ */
+float Vector2::CalculateDistanceBetweenTwoVectors(const Vector2& ar_Vec1, const Vector2& ar_Vec2)
+{
+	return sqrt(CalculateDistanceSquareBetweenTwoVectors(ar_Vec1,ar_Vec2));
+}
+
 
 const float& Vector2::operator[](int index) const
 {

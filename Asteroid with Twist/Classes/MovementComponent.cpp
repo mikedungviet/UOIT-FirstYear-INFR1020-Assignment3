@@ -8,6 +8,7 @@ MovementComponent::MovementComponent()
 	pr_Force = new Vector2;
 	pr_Acceleration = new Vector2;
 	pr_Velocity = new Vector2;
+	pr_Gravity = new Vector2;
 }
 
 /*
@@ -19,6 +20,7 @@ MovementComponent::~MovementComponent()
 	delete pr_Acceleration;
 	delete pr_Force;
 	delete pr_Velocity;
+	delete pr_Gravity;
 }
 
 /*
@@ -86,6 +88,29 @@ Vector2* MovementComponent::GetVelocity() const
 {
 	return pr_Velocity;
 }
+
+/*
+ * @brief This functions return the Gravity vector. This can
+ * be modified
+ * 
+ * @return Return the Gravity vector as Vector2
+ */
+Vector2* MovementComponent::GetFriction()
+{
+	return pr_Friction;
+}
+
+/*
+ *@brief This function return the Gravity vector. This cannot 
+ *be modified
+ *
+ *@return Return the Gravity vector as Vector 2
+ */
+Vector2* MovementComponent::GetFriction() const
+{
+	return pr_Friction;
+}
+
 
 /*
  * @brief This function sets the Force Vector to new value
@@ -156,6 +181,28 @@ void MovementComponent::SetVelocity(const float& ar_NewX, const float& ar_NewY) 
 	(*pr_Velocity).y = ar_NewY;
 }
 
+/*
+ * @brief This function sets the Gravity Vector to new value
+ *
+ * @param ar_NewForce This is the new Vector2 to set the gravity to
+ */
+void MovementComponent::SetFriction(const Vector2& ar_NewFriction) const
+{
+	(*pr_Friction).x = ar_NewFriction.x;
+	(*pr_Friction).y = ar_NewFriction.y;
+}
+
+/*
+ * @brief This function sets the Gravity Vector to new value
+ *
+ * @param ar_NewX This is the new float to set the gravity x to
+ * @param ar_NewY This is the new float to the the gravity y to
+ */
+void MovementComponent::SetFriction(const float& ar_NewX, const float& ar_NewY) const
+{
+	(*pr_Friction).x = ar_NewX;
+	(*pr_Friction).y = ar_NewY;
+}
 
 /*
  * @brief This function uses basic kinematic equations to update
@@ -166,6 +213,16 @@ void MovementComponent::SetVelocity(const float& ar_NewX, const float& ar_NewY) 
  */
 void MovementComponent::Update(const float& ar_DeltaTime) const
 {
-	*pr_Acceleration = *pr_Force;
+	//If the object is moving, apply friction to the net force
+	if (pr_Velocity->CalculateLength() != 0) {
+		const auto lo_NormalizedVector = pr_Velocity->NormalizeVector();
+		*pr_Friction = Vector2(-75 * lo_NormalizedVector.x, -75 * lo_NormalizedVector.y);
+		*pr_Acceleration = *pr_Force + *pr_Friction;
+	}
+	//If the object is not moving, DO NOT apply friction to net force
+	else
+	{
+		*pr_Acceleration = *pr_Force;
+	}
 	*pr_Velocity += *pr_Acceleration * ar_DeltaTime;
 }

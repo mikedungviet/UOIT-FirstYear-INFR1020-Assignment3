@@ -9,6 +9,7 @@ GameEntities::GameEntities(const std::string& ar_FileName)
 	pr_ObjectGraphic = cocos2d::Sprite::create(ar_FileName);
 	pr_Collision = new CollisionComponent;
 	pr_Movement = new MovementComponent;
+	pr_Theta = new float;
 
 	//Set values to default
 	pr_Collision->SetRadius(CalculateSpriteRadius());
@@ -23,10 +24,15 @@ GameEntities::~GameEntities()
 	delete pr_Collision;
 	delete pr_Movement;
 	delete pr_ObjectGraphic;
+	delete pr_Theta;
 }
 
 /*
+ *@brief This function returns the memory address
+ *of the sprite
  *
+ *@return Returns the address of the sprite of
+ *the game entity
  */
 cocos2d::Sprite* GameEntities::GetSprite()
 {
@@ -34,7 +40,11 @@ cocos2d::Sprite* GameEntities::GetSprite()
 }
 
 /*
+ *@brief This function returns the memory address of the
+ *collision component
  *
+ *@return Returns the address of the collision component of
+ *the game entity
  */
 CollisionComponent* GameEntities::GetCollisionComponent()
 {
@@ -42,11 +52,25 @@ CollisionComponent* GameEntities::GetCollisionComponent()
 }
 
 /*
+ *@brief This function returns the memory address of the
+ *movement component
  *
+ *@return Returns the address of the movement component of
+ *the game entity
  */
 MovementComponent* GameEntities::GetMovementComponent()
 {
 	return pr_Movement;
+}
+
+/*
+ * @brief This function returns the address of the angle
+ *
+ * @return Return the address of the angle
+ */
+float* GameEntities::GetAngle() const
+{
+	return pr_Theta;
 }
 
 
@@ -78,6 +102,41 @@ void GameEntities::SetPosition(const float& ar_NewX, const float& ar_NewY) const
 	pr_ObjectGraphic->setPosition(ar_NewX, ar_NewY);
 }
 
+/*
+ * @brief This function updates all the kinematic physics part
+ * of the sprite
+ *
+ * @param ar_DeltaTime The time difference between the current
+ * frame and last frame
+ */
+void GameEntities::Update(const float& ar_DeltaTime)
+{
+	pr_Movement->Update(ar_DeltaTime); //Update the kinematics equations
+	
+	//Update the position of the sprite
+	pr_Collision->Update(ar_DeltaTime, pr_Movement->GetVelocity());
+	CheckPositionOutOfMap();
+
+	//Update the sprite position to draw on screen
+	pr_ObjectGraphic->setPosition((*pr_Collision->GetPosition()).x,
+	                              (*pr_Collision->GetPosition()).y);
+}
+
+/*
+ * @brief Check if the object goes out of the map size
+ */
+void GameEntities::CheckPositionOutOfMap() const
+{
+	const auto lo_Size = pr_ObjectGraphic->getBoundingBox().size;
+	if (pr_Collision->GetPosition()->x + lo_Size.width > 10000)
+		pr_Collision->GetPosition()->x = 0 + lo_Size.width;
+	if (pr_Collision->GetPosition()->x - lo_Size.width < 0)
+		pr_Collision->GetPosition()->x = 10000 - lo_Size.width;
+	if (pr_Collision->GetPosition()->y + lo_Size.height > 10000)
+		pr_Collision->GetPosition()->y = 0 + lo_Size.height;
+	if (pr_Collision->GetPosition()->y - lo_Size.height < 0)
+		pr_Collision->GetPosition()->y = 10000 - lo_Size.height;
+}
 
 /*
  * @brief This function calculate the radius base
@@ -88,4 +147,16 @@ float GameEntities::CalculateSpriteRadius() const
 	const auto lo_Size = pr_ObjectGraphic->getBoundingBox().size;
 	return std::sqrt(std::pow(lo_Size.width / 2, 2) +
 		std::pow(lo_Size.height / 2, 2));
+}
+
+/*
+ *@brief Add the entity's angle with a float
+ *
+ *@param ar_Angle the float to add the angle to
+ */
+void GameEntities::AddAngle(const float& ar_Angle) const
+{
+	*pr_Theta += ar_Angle;
+	if (*pr_Theta >= 360)
+		*pr_Theta -= 360;
 }
