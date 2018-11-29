@@ -7,14 +7,16 @@
  */
 MovementComponent::MovementComponent(const float& ar_FrictionCoefficient)
 {
-	pr_Direction = new Vector2(0,1);
+	pr_Direction = new Vector2(0, 1);
 	pr_Acceleration = new Vector2;
 	pr_Velocity = new Vector2;
+	pr_AppliedForceDirection = new Vector2;
 	pr_Friction = new float;
-	pr_AppliedForce = new Vector2;
+	pr_AppliedForce = new float;
 
 	//Set variables
 	*pr_Friction = ar_FrictionCoefficient;
+	*pr_AppliedForce = 0;
 }
 
 /*
@@ -27,6 +29,7 @@ MovementComponent::~MovementComponent()
 	delete pr_Direction;
 	delete pr_Velocity;
 	delete pr_Friction;
+	delete pr_AppliedForceDirection;
 	delete pr_AppliedForce;
 }
 
@@ -81,11 +84,10 @@ float* MovementComponent::GetFriction() const
  * @return Returns the memory address of applied force
  * as a float pointer
  */
-Vector2* MovementComponent::GetAppliedForce() const
+float* MovementComponent::GetAppliedForce() const
 {
 	return pr_AppliedForce;
 }
-
 
 /*
  * @brief This function sets the Force Vector to new value
@@ -157,26 +159,34 @@ void MovementComponent::SetVelocity(const float& ar_NewX, const float& ar_NewY) 
 }
 
 /*
- * @brief This function set the applied force float to a new value
- *
- * @param ar_AppliedForce The new float to set the value of applied
- * force
+ * @brief This function sets the Force Direction to a new value
+ * 
+ * @param ar_ForceDirection the new direction
  */
-void MovementComponent::SetAppliedForce(const Vector2 &ar_AppliedForce) const
+void MovementComponent::SetForceDirection(const Vector2& ar_ForceDirection) const
 {
-	*pr_AppliedForce = ar_AppliedForce;
+	*pr_AppliedForceDirection = ar_ForceDirection;
 }
 
 /*
- * @brief This
+ *@brief This function sets the force direction
  */
-void MovementComponent::SetAppliedForce(const float& ar_NewX, const float& ar_NewY) const
+void MovementComponent::SetForceDirection(const float& ar_NewX, const float& ar_NewY) const
 {
-	(*pr_AppliedForce).x = ar_NewX;
-	(*pr_AppliedForce).y = ar_NewY;
+	pr_AppliedForceDirection->x = ar_NewX;
+	pr_AppliedForceDirection->y = ar_NewY;
 }
 
-
+/*
+ * @brief This function sets the applied force to a new float set in the 
+ * parameter
+ * 
+ * @param ar_NewForce This is the new float to set the applied force to.
+ */
+void MovementComponent::SetAppliedForce(const float& ar_NewForce) const
+{
+	*pr_AppliedForce = ar_NewForce;
+}
 
 /*
  * @brief This function calculates the new direction (with length equals 1) of
@@ -187,7 +197,10 @@ void MovementComponent::SetAppliedForce(const float& ar_NewX, const float& ar_Ne
 void MovementComponent::UpdateDirection(const float& ar_AngleChanges) const
 {
 	const auto lo_AngleInRad = ar_AngleChanges / 180 * PI;
-	*pr_Direction = Vector2(sinf(lo_AngleInRad), cosf(lo_AngleInRad));
+	const Mat2 lo_TempMat(Vector2(cosf(-lo_AngleInRad), -sinf(-lo_AngleInRad)),
+	                Vector2(sinf(-lo_AngleInRad), cosf(-lo_AngleInRad)));
+
+	*pr_Direction = lo_TempMat * (*pr_Direction);
 }
 
 /*
@@ -201,13 +214,14 @@ void MovementComponent::Update(const float& ar_DeltaTime) const
 {
 	//Local Variables
 	Vector2 lo_NetForceVector;
-	const Vector2 lo_AppliedForceVector(pr_Direction->x * pr_AppliedForce->y, pr_Direction->y*pr_AppliedForce->y);
-	
+	const Vector2 lo_AppliedForceVector(*pr_AppliedForce * pr_AppliedForceDirection->x,
+	                                    *pr_AppliedForce * pr_AppliedForceDirection->y);
+
 	//If the object is moving, apply friction to the net force
 	if (pr_Velocity->CalculateLength() != 0)
 	{
 		const Vector2 lo_VelocityDirection(pr_Velocity->NormalizeVector());
-		const Vector2 lo_FrictionVector(lo_VelocityDirection *-(*pr_Friction));
+		const Vector2 lo_FrictionVector(lo_VelocityDirection * -(*pr_Friction));
 		lo_NetForceVector = lo_AppliedForceVector + lo_FrictionVector;
 	}
 		//If the object is not moving, DO NOT apply friction to net force

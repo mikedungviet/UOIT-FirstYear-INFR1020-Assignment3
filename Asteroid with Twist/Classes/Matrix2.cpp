@@ -51,9 +51,10 @@ Mat2 Mat2::operator*(const Mat2& m) const
 
 Vector2 Mat2::operator*(Vector2& m) const
 {
-	m.x = data[0][0] * m.x + data[0][1] * m.y;
-	m.y = data[1][0] * m.x + data[1][1] * m.y;
-	return m;
+	Vector2 lo_TempVec;
+	lo_TempVec.x = data[0][0] * m.x + data[0][1] * m.y;
+	lo_TempVec.y = data[1][0] * m.x + data[1][1] * m.y;
+	return lo_TempVec;
 }
 
 Mat2 Mat2::getTranspose()

@@ -8,11 +8,11 @@
 class MovementComponent
 {
 private:
-	Vector2 *pr_Direction, *pr_Acceleration, *pr_Velocity, *pr_AppliedForce;
-	float *pr_Friction;
+	Vector2 *pr_Direction, *pr_Acceleration, *pr_Velocity, *pr_AppliedForceDirection;
+	float *pr_Friction, *pr_AppliedForce;
 public:
 	//Constructors and Destructor
-	MovementComponent(const float& ar_FrictionCoefficient);
+	MovementComponent(const float& ar_FrictionCoefficient = 0);
 	~MovementComponent();
 
 	//Getters
@@ -20,7 +20,7 @@ public:
 	Vector2* GetAcceleration() const;
 	Vector2* GetVelocity() const;
 	float* GetFriction() const;
-	Vector2* GetAppliedForce() const;
+	float* GetAppliedForce() const;
 
 	//Setters
 	void SetDirectionVector(const Vector2& ar_NewDirection) const;
@@ -29,8 +29,10 @@ public:
 	void SetAcceleration(const float& ar_NewX, const float& ar_NewY) const;
 	void SetVelocity(const Vector2& ar_NewVelocity) const;
 	void SetVelocity(const float& ar_NewX, const float& ar_NewY) const;
-	void SetAppliedForce(const Vector2 &ar_AppliedForce) const;
-	void SetAppliedForce(const float &ar_NewX, const float &ar_NewY) const;
+	void SetForceDirection(const Vector2 &ar_ForceDirection) const;
+	void SetForceDirection(const float& ar_NewX, const float& ar_NewY) const;
+
+	void SetAppliedForce(const float &ar_NewForce) const;
 
 	//Member Functions
 	void UpdateDirection(const float &ar_AngleChanges) const;

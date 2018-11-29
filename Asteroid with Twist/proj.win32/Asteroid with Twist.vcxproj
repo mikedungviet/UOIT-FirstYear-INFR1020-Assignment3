@@ -153,6 +153,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\CollisionComponent.cpp" />
     <ClCompile Include="..\Classes\Game.cpp" />
     <ClCompile Include="..\Classes\GameEntities.cpp" />
+    <ClCompile Include="..\Classes\GameEntitiesSingleton.cpp" />
     <ClCompile Include="..\Classes\InputDetection.cpp" />
     <ClCompile Include="..\Classes\Matrix2.cpp" />
     <ClCompile Include="..\Classes\MovementComponent.cpp" />
@@ -168,6 +169,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\CollisionComponent.h" />
     <ClInclude Include="..\Classes\Game.h" />
     <ClInclude Include="..\Classes\GameEntities.h" />
+    <ClInclude Include="..\Classes\GameEntitiesSingleton.h" />
     <ClInclude Include="..\Classes\InputDetection.h" />
     <ClInclude Include="..\Classes\Matrix2.h" />
     <ClInclude Include="..\Classes\MovementComponent.h" />

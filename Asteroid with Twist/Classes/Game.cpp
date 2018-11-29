@@ -71,26 +71,25 @@ void Game::update(const float ar_DeltaTime)
  */
 void Game::OnKeyPressed(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Event* ar_Event)
 {
-	float lo_Speed = 100;
 	switch (ar_KeyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_W:
-		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0,200);
+		pr_SpaceShip->ApplyForceForward();
 		break;
 	case EventKeyboard::KeyCode::KEY_S:
-		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0,-200);
+		pr_SpaceShip->ApplyForceBackward();
 		break;
 	case EventKeyboard::KeyCode::KEY_A:
-		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(-100,0);
+		pr_SpaceShip->ApplyForceLeft();
 		break;
 	case EventKeyboard::KeyCode::KEY_D:
-		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(100,0);
+		pr_SpaceShip->ApplyForceRight();
 		break;
 	case EventKeyboard::KeyCode::KEY_Q:
-		pr_SpaceShip->AddAngle(-20);
+		pr_SpaceShip->RotateLeft();
 		break;
 	case EventKeyboard::KeyCode::KEY_E:
-		pr_SpaceShip->AddAngle(20);
+		pr_SpaceShip->RotateRight();
 		break;
 	case EventKeyboard::KeyCode::KEY_I:
 		pr_SpaceShip->ChangeToSpinState();
@@ -113,16 +112,10 @@ void Game::OnKeyReleased(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Ev
 	switch (ar_KeyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_W:
-		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0,0);
-		break;
 	case EventKeyboard::KeyCode::KEY_S:
-		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0,0);
-		break;
 	case EventKeyboard::KeyCode::KEY_A:
-		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0,0);
-		break;
 	case EventKeyboard::KeyCode::KEY_D:
-		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0,0);
+		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0);
 		break;
 	case EventKeyboard::KeyCode::KEY_Q:
 		pr_SpaceShip->AddAngle(0);

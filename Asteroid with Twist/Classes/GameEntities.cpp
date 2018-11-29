@@ -163,8 +163,7 @@ void GameEntities::AddAngle(const float& ar_Angle) const
 	else if (*pr_Theta > 360)
 		*pr_Theta -= 360;
 
-	//pr_ObjectGraphic->runAction(cocos2d::RotateBy::create(0.0f, ar_Angle));
-	pr_Movement->UpdateDirection(*pr_Theta);
+	pr_Movement->UpdateDirection(ar_Angle);
 	pr_ObjectGraphic->setRotation(*pr_Theta);
 }
 
