@@ -3,16 +3,17 @@
 /*
  * @brief Constructor for GameEntities class.
  */
-GameEntities::GameEntities(const std::string& ar_FileName)
+GameEntities::GameEntities(const std::string& ar_FileName, const float& ar_FrictionCoefficient)
 {
 	//Initialize member variables
 	pr_ObjectGraphic = cocos2d::Sprite::create(ar_FileName);
 	pr_Collision = new CollisionComponent;
-	pr_Movement = new MovementComponent;
+	pr_Movement = new MovementComponent(ar_FrictionCoefficient);
 	pr_Theta = new float;
 
 	//Set values to default
 	pr_Collision->SetRadius(CalculateSpriteRadius());
+	*pr_Theta = 0;
 }
 
 /*
@@ -156,8 +157,15 @@ float GameEntities::CalculateSpriteRadius() const
  */
 void GameEntities::AddAngle(const float& ar_Angle) const
 {
-	pr_Movement->UpdateDirection(ar_Angle);
-	pr_ObjectGraphic->setRotation(ar_Angle);
+	*pr_Theta += ar_Angle;
+	if (*pr_Theta < 0)
+		*pr_Theta += 360;
+	else if (*pr_Theta > 360)
+		*pr_Theta -= 360;
+
+	//pr_ObjectGraphic->runAction(cocos2d::RotateBy::create(0.0f, ar_Angle));
+	pr_Movement->UpdateDirection(*pr_Theta);
+	pr_ObjectGraphic->setRotation(*pr_Theta);
 }
 
 void GameEntities::CheckPositionOutOfMap(GameEntities* ar_GameEntities)

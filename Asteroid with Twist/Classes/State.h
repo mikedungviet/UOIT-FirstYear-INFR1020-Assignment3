@@ -1,14 +1,16 @@
 #pragma once
-#include "MovementComponent.h"
-#include "CollisionComponent.h"
+#include "GameEntities.h"
 
-class State
+extern class SpaceShip;
+
+class SpaceShipState
 {
 public:
-	~State();
+	~SpaceShipState();
 
 	//Member Functions
-	virtual void Update(const float &ar_DeltaTime, const MovementComponent  *ar_Movement,
-		 CollisionComponent *ar_Collision) const = 0;
+	virtual void Update(const float &ar_DeltaTime, SpaceShip * ar_Entity) const = 0;
+	virtual void ChangeToNormalState(SpaceShip *ar_Entity) const;
+	virtual void ChangeToSpinState(SpaceShip *ar_Entity) const;
 };
 

@@ -7,6 +7,7 @@ class Game : public cocos2d::Scene
 private:
 	cocos2d::Layer *pr_MapLayer, *pr_CameraLayer;
 	SpaceShip* pr_SpaceShip;
+	cocos2d::Label *lo_Label1, *lo_Label2;
 public:
 	static Scene* Create();
 	bool init() override;

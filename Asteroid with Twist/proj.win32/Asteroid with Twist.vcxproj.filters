@@ -63,6 +63,9 @@
     <ClCompile Include="..\Classes\SpaceShipNormalState.cpp">
       <Filter>Game Entities\SpaceShip</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SpaceShipSpinState.cpp">
+      <Filter>Game Entities\SpaceShip</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -99,6 +102,9 @@
       <Filter>Game Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\SpaceShipNormalState.h">
+      <Filter>Game Entities\SpaceShip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpaceShipSpinState.h">
       <Filter>Game Entities\SpaceShip</Filter>
     </ClInclude>
   </ItemGroup>

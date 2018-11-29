@@ -7,12 +7,11 @@
  */
 MovementComponent::MovementComponent(const float& ar_FrictionCoefficient)
 {
-	pr_Direction = new Vector2;
+	pr_Direction = new Vector2(0,1);
 	pr_Acceleration = new Vector2;
 	pr_Velocity = new Vector2;
 	pr_Friction = new float;
-	pr_Theta = new float;
-	pr_AppliedForce = new float;
+	pr_AppliedForce = new Vector2;
 
 	//Set variables
 	*pr_Friction = ar_FrictionCoefficient;
@@ -28,7 +27,6 @@ MovementComponent::~MovementComponent()
 	delete pr_Direction;
 	delete pr_Velocity;
 	delete pr_Friction;
-	delete pr_Theta;
 	delete pr_AppliedForce;
 }
 
@@ -83,7 +81,7 @@ float* MovementComponent::GetFriction() const
  * @return Returns the memory address of applied force
  * as a float pointer
  */
-float* MovementComponent::GetAppliedForce() const
+Vector2* MovementComponent::GetAppliedForce() const
 {
 	return pr_AppliedForce;
 }
@@ -164,10 +162,21 @@ void MovementComponent::SetVelocity(const float& ar_NewX, const float& ar_NewY) 
  * @param ar_AppliedForce The new float to set the value of applied
  * force
  */
-void MovementComponent::SetAppliedForce(const float& ar_AppliedForce) const
+void MovementComponent::SetAppliedForce(const Vector2 &ar_AppliedForce) const
 {
 	*pr_AppliedForce = ar_AppliedForce;
 }
+
+/*
+ * @brief This
+ */
+void MovementComponent::SetAppliedForce(const float& ar_NewX, const float& ar_NewY) const
+{
+	(*pr_AppliedForce).x = ar_NewX;
+	(*pr_AppliedForce).y = ar_NewY;
+}
+
+
 
 /*
  * @brief This function calculates the new direction (with length equals 1) of
@@ -177,12 +186,8 @@ void MovementComponent::SetAppliedForce(const float& ar_AppliedForce) const
  */
 void MovementComponent::UpdateDirection(const float& ar_AngleChanges) const
 {
-	const auto lo_AngleInRad = -ar_AngleChanges / 180 * PI;
-	const Mat2 lo_TempMatrix{
-		Vector2(std::cos(lo_AngleInRad), -std::sin(lo_AngleInRad)),
-		Vector2(std::sin(lo_AngleInRad), std::cos(lo_AngleInRad))
-	};
-	*pr_Direction = lo_TempMatrix * (*pr_Direction);
+	const auto lo_AngleInRad = ar_AngleChanges / 180 * PI;
+	*pr_Direction = Vector2(sinf(lo_AngleInRad), cosf(lo_AngleInRad));
 }
 
 /*
@@ -196,13 +201,14 @@ void MovementComponent::Update(const float& ar_DeltaTime) const
 {
 	//Local Variables
 	Vector2 lo_NetForceVector;
-	const auto lo_AppliedForceVector(*pr_Direction* (*pr_AppliedForce));
+	const Vector2 lo_AppliedForceVector(pr_Direction->x * pr_AppliedForce->y, pr_Direction->y*pr_AppliedForce->y);
 	
 	//If the object is moving, apply friction to the net force
 	if (pr_Velocity->CalculateLength() != 0)
 	{
-		const Vector2 lo_FrictionForceVector(-(pr_Direction->x)* (*pr_Friction), -(pr_Direction->y)* (*pr_Friction));
-		lo_NetForceVector = lo_AppliedForceVector + lo_FrictionForceVector;
+		const Vector2 lo_VelocityDirection(pr_Velocity->NormalizeVector());
+		const Vector2 lo_FrictionVector(lo_VelocityDirection *-(*pr_Friction));
+		lo_NetForceVector = lo_AppliedForceVector + lo_FrictionVector;
 	}
 		//If the object is not moving, DO NOT apply friction to net force
 	else

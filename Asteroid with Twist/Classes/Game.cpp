@@ -28,6 +28,7 @@ bool Game::init()
 	//and display the part of the map
 	pr_SpaceShip = new SpaceShip;
 	pr_SpaceShip->SetPosition(200, 100);
+	//pr_SpaceShip->GetMovementComponent()->SetAppliedForce(100);
 	pr_MapLayer->addChild(pr_SpaceShip->GetSprite());
 
 	//init keyboard function
@@ -40,6 +41,15 @@ bool Game::init()
 	//the map layer follows the spaceship
 	pr_MapLayer->runAction(Follow::create(pr_SpaceShip->GetSprite()));
 
+	//create a testing label
+	lo_Label1 = Label::createWithSystemFont("X: ", "Time News Roman", 50);
+	lo_Label1->setAnchorPoint(Vec2(0.0, 0.0));
+	this->addChild(lo_Label1);
+
+	lo_Label2 = Label::createWithSystemFont("Y: ", "Time News Roman", 50);
+	lo_Label2->setAnchorPoint(Vec2(0.0, 0.0));
+	lo_Label2->setPosition(0, 51);
+	this->addChild(lo_Label2);
 
 	//update schedule
 	this->scheduleUpdate();
@@ -49,10 +59,15 @@ bool Game::init()
 void Game::update(const float ar_DeltaTime)
 {
 	pr_SpaceShip->Update(ar_DeltaTime);
+	const auto lo_X = *(pr_SpaceShip->GetAngle());
+	const auto lo_Y = pr_SpaceShip->GetMovementComponent()->GetVelocity()->y;
+
+	lo_Label1->setString("Velocity X: "+ std::to_string(lo_X));
+	lo_Label2->setString("Velocity Y: " + std::to_string(lo_Y));
 }
 
 /*
- *
+ *@brief This function process any user input key press.
  */
 void Game::OnKeyPressed(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Event* ar_Event)
 {
@@ -60,16 +75,28 @@ void Game::OnKeyPressed(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Eve
 	switch (ar_KeyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_W:
-		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(100);
+		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0,200);
 		break;
 	case EventKeyboard::KeyCode::KEY_S:
-		pr_SpaceShip->GetMovementComponent()->SetForce(0, -100);
+		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0,-200);
 		break;
 	case EventKeyboard::KeyCode::KEY_A:
-		pr_SpaceShip->GetMovementComponent()->SetForce(-100, 0);
+		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(-100,0);
 		break;
 	case EventKeyboard::KeyCode::KEY_D:
-		pr_SpaceShip->GetMovementComponent()->SetForce(100, 0);
+		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(100,0);
+		break;
+	case EventKeyboard::KeyCode::KEY_Q:
+		pr_SpaceShip->AddAngle(-20);
+		break;
+	case EventKeyboard::KeyCode::KEY_E:
+		pr_SpaceShip->AddAngle(20);
+		break;
+	case EventKeyboard::KeyCode::KEY_I:
+		pr_SpaceShip->ChangeToSpinState();
+		break;
+	case EventKeyboard::KeyCode::KEY_O:
+		pr_SpaceShip->ChangeToNormalState();
 		break;
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		exit(1);
@@ -79,23 +106,29 @@ void Game::OnKeyPressed(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Eve
 }
 
 /*
- *
+ *@brief 
  */
 void Game::OnKeyReleased(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Event* ar_Event)
 {
 	switch (ar_KeyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_W:
-		pr_SpaceShip->GetMovementComponent()->SetForce(0, 0);
+		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0,0);
 		break;
 	case EventKeyboard::KeyCode::KEY_S:
-		pr_SpaceShip->GetMovementComponent()->SetForce(0, 0);
+		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0,0);
 		break;
 	case EventKeyboard::KeyCode::KEY_A:
-		pr_SpaceShip->GetMovementComponent()->SetForce(0, 0);
+		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0,0);
 		break;
 	case EventKeyboard::KeyCode::KEY_D:
-		pr_SpaceShip->GetMovementComponent()->SetForce(0, 0);
+		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0,0);
+		break;
+	case EventKeyboard::KeyCode::KEY_Q:
+		pr_SpaceShip->AddAngle(0);
+		break;
+	case EventKeyboard::KeyCode::KEY_E:
+		pr_SpaceShip->AddAngle(0);
 		break;
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		exit(1);
@@ -103,6 +136,3 @@ void Game::OnKeyReleased(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Ev
 		break;
 	}
 }
-
-
-

@@ -158,6 +158,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\MovementComponent.cpp" />
     <ClCompile Include="..\Classes\SpaceShip.cpp" />
     <ClCompile Include="..\Classes\SpaceShipNormalState.cpp" />
+    <ClCompile Include="..\Classes\SpaceShipSpinState.cpp" />
     <ClCompile Include="..\Classes\State.cpp" />
     <ClCompile Include="..\Classes\Vector2.cpp" />
     <ClCompile Include="main.cpp" />
@@ -172,6 +173,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\MovementComponent.h" />
     <ClInclude Include="..\Classes\SpaceShip.h" />
     <ClInclude Include="..\Classes\SpaceShipNormalState.h" />
+    <ClInclude Include="..\Classes\SpaceShipSpinState.h" />
     <ClInclude Include="..\Classes\State.h" />
     <ClInclude Include="..\Classes\Vector2.h" />
     <ClInclude Include="main.h" />

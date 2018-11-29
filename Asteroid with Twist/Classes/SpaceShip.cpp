@@ -1,8 +1,9 @@
 #include "SpaceShip.h"
 #include "SpaceShipNormalState.h"
+#include "SpaceShipSpinState.h"
 
 
-SpaceShip::SpaceShip(): GameEntities("Ship.png")
+SpaceShip::SpaceShip(): GameEntities("Ship.png", 50)
 {
 	pr_CurrentState = new SpaceShipNormalState;
 }
@@ -10,6 +11,17 @@ SpaceShip::SpaceShip(): GameEntities("Ship.png")
 
 SpaceShip::~SpaceShip()
 {
+	delete pr_CurrentState;
+}
+
+/*
+ *@brief This function changes the SpaceShip State to a new one
+ *
+ *@param The new SpaceShip State to set to
+ */
+void SpaceShip::SetState(SpaceShipState* ar_NewState)
+{
+	pr_CurrentState = ar_NewState;
 }
 
 /*
@@ -22,9 +34,21 @@ SpaceShip::~SpaceShip()
  */
 void SpaceShip::Update(const float& ar_DeltaTime)
 {
-	pr_CurrentState->Update(ar_DeltaTime, pr_Movement, pr_Collision);
-	CheckPositionOutOfMap();
-	//Update the sprite position to draw on screen
-	pr_ObjectGraphic->setPosition((*pr_Collision->GetPosition()).x,
-		(*pr_Collision->GetPosition()).y);
+	pr_CurrentState->Update(ar_DeltaTime, this);
+}
+
+/*
+ * @brief This function sets the current state to normal state
+ */
+void SpaceShip::ChangeToNormalState()
+{
+	pr_CurrentState->ChangeToNormalState(this);
+}
+
+/*
+ * @brief This function sets the current state to spinning state
+ */
+void SpaceShip::ChangeToSpinState()
+{
+	pr_CurrentState->ChangeToSpinState(this);
 }
