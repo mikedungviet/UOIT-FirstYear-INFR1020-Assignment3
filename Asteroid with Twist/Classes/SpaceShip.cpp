@@ -1,8 +1,10 @@
 #include "SpaceShip.h"
+#include "SpaceShipNormalState.h"
 
 
 SpaceShip::SpaceShip(): GameEntities("Ship.png")
 {
+	pr_CurrentState = new SpaceShipNormalState;
 }
 
 
@@ -20,5 +22,9 @@ SpaceShip::~SpaceShip()
  */
 void SpaceShip::Update(const float& ar_DeltaTime)
 {
-	GameEntities::Update(ar_DeltaTime);
+	pr_CurrentState->Update(ar_DeltaTime, pr_Movement, pr_Collision);
+	CheckPositionOutOfMap();
+	//Update the sprite position to draw on screen
+	pr_ObjectGraphic->setPosition((*pr_Collision->GetPosition()).x,
+		(*pr_Collision->GetPosition()).y);
 }

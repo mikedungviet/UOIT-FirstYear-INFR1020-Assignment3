@@ -17,9 +17,9 @@ public:
 	~GameEntities();
 
 	//Getters
-	cocos2d::Sprite* GetSprite();
-	CollisionComponent* GetCollisionComponent();
-	MovementComponent* GetMovementComponent();
+	cocos2d::Sprite* GetSprite() const;
+	CollisionComponent* GetCollisionComponent() const;
+	MovementComponent* GetMovementComponent() const;
 	float* GetAngle() const;
 
 	//Setters
@@ -30,4 +30,7 @@ public:
 	virtual void Update(const float& ar_DeltaTime);
 	void CheckPositionOutOfMap() const;
 	void AddAngle(const float& ar_Angle) const;
+
+	//Static Function
+	static void CheckPositionOutOfMap(GameEntities *ar_GameEntities);
 };

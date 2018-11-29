@@ -1,14 +1,21 @@
 #include "MovementComponent.h"
+#include "Matrix2.h"
+#include "spine/extension.h"
 
 /*
  * @brief Constructor for all the Vectors component. Set everything to 0
  */
-MovementComponent::MovementComponent()
+MovementComponent::MovementComponent(const float& ar_FrictionCoefficient)
 {
-	pr_Force = new Vector2;
+	pr_Direction = new Vector2;
 	pr_Acceleration = new Vector2;
 	pr_Velocity = new Vector2;
-	pr_Gravity = new Vector2;
+	pr_Friction = new float;
+	pr_Theta = new float;
+	pr_AppliedForce = new float;
+
+	//Set variables
+	*pr_Friction = ar_FrictionCoefficient;
 }
 
 /*
@@ -18,42 +25,22 @@ MovementComponent::MovementComponent()
 MovementComponent::~MovementComponent()
 {
 	delete pr_Acceleration;
-	delete pr_Force;
+	delete pr_Direction;
 	delete pr_Velocity;
-	delete pr_Gravity;
+	delete pr_Friction;
+	delete pr_Theta;
+	delete pr_AppliedForce;
 }
 
 /*
- *@brief This function returns the Force vector. This can
+ *@brief This function returns the direction vector. This cannot
  *be modified
  *
  *@return Return the Force vector as Vector2
  */
-Vector2* MovementComponent::GetForce()
+Vector2* MovementComponent::GetDirectionVector() const
 {
-	return pr_Force;
-}
-
-/*
- *@brief This function returns the Force vector. This cannot
- *be modified
- *
- *@return Return the Force vector as Vector2
- */
-Vector2* MovementComponent::GetForce() const
-{
-	return pr_Force;
-}
-
-/*
- *@brief This function returns the Acceleration vector. This can
- *be modified
- *
- *@return Return the Acceleration vector as Vector2
- */
-Vector2* MovementComponent::GetAcceleration()
-{
-	return pr_Acceleration;
+	return pr_Direction;
 }
 
 /*
@@ -68,17 +55,6 @@ Vector2* MovementComponent::GetAcceleration() const
 }
 
 /*
- *@brief This function returns the Velocity vector. This can
- *be modified
- *
- *@return Return the Velocity vector as Vector2
- */
-Vector2* MovementComponent::GetVelocity()
-{
-	return pr_Velocity;
-}
-
-/*
  *@brief This function returns the Velocity vector. This cannot
  *be modified
  *
@@ -90,25 +66,26 @@ Vector2* MovementComponent::GetVelocity() const
 }
 
 /*
- * @brief This functions return the Gravity vector. This can
- * be modified
- * 
- * @return Return the Gravity vector as Vector2
+ *@brief This function return the Gravity vector. This cannot
+ *be modified
+ *
+ *@return Return the Gravity vector as Vector 2
  */
-Vector2* MovementComponent::GetFriction()
+float* MovementComponent::GetFriction() const
 {
 	return pr_Friction;
 }
 
 /*
- *@brief This function return the Gravity vector. This cannot 
- *be modified
+ * @brief This function returns the address of
+ * Applied Force vector.
  *
- *@return Return the Gravity vector as Vector 2
+ * @return Returns the memory address of applied force
+ * as a float pointer
  */
-Vector2* MovementComponent::GetFriction() const
+float* MovementComponent::GetAppliedForce() const
 {
-	return pr_Friction;
+	return pr_AppliedForce;
 }
 
 
@@ -117,10 +94,10 @@ Vector2* MovementComponent::GetFriction() const
  *
  * @param ar_NewForce This is the new Vector2 to set the force to
  */
-void MovementComponent::SetForce(const Vector2& ar_NewForce) const
+void MovementComponent::SetDirectionVector(const Vector2& ar_NewDirection) const
 {
-	(*pr_Force).x = ar_NewForce.x;
-	(*pr_Force).y = ar_NewForce.y;
+	(*pr_Direction).x = ar_NewDirection.x;
+	(*pr_Direction).y = ar_NewDirection.y;
 }
 
 /*
@@ -129,10 +106,10 @@ void MovementComponent::SetForce(const Vector2& ar_NewForce) const
  * @param ar_NewX This is the new float to set the force x to
  * @param ar_NewY This is the new float to the the force y to
  */
-void MovementComponent::SetForce(const float& ar_NewX, const float& ar_NewY) const
+void MovementComponent::SetDirectionVector(const float& ar_NewX, const float& ar_NewY) const
 {
-	(*pr_Force).x = ar_NewX;
-	(*pr_Force).y = ar_NewY;
+	(*pr_Direction).x = ar_NewX;
+	(*pr_Direction).y = ar_NewY;
 }
 
 /*
@@ -182,47 +159,56 @@ void MovementComponent::SetVelocity(const float& ar_NewX, const float& ar_NewY) 
 }
 
 /*
- * @brief This function sets the Gravity Vector to new value
+ * @brief This function set the applied force float to a new value
  *
- * @param ar_NewForce This is the new Vector2 to set the gravity to
+ * @param ar_AppliedForce The new float to set the value of applied
+ * force
  */
-void MovementComponent::SetFriction(const Vector2& ar_NewFriction) const
+void MovementComponent::SetAppliedForce(const float& ar_AppliedForce) const
 {
-	(*pr_Friction).x = ar_NewFriction.x;
-	(*pr_Friction).y = ar_NewFriction.y;
+	*pr_AppliedForce = ar_AppliedForce;
 }
 
 /*
- * @brief This function sets the Gravity Vector to new value
+ * @brief This function calculates the new direction (with length equals 1) of
+ * the movement using matrix rotation
  *
- * @param ar_NewX This is the new float to set the gravity x to
- * @param ar_NewY This is the new float to the the gravity y to
+ * @param ar_AngleChanges The angle changes to be rotated.
  */
-void MovementComponent::SetFriction(const float& ar_NewX, const float& ar_NewY) const
+void MovementComponent::UpdateDirection(const float& ar_AngleChanges) const
 {
-	(*pr_Friction).x = ar_NewX;
-	(*pr_Friction).y = ar_NewY;
+	const auto lo_AngleInRad = -ar_AngleChanges / 180 * PI;
+	const Mat2 lo_TempMatrix{
+		Vector2(std::cos(lo_AngleInRad), -std::sin(lo_AngleInRad)),
+		Vector2(std::sin(lo_AngleInRad), std::cos(lo_AngleInRad))
+	};
+	*pr_Direction = lo_TempMatrix * (*pr_Direction);
 }
 
 /*
- * @brief This function uses basic kinematic equations to update
- * the velocity vector
+ * @brief This function uses basic kinematic and dynamic equations 
+ * to update the velocity vector
  *
  * @param deltaTime This is the time difference between the current
  * frame and last frame
  */
 void MovementComponent::Update(const float& ar_DeltaTime) const
 {
+	//Local Variables
+	Vector2 lo_NetForceVector;
+	const auto lo_AppliedForceVector(*pr_Direction* (*pr_AppliedForce));
+	
 	//If the object is moving, apply friction to the net force
-	if (pr_Velocity->CalculateLength() != 0) {
-		const auto lo_NormalizedVector = pr_Velocity->NormalizeVector();
-		*pr_Friction = Vector2(-75 * lo_NormalizedVector.x, -75 * lo_NormalizedVector.y);
-		*pr_Acceleration = *pr_Force + *pr_Friction;
-	}
-	//If the object is not moving, DO NOT apply friction to net force
-	else
+	if (pr_Velocity->CalculateLength() != 0)
 	{
-		*pr_Acceleration = *pr_Force;
+		const Vector2 lo_FrictionForceVector(-(pr_Direction->x)* (*pr_Friction), -(pr_Direction->y)* (*pr_Friction));
+		lo_NetForceVector = lo_AppliedForceVector + lo_FrictionForceVector;
 	}
+		//If the object is not moving, DO NOT apply friction to net force
+	else
+		lo_NetForceVector = lo_AppliedForceVector;
+
+	//Update kinematic equations
+	*pr_Acceleration = lo_NetForceVector;
 	*pr_Velocity += *pr_Acceleration * ar_DeltaTime;
 }

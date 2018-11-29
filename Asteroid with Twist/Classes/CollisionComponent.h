@@ -17,12 +17,11 @@ public:
 	~CollisionComponent();
 
 	//Getters
-	Vector2* GetPosition();
 	Vector2* GetPosition() const;
 	float* GetRadius() const;
 
 	//Setters
-	void SetRadius(const float& ar_NewRadius);
+	void SetRadius(const float& ar_NewRadius) const;
 	void SetPosition(const Vector2& ar_NewPosition) const;
 	void SetPosition(const float& ar_NewX, const float& ar_NewY) const;
 

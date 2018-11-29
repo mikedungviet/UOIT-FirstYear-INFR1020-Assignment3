@@ -14,7 +14,7 @@ public:
 	//Member Functions
 	void update(float ar_DeltaTime) override;
 	void OnKeyPressed(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Event* ar_Event);
-	void OnKeyReleased(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Event *ar_Event);
+	void OnKeyReleased(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Event* ar_Event);
 
 	CREATE_FUNC(Game);
 };

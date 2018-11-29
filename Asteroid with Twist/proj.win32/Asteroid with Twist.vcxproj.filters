@@ -57,6 +57,12 @@
     <ClCompile Include="..\Classes\InputDetection.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\State.cpp">
+      <Filter>Game Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SpaceShipNormalState.cpp">
+      <Filter>Game Entities\SpaceShip</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -88,6 +94,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\InputDetection.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\State.h">
+      <Filter>Game Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpaceShipNormalState.h">
+      <Filter>Game Entities\SpaceShip</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

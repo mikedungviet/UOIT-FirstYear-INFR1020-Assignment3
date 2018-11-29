@@ -35,7 +35,8 @@ bool Game::init()
 	lo_EventListener->onKeyPressed = CC_CALLBACK_2(Game::OnKeyPressed,this);
 	lo_EventListener->onKeyReleased = CC_CALLBACK_2(Game::OnKeyReleased, this);
 	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(lo_EventListener, this);
-	
+
+
 	//the map layer follows the spaceship
 	pr_MapLayer->runAction(Follow::create(pr_SpaceShip->GetSprite()));
 
@@ -59,7 +60,7 @@ void Game::OnKeyPressed(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Eve
 	switch (ar_KeyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_W:
-		pr_SpaceShip->GetMovementComponent()->SetForce(0, 100);
+		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(100);
 		break;
 	case EventKeyboard::KeyCode::KEY_S:
 		pr_SpaceShip->GetMovementComponent()->SetForce(0, -100);

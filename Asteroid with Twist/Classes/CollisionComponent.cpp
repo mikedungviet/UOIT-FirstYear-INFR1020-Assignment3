@@ -22,17 +22,6 @@ CollisionComponent::~CollisionComponent()
 }
 
 /*
- *@brief This function returns the position vector. This can
- *be modified
- *
- *@return The position vector as Vector2
- */
-Vector2* CollisionComponent::GetPosition()
-{
-	return pr_Position;
-}
-
-/*
  *@brief This function returns the position vector. This cannot
  *be modified
  *
@@ -58,7 +47,7 @@ float* CollisionComponent::GetRadius() const
  *
  * @param ar_NewRadius The new radius for the object
  */
-void CollisionComponent::SetRadius(const float& ar_NewRadius)
+void CollisionComponent::SetRadius(const float& ar_NewRadius) const
 {
 	*pr_Radius = ar_NewRadius;
 }

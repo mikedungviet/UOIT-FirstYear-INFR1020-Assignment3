@@ -34,7 +34,7 @@ GameEntities::~GameEntities()
  *@return Returns the address of the sprite of
  *the game entity
  */
-cocos2d::Sprite* GameEntities::GetSprite()
+cocos2d::Sprite* GameEntities::GetSprite() const
 {
 	return pr_ObjectGraphic;
 }
@@ -46,7 +46,7 @@ cocos2d::Sprite* GameEntities::GetSprite()
  *@return Returns the address of the collision component of
  *the game entity
  */
-CollisionComponent* GameEntities::GetCollisionComponent()
+CollisionComponent* GameEntities::GetCollisionComponent() const
 {
 	return pr_Collision;
 }
@@ -58,7 +58,7 @@ CollisionComponent* GameEntities::GetCollisionComponent()
  *@return Returns the address of the movement component of
  *the game entity
  */
-MovementComponent* GameEntities::GetMovementComponent()
+MovementComponent* GameEntities::GetMovementComponent() const
 {
 	return pr_Movement;
 }
@@ -156,7 +156,19 @@ float GameEntities::CalculateSpriteRadius() const
  */
 void GameEntities::AddAngle(const float& ar_Angle) const
 {
-	*pr_Theta += ar_Angle;
-	if (*pr_Theta >= 360)
-		*pr_Theta -= 360;
+	pr_Movement->UpdateDirection(ar_Angle);
+	pr_ObjectGraphic->setRotation(ar_Angle);
+}
+
+void GameEntities::CheckPositionOutOfMap(GameEntities* ar_GameEntities)
+{
+	const auto lo_Size = ar_GameEntities->GetSprite()->getBoundingBox().size;
+	if (ar_GameEntities->GetCollisionComponent()->GetPosition()->x + lo_Size.width > 10000)
+		ar_GameEntities->GetCollisionComponent()->GetPosition()->x = 0 + lo_Size.width;
+	if (ar_GameEntities->GetCollisionComponent()->GetPosition()->x - lo_Size.width < 0)
+		ar_GameEntities->GetCollisionComponent()->GetPosition()->x = 10000 - lo_Size.width;
+	if (ar_GameEntities->GetCollisionComponent()->GetPosition()->y + lo_Size.height > 10000)
+		ar_GameEntities->GetCollisionComponent()->GetPosition()->y = 0 + lo_Size.height;
+	if (ar_GameEntities->GetCollisionComponent()->GetPosition()->y - lo_Size.height < 0)
+		ar_GameEntities->GetCollisionComponent()->GetPosition()->y = 10000 - lo_Size.height;
 }
