@@ -1,5 +1,5 @@
 #include "Game.h"
-
+#include "InputDetection.h"
 #include "GameEntitiesSingleton.h"
 using namespace cocos2d;
 
@@ -20,6 +20,7 @@ bool Game::init()
 	//Big map layer. Static layer
 	pr_MapLayer = Layer::create();
 	this->addChild(pr_MapLayer);
+	GameEntitiesSingleton::GetInstance()->SetMapLayer(pr_MapLayer);
 
 	auto lo_Background = Sprite::create("TestingBackground.png");
 	lo_Background->setAnchorPoint(Vec2(0.f, 0.f));

@@ -57,6 +57,17 @@ GameEntities* GameEntitiesSingleton::GetEntity(const int& ar_Index) const
 }
 
 /*
+ * @brief This function returns the memory address of the game
+ * map layer
+ */
+cocos2d::Layer* GameEntitiesSingleton::GetMapLayer() const
+{
+	return pr_GameMapLayer;
+}
+
+
+
+/*
  * @brief Set the address of the spaceship to the singleton spaceship
  * 
  * @param ar_Ship the address of the current spaceship
@@ -67,13 +78,21 @@ void GameEntitiesSingleton::SetSpaceShip(SpaceShip* ar_Ship)
 }
 
 /*
+ *@brief This function sets the memory address of game map to another
+ */
+void GameEntitiesSingleton::SetMapLayer(cocos2d::Layer* ar_Layer)
+{
+	pr_GameMapLayer = ar_Layer;
+}
+
+/*
  * @brief This function adds the object in the parameter to the 
  * object game list and also to the current scene 
  */
 void GameEntitiesSingleton::AddEntity(GameEntities* ar_EntityToAdd)
 {
 	pr_GameEntitiesList.push_back(ar_EntityToAdd);
-	cocos2d::Director::getInstance()->getRunningScene()->addChild(ar_EntityToAdd->GetSprite());
+	pr_GameMapLayer->addChild(ar_EntityToAdd->GetSprite());
 }
 
 /*
