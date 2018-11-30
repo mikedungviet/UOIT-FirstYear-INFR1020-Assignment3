@@ -27,6 +27,7 @@ public:
 	void Update(const float& ar_DeltaTime) override;
 	void ChangeToNormalState();
 	void ChangeToSpinState();
+	void ChangeToNormalMode();
 	void ChangeToHookMode();
 
 	//Movement

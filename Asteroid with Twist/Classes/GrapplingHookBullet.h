@@ -15,6 +15,5 @@ public:
 
 	//Member Functions
 	void Update(const float& ar_DeltaTime) override;
-
 };
 

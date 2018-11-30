@@ -87,7 +87,6 @@
     <ClCompile Include="..\Classes\GrapplingHookBullet.cpp">
       <Filter>Game Entities\SpaceShip\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="HookGunMode.cpp" />
     <ClCompile Include="..\Classes\HookGunMode.cpp">
       <Filter>Game Entities\SpaceShip\Bullet</Filter>
     </ClCompile>
@@ -147,7 +146,6 @@
     <ClInclude Include="..\Classes\GrapplingHookBullet.h">
       <Filter>Game Entities\SpaceShip\Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="HookGunMode.h" />
     <ClInclude Include="..\Classes\HookGunMode.h">
       <Filter>Game Entities\SpaceShip\Bullet</Filter>
     </ClInclude>

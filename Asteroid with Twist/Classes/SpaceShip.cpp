@@ -77,6 +77,14 @@ void SpaceShip::ChangeToSpinState()
 }
 
 /*
+ *
+ */
+void SpaceShip::ChangeToNormalMode()
+{
+	pr_CurrentGunMode->ChangeToNormalMode(this);
+}
+
+/*
  *@brief This function sets the current gun mode to hook mode
  */
 void SpaceShip::ChangeToHookMode()
