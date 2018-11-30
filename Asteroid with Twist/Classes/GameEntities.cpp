@@ -24,7 +24,6 @@ GameEntities::~GameEntities()
 {
 	delete pr_Collision;
 	delete pr_Movement;
-	delete pr_ObjectGraphic;
 	delete pr_Theta;
 }
 

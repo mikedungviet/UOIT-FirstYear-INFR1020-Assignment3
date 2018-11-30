@@ -25,6 +25,9 @@
     <Filter Include="Game Entities\Misc">
       <UniqueIdentifier>{28c7c12c-1b49-4c10-b75e-86fa68eb935c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Entities\SpaceShip\Bullet">
+      <UniqueIdentifier>{89a8ba7d-0bad-4e80-a29e-afdbc218b860}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -69,6 +72,15 @@
     <ClCompile Include="..\Classes\GameEntitiesSingleton.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GunMode.cpp">
+      <Filter>Game Entities\SpaceShip\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ShipBullet.cpp">
+      <Filter>Game Entities\SpaceShip\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\NormalGunMode.cpp">
+      <Filter>Game Entities\SpaceShip\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -112,6 +124,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GameEntitiesSingleton.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GunMode.h">
+      <Filter>Game Entities\SpaceShip\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ShipBullet.h">
+      <Filter>Game Entities\SpaceShip\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\NormalGunMode.h">
+      <Filter>Game Entities\SpaceShip\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

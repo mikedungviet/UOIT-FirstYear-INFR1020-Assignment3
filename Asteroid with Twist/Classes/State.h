@@ -1,5 +1,4 @@
 #pragma once
-#include "GameEntities.h"
 
 extern class SpaceShip;
 

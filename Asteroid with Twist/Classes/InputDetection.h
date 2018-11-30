@@ -1,11 +1,13 @@
 #pragma once
 #include "cocos2d.h"
-#include "GameEntities.h"
 
 class InputDetection
 {
+	
 public:
-	static void OnKeyPressed(GameEntities *ar_GameEntity);
-	static void OnKeyReleased(GameEntities *ar_GameEntity){}
+	InputDetection();
+	void OnKeyPressed(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Event* ar_Event);
+	void OnKeyReleased(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Event* ar_Event);
+	cocos2d::EventListenerKeyboard *pr_Keyboard;
 };
 

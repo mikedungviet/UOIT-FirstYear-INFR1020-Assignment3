@@ -1,12 +1,14 @@
 #pragma once
 #include "GameEntities.h"
 #include "State.h"
+#include "GunMode.h"
 
 class SpaceShip :
 	public GameEntities
 {
 private:
 	SpaceShipState *pr_CurrentState;
+	GunMode *pr_CurrentGunMode;
 	const float pr_Speed;
 public:
 	//Constructors and Destructor
@@ -15,11 +17,13 @@ public:
 
 	//Setters
 	void SetState(SpaceShipState *ar_NewState);
+	void SetGunMode(GunMode *ar_NewMode);
 
 	//Member Functions
 	void Update(const float& ar_DeltaTime) override;
 	void ChangeToNormalState();
 	void ChangeToSpinState();
+	void ChangeToHookMode();
 
 	//Movement
 	void ApplyForceForward() ;
@@ -28,5 +32,6 @@ public:
 	void ApplyForceRight();
 	void RotateLeft();
 	void RotateRight();
+	void ShootBullet();
 	
 };

@@ -1,10 +1,12 @@
 #include "SpaceShip.h"
 #include "SpaceShipNormalState.h"
+#include "NormalGunMode.h"
 
 
-SpaceShip::SpaceShip() : GameEntities("Ship.png", 100), pr_Speed(300)
+SpaceShip::SpaceShip() : GameEntities("ship.png", 100), pr_Speed(300)
 {
 	pr_CurrentState = new SpaceShipNormalState;
+	pr_CurrentGunMode = new NormalGunMode;
 }
 
 
@@ -21,6 +23,14 @@ SpaceShip::~SpaceShip()
 void SpaceShip::SetState(SpaceShipState* ar_NewState)
 {
 	pr_CurrentState = ar_NewState;
+}
+
+/*
+ *
+ */
+void SpaceShip::SetGunMode(GunMode* ar_NewMode)
+{
+	pr_CurrentGunMode = ar_NewMode;
 }
 
 /*
@@ -121,5 +131,13 @@ void SpaceShip::RotateLeft()
 void SpaceShip::RotateRight()
 {
 	AddAngle(20);
+}
+
+/*
+ *
+ */
+void SpaceShip::ShootBullet()
+{
+	pr_CurrentGunMode->ShootBullets(this);
 }
 

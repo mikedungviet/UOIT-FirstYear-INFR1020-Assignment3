@@ -1,13 +1,15 @@
 #pragma once
 #include "cocos2d.h"
 #include "SpaceShip.h"
+#include "InputDetection.h"
 
 class Game : public cocos2d::Scene
 {
 private:
-	cocos2d::Layer *pr_MapLayer, *pr_CameraLayer;
+	cocos2d::Layer *pr_MapLayer;
 	SpaceShip* pr_SpaceShip;
 	cocos2d::Label *lo_Label1, *lo_Label2;
+	InputDetection *lo_EventListener;
 public:
 	static Scene* Create();
 	bool init() override;

@@ -1,5 +1,6 @@
 #include "Game.h"
-#include "InputDetection.h"
+
+#include "GameEntitiesSingleton.h"
 using namespace cocos2d;
 
 Scene* Game::Create()
@@ -28,14 +29,14 @@ bool Game::init()
 	//and display the part of the map
 	pr_SpaceShip = new SpaceShip;
 	pr_SpaceShip->SetPosition(200, 100);
-	//pr_SpaceShip->GetMovementComponent()->SetAppliedForce(100);
 	pr_MapLayer->addChild(pr_SpaceShip->GetSprite());
+	GameEntitiesSingleton::GetInstance()->SetSpaceShip(pr_SpaceShip);
 
 	//init keyboard function
-	auto lo_EventListener = EventListenerKeyboard::create();
-	lo_EventListener->onKeyPressed = CC_CALLBACK_2(Game::OnKeyPressed,this);
-	lo_EventListener->onKeyReleased = CC_CALLBACK_2(Game::OnKeyReleased, this);
-	this->_eventDispatcher->addEventListenerWithSceneGraphPriority(lo_EventListener, this);
+	lo_EventListener = new InputDetection;
+	lo_EventListener->pr_Keyboard->onKeyPressed = CC_CALLBACK_2(Game::OnKeyPressed, this);
+	lo_EventListener->pr_Keyboard->onKeyReleased = CC_CALLBACK_2(Game::OnKeyReleased, this);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(lo_EventListener->pr_Keyboard, this);
 
 
 	//the map layer follows the spaceship
@@ -58,7 +59,14 @@ bool Game::init()
 
 void Game::update(const float ar_DeltaTime)
 {
+	auto lo_TempVec = GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector();
 	pr_SpaceShip->Update(ar_DeltaTime);
+
+	for(auto lo_I:lo_TempVec)
+	{
+		lo_I->Update(ar_DeltaTime);
+	}
+
 	const auto lo_X = *(pr_SpaceShip->GetAngle());
 	const auto lo_Y = pr_SpaceShip->GetMovementComponent()->GetVelocity()->y;
 
@@ -71,37 +79,7 @@ void Game::update(const float ar_DeltaTime)
  */
 void Game::OnKeyPressed(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Event* ar_Event)
 {
-	switch (ar_KeyCode)
-	{
-	case EventKeyboard::KeyCode::KEY_W:
-		pr_SpaceShip->ApplyForceForward();
-		break;
-	case EventKeyboard::KeyCode::KEY_S:
-		pr_SpaceShip->ApplyForceBackward();
-		break;
-	case EventKeyboard::KeyCode::KEY_A:
-		pr_SpaceShip->ApplyForceLeft();
-		break;
-	case EventKeyboard::KeyCode::KEY_D:
-		pr_SpaceShip->ApplyForceRight();
-		break;
-	case EventKeyboard::KeyCode::KEY_Q:
-		pr_SpaceShip->RotateLeft();
-		break;
-	case EventKeyboard::KeyCode::KEY_E:
-		pr_SpaceShip->RotateRight();
-		break;
-	case EventKeyboard::KeyCode::KEY_I:
-		pr_SpaceShip->ChangeToSpinState();
-		break;
-	case EventKeyboard::KeyCode::KEY_O:
-		pr_SpaceShip->ChangeToNormalState();
-		break;
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		exit(1);
-	default:
-		break;
-	}
+	lo_EventListener->OnKeyPressed(ar_KeyCode, ar_Event);
 }
 
 /*
@@ -109,23 +87,5 @@ void Game::OnKeyPressed(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Eve
  */
 void Game::OnKeyReleased(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Event* ar_Event)
 {
-	switch (ar_KeyCode)
-	{
-	case EventKeyboard::KeyCode::KEY_W:
-	case EventKeyboard::KeyCode::KEY_S:
-	case EventKeyboard::KeyCode::KEY_A:
-	case EventKeyboard::KeyCode::KEY_D:
-		pr_SpaceShip->GetMovementComponent()->SetAppliedForce(0);
-		break;
-	case EventKeyboard::KeyCode::KEY_Q:
-		pr_SpaceShip->AddAngle(0);
-		break;
-	case EventKeyboard::KeyCode::KEY_E:
-		pr_SpaceShip->AddAngle(0);
-		break;
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		exit(1);
-	default:
-		break;
-	}
+	lo_EventListener->OnKeyReleased(ar_KeyCode, ar_Event);
 }

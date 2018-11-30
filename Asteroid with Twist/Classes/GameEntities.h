@@ -12,7 +12,7 @@ protected: //Child class inheritance variables
 	CollisionComponent* pr_Collision;
 	MovementComponent* pr_Movement;
 	cocos2d::Sprite* pr_ObjectGraphic;
-	GameEntities(const std::string& ar_FileName, const float &ar_FrictionCoefficient);
+	GameEntities(const std::string& ar_FileName, const float &ar_FrictionCoefficient = 0);
 public:
 	~GameEntities();
 

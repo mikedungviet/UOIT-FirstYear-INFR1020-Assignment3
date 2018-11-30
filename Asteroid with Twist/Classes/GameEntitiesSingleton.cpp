@@ -85,7 +85,7 @@ void GameEntitiesSingleton::AddEntity(GameEntities* ar_EntityToAdd)
 void GameEntitiesSingleton::DeleteEntity(GameEntities* ar_EntityToDelete)
 {
 	pr_GameEntitiesList.erase(std::find(pr_GameEntitiesList.begin(), pr_GameEntitiesList.end(), ar_EntityToDelete));
-	cocos2d::Director::getInstance()->getRunningScene()->removeChild(ar_EntityToDelete->GetSprite(), false);
+	cocos2d::Director::getInstance()->getRunningScene()->removeChild(ar_EntityToDelete->GetSprite(), true);
 	delete ar_EntityToDelete;
 }
 
