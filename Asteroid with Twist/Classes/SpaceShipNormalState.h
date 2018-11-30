@@ -3,6 +3,8 @@
 
 class SpaceShipNormalState : public SpaceShipState
 {
+private:
+	float pr_Friction;
 public:
 	SpaceShipNormalState();
 	~SpaceShipNormalState();

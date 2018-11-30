@@ -3,17 +3,31 @@
 #include "NormalGunMode.h"
 
 
-SpaceShip::SpaceShip() : GameEntities("ship.png", 100), pr_Speed(300)
+SpaceShip::SpaceShip() : GameEntities("ship.png"), pr_Speed(300)
 {
 	pr_CurrentState = new SpaceShipNormalState;
 	pr_CurrentGunMode = new NormalGunMode;
+	pr_ForceDirection = new Vector2;
 }
 
 
 SpaceShip::~SpaceShip()
 {
 	delete pr_CurrentState;
+	delete pr_CurrentGunMode;
+	delete pr_ForceDirection;
 }
+
+/*
+ *@brief This function returns the pointer for Force Direction
+ *
+ *@return Returns the pointer for pr_ForceDirection
+ */
+Vector2* SpaceShip::GetForceDirection() const
+{
+	return pr_ForceDirection;
+}
+
 
 /*
  *@brief This function changes the SpaceShip State to a new one
@@ -63,12 +77,20 @@ void SpaceShip::ChangeToSpinState()
 }
 
 /*
+ *@brief This function sets the current gun mode to hook mode
+ */
+void SpaceShip::ChangeToHookMode()
+{
+	pr_CurrentGunMode->ChangeToHookMode(this);
+}
+
+/*
  * @brief This function apply force at the direction of the force
  */
 void SpaceShip::ApplyForceForward()
 {
 	pr_Movement->SetAppliedForce(pr_Speed);
-	pr_Movement->SetForceDirection(*pr_Movement->GetDirectionVector());
+	*pr_ForceDirection = *pr_Movement->GetDirectionVector();
 }
 
 /*
@@ -78,7 +100,7 @@ void SpaceShip::ApplyForceForward()
 void SpaceShip::ApplyForceBackward()
 {
 	pr_Movement->SetAppliedForce(-pr_Speed);
-	pr_Movement->SetForceDirection(*pr_Movement->GetDirectionVector());
+	*pr_ForceDirection = *pr_Movement->GetDirectionVector();
 }
 
 /*
@@ -96,7 +118,7 @@ void SpaceShip::ApplyForceLeft()
 	lo_TempVector.y = lo_TempFloat;
 
 	pr_Movement->SetAppliedForce(pr_Speed);
-	pr_Movement->SetForceDirection(lo_TempVector);
+	*pr_ForceDirection = lo_TempVector;
 }
 
 /*
@@ -111,10 +133,10 @@ void SpaceShip::ApplyForceRight()
 	auto lo_TempVector = *pr_Movement->GetDirectionVector();
 	const auto lo_TempFloat = lo_TempVector.x;
 	lo_TempVector.x = lo_TempVector.y;
-	lo_TempVector.y = lo_TempFloat*-1; //Set the y to negative
+	lo_TempVector.y = lo_TempFloat * -1; //Set the y to negative
 
 	pr_Movement->SetAppliedForce(pr_Speed);
-	pr_Movement->SetForceDirection(lo_TempVector);
+	*pr_ForceDirection = lo_TempVector;
 }
 
 /*

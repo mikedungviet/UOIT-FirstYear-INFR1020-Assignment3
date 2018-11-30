@@ -3,23 +3,26 @@
 #include "GameEntitiesSingleton.h"
 
 /*
- * @brief Constructor for ShipBullet class
+ * @brief Constructor for ShipBullet class. When a bullet is created, it has the ship's
+ * current position and velocity
+ * 
+ * @param ar_Ship The SpaceShip pointer.
  */
-ShipBullet::ShipBullet(const SpaceShip *ar_Ship): GameEntities("Bullet.png"), pr_LifeTime{1.5f}
+ShipBullet::ShipBullet(const SpaceShip* ar_Ship): GameEntities("ShipBullet.png"), pr_LifeTime{2.f}
 {
-	const auto lo_MaxX = cocos2d::Director::getInstance()->getRunningScene()->getBoundingBox().getMaxX();
-	const auto lo_MaxY = cocos2d::Director::getInstance()->getRunningScene()->getBoundingBox().getMaxY();
-	SetPosition(Vector2(lo_MaxX/2, lo_MaxY/2));
-	//pr_Movement->SetVelocity(*ar_Ship->GetMovementComponent()->GetVelocity());
+	SetPosition(Vector2(ar_Ship->GetCollisionComponent()->GetPosition()->x,
+	                    ar_Ship->GetCollisionComponent()->GetPosition()->y));
+	pr_Movement->SetVelocity(*ar_Ship->GetMovementComponent()->GetVelocity());
 	pr_Movement->SetDirectionVector(*ar_Ship->GetMovementComponent()->GetDirectionVector());
-	pr_Movement->SetAppliedForce(500);
+	pr_Movement->SetAppliedForce(1000);
 	GameEntitiesSingleton::GetInstance()->AddEntity(this);
 }
 
 /*
  * @brief Destructor for the Ship Bullet
  */
-ShipBullet::~ShipBullet(){/*Empty*/}
+ShipBullet::~ShipBullet()
+{/*Empty*/}
 
 /*
  *@brief 

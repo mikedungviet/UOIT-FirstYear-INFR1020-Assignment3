@@ -3,12 +3,12 @@
 /*
  * @brief Constructor for GameEntities class.
  */
-GameEntities::GameEntities(const std::string& ar_FileName, const float& ar_FrictionCoefficient)
+GameEntities::GameEntities(const std::string& ar_FileName)
 {
 	//Initialize member variables
 	pr_ObjectGraphic = cocos2d::Sprite::create(ar_FileName);
 	pr_Collision = new CollisionComponent;
-	pr_Movement = new MovementComponent(ar_FrictionCoefficient);
+	pr_Movement = new MovementComponent;
 	pr_Theta = new float;
 
 	//Set values to default

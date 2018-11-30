@@ -37,7 +37,8 @@ void InputDetection::OnKeyPressed(cocos2d::EventKeyboard::KeyCode ar_KeyCode, co
 		lo_SpaceShip->ChangeToSpinState();
 		break;
 	case EventKeyboard::KeyCode::KEY_O:
-		lo_SpaceShip->ChangeToNormalState();
+		//lo_SpaceShip->ChangeToNormalState();
+		lo_SpaceShip->ChangeToHookMode();
 		break;
 	case EventKeyboard::KeyCode::KEY_SPACE:
 		lo_SpaceShip->ShootBullet();

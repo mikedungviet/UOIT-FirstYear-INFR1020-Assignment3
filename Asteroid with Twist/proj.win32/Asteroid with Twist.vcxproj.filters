@@ -28,6 +28,9 @@
     <Filter Include="Game Entities\SpaceShip\Bullet">
       <UniqueIdentifier>{89a8ba7d-0bad-4e80-a29e-afdbc218b860}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Entities\SpaceShip\Ship">
+      <UniqueIdentifier>{ab331a3e-4a3f-41b4-81b1-5a07b56ac57c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -54,20 +57,8 @@
     <ClCompile Include="..\Classes\GameEntities.cpp">
       <Filter>Game Entities</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\SpaceShip.cpp">
-      <Filter>Game Entities\SpaceShip</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\InputDetection.cpp">
       <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SpaceShipNormalState.cpp">
-      <Filter>Game Entities\SpaceShip</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SpaceShipSpinState.cpp">
-      <Filter>Game Entities\SpaceShip</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\State.cpp">
-      <Filter>Game Entities\SpaceShip</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\GameEntitiesSingleton.cpp">
       <Filter>src</Filter>
@@ -79,6 +70,25 @@
       <Filter>Game Entities\SpaceShip\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\NormalGunMode.cpp">
+      <Filter>Game Entities\SpaceShip\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SpaceShip.cpp">
+      <Filter>Game Entities\SpaceShip\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SpaceShipNormalState.cpp">
+      <Filter>Game Entities\SpaceShip\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SpaceShipSpinState.cpp">
+      <Filter>Game Entities\SpaceShip\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\State.cpp">
+      <Filter>Game Entities\SpaceShip\Ship</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GrapplingHookBullet.cpp">
+      <Filter>Game Entities\SpaceShip\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="HookGunMode.cpp" />
+    <ClCompile Include="..\Classes\HookGunMode.cpp">
       <Filter>Game Entities\SpaceShip\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
@@ -107,20 +117,8 @@
     <ClInclude Include="..\Classes\GameEntities.h">
       <Filter>Game Entities</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\SpaceShip.h">
-      <Filter>Game Entities\SpaceShip</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\InputDetection.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SpaceShipNormalState.h">
-      <Filter>Game Entities\SpaceShip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SpaceShipSpinState.h">
-      <Filter>Game Entities\SpaceShip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\State.h">
-      <Filter>Game Entities\SpaceShip</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\GameEntitiesSingleton.h">
       <Filter>src</Filter>
@@ -132,6 +130,25 @@
       <Filter>Game Entities\SpaceShip\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\NormalGunMode.h">
+      <Filter>Game Entities\SpaceShip\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpaceShip.h">
+      <Filter>Game Entities\SpaceShip\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpaceShipNormalState.h">
+      <Filter>Game Entities\SpaceShip\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpaceShipSpinState.h">
+      <Filter>Game Entities\SpaceShip\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\State.h">
+      <Filter>Game Entities\SpaceShip\Ship</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GrapplingHookBullet.h">
+      <Filter>Game Entities\SpaceShip\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="HookGunMode.h" />
+    <ClInclude Include="..\Classes\HookGunMode.h">
       <Filter>Game Entities\SpaceShip\Bullet</Filter>
     </ClInclude>
   </ItemGroup>

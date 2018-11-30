@@ -154,7 +154,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Game.cpp" />
     <ClCompile Include="..\Classes\GameEntities.cpp" />
     <ClCompile Include="..\Classes\GameEntitiesSingleton.cpp" />
+    <ClCompile Include="..\Classes\GrapplingHookBullet.cpp" />
     <ClCompile Include="..\Classes\GunMode.cpp" />
+    <ClCompile Include="..\Classes\HookGunMode.cpp" />
     <ClCompile Include="..\Classes\InputDetection.cpp" />
     <ClCompile Include="..\Classes\Matrix2.cpp" />
     <ClCompile Include="..\Classes\MovementComponent.cpp" />
@@ -165,6 +167,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\SpaceShipSpinState.cpp" />
     <ClCompile Include="..\Classes\State.cpp" />
     <ClCompile Include="..\Classes\Vector2.cpp" />
+    <ClCompile Include="HookGunMode.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -173,7 +176,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Game.h" />
     <ClInclude Include="..\Classes\GameEntities.h" />
     <ClInclude Include="..\Classes\GameEntitiesSingleton.h" />
+    <ClInclude Include="..\Classes\GrapplingHookBullet.h" />
     <ClInclude Include="..\Classes\GunMode.h" />
+    <ClInclude Include="..\Classes\HookGunMode.h" />
     <ClInclude Include="..\Classes\InputDetection.h" />
     <ClInclude Include="..\Classes\Matrix2.h" />
     <ClInclude Include="..\Classes\MovementComponent.h" />
@@ -184,6 +189,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\SpaceShipSpinState.h" />
     <ClInclude Include="..\Classes\State.h" />
     <ClInclude Include="..\Classes\Vector2.h" />
+    <ClInclude Include="HookGunMode.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
