@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "SpaceShip.h"
 #include "InputDetection.h"
+#include "SmallAsteroid.h"
 
 class Game : public cocos2d::Scene
 {
@@ -10,6 +11,7 @@ private:
 	SpaceShip* pr_SpaceShip;
 	cocos2d::Label *lo_Label1, *lo_Label2;
 	InputDetection *lo_EventListener;
+	SmallAsteroid *pr_SmallAsteroid;
 public:
 	static Scene* Create();
 	bool init() override;

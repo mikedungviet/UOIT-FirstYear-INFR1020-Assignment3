@@ -151,6 +151,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\CollisionComponent.cpp" />
+    <ClCompile Include="..\Classes\CollisionDetection.cpp" />
     <ClCompile Include="..\Classes\Game.cpp" />
     <ClCompile Include="..\Classes\GameEntities.cpp" />
     <ClCompile Include="..\Classes\GameEntitiesSingleton.cpp" />
@@ -162,6 +163,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\MovementComponent.cpp" />
     <ClCompile Include="..\Classes\NormalGunMode.cpp" />
     <ClCompile Include="..\Classes\ShipBullet.cpp" />
+    <ClCompile Include="..\Classes\SmallAsteroid.cpp" />
     <ClCompile Include="..\Classes\SpaceShip.cpp" />
     <ClCompile Include="..\Classes\SpaceShipNormalState.cpp" />
     <ClCompile Include="..\Classes\SpaceShipSpinState.cpp" />
@@ -172,6 +174,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\CollisionComponent.h" />
+    <ClInclude Include="..\Classes\CollisionDetection.h" />
     <ClInclude Include="..\Classes\Game.h" />
     <ClInclude Include="..\Classes\GameEntities.h" />
     <ClInclude Include="..\Classes\GameEntitiesSingleton.h" />
@@ -183,6 +186,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\MovementComponent.h" />
     <ClInclude Include="..\Classes\NormalGunMode.h" />
     <ClInclude Include="..\Classes\ShipBullet.h" />
+    <ClInclude Include="..\Classes\SmallAsteroid.h" />
     <ClInclude Include="..\Classes\SpaceShip.h" />
     <ClInclude Include="..\Classes\SpaceShipNormalState.h" />
     <ClInclude Include="..\Classes\SpaceShipSpinState.h" />

@@ -3,6 +3,12 @@
 #include "MovementComponent.h"
 #include "cocos2d.h"
 
+//All entity
+class ShipBullet;
+class SpaceShip;
+class SmallAsteroid;
+class GrapplingHookBullet;
+
 class GameEntities
 {
 private:
@@ -12,6 +18,7 @@ protected: //Child class inheritance variables
 	CollisionComponent* pr_Collision;
 	MovementComponent* pr_Movement;
 	cocos2d::Sprite* pr_ObjectGraphic;
+	int pr_Lives;
 	GameEntities(const std::string& ar_FileName);
 public:
 	~GameEntities();
@@ -21,6 +28,7 @@ public:
 	CollisionComponent* GetCollisionComponent() const;
 	MovementComponent* GetMovementComponent() const;
 	float* GetAngle() const;
+	int GetLives()const;
 
 	//Setters
 	void SetPosition(const Vector2& ar_NewPosition) const;
@@ -31,6 +39,10 @@ public:
 	void CheckPositionOutOfMap() const;
 	void AddAngle(const float& ar_Angle) const;
 
-	//Static Function
-	static void CheckPositionOutOfMap(GameEntities *ar_GameEntities);
+	//Collision Resolver
+	virtual void ResolveCollision(GameEntities *ar_Entity) = 0;
+	virtual void ResolveCollision(ShipBullet *ar_Bullet) {}
+	virtual void ResolveCollision(SmallAsteroid *ar_SmallAsteroid) {}
+	virtual void ResolveCollision(SpaceShip *ar_SpaceShip){}
+	virtual void ResolveCollision(GrapplingHookBullet *ar_Hook){}
 };

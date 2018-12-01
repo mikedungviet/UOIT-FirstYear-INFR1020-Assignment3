@@ -31,6 +31,9 @@
     <Filter Include="Game Entities\SpaceShip\Ship">
       <UniqueIdentifier>{ab331a3e-4a3f-41b4-81b1-5a07b56ac57c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Entities\Asteroids">
+      <UniqueIdentifier>{9524348c-70d6-4b1c-be18-08652cf340a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -90,6 +93,12 @@
     <ClCompile Include="..\Classes\HookGunMode.cpp">
       <Filter>Game Entities\SpaceShip\Bullet</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SmallAsteroid.cpp">
+      <Filter>Game Entities\Asteroids</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CollisionDetection.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -148,6 +157,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\HookGunMode.h">
       <Filter>Game Entities\SpaceShip\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SmallAsteroid.h">
+      <Filter>Game Entities\Asteroids</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CollisionDetection.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

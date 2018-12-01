@@ -11,6 +11,8 @@ private:
 	GunMode *pr_CurrentGunMode;
 	const float pr_Speed;
 	Vector2 *pr_ForceDirection;
+
+	int pr_Shield, pr_Lives;
 public:
 	//Constructors and Destructor
 	SpaceShip();
@@ -38,5 +40,9 @@ public:
 	void RotateLeft();
 	void RotateRight();
 	void ShootBullet();
+
+	//Collision Resolver
+	void ResolveCollision(GameEntities* ar_Entity) override;
+	void ResolveCollision(SmallAsteroid* ar_SmallAsteroid) override;
 	
 };

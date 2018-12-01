@@ -3,7 +3,7 @@
 /*
  * @brief Constructor for GameEntities class.
  */
-GameEntities::GameEntities(const std::string& ar_FileName)
+GameEntities::GameEntities(const std::string& ar_FileName): pr_Lives(1)
 {
 	//Initialize member variables
 	pr_ObjectGraphic = cocos2d::Sprite::create(ar_FileName);
@@ -14,6 +14,7 @@ GameEntities::GameEntities(const std::string& ar_FileName)
 	//Set values to default
 	pr_Collision->SetRadius(CalculateSpriteRadius());
 	*pr_Theta = 0;
+	
 }
 
 /*
@@ -71,6 +72,14 @@ MovementComponent* GameEntities::GetMovementComponent() const
 float* GameEntities::GetAngle() const
 {
 	return pr_Theta;
+}
+
+/*
+ * @brief This function returns the number of life left
+ */
+int GameEntities::GetLives() const
+{
+	return pr_Lives;
 }
 
 
@@ -164,17 +173,4 @@ void GameEntities::AddAngle(const float& ar_Angle) const
 
 	pr_Movement->UpdateDirection(ar_Angle);
 	pr_ObjectGraphic->setRotation(*pr_Theta);
-}
-
-void GameEntities::CheckPositionOutOfMap(GameEntities* ar_GameEntities)
-{
-	const auto lo_Size = ar_GameEntities->GetSprite()->getBoundingBox().size;
-	if (ar_GameEntities->GetCollisionComponent()->GetPosition()->x + lo_Size.width > 10000)
-		ar_GameEntities->GetCollisionComponent()->GetPosition()->x = 0 + lo_Size.width;
-	if (ar_GameEntities->GetCollisionComponent()->GetPosition()->x - lo_Size.width < 0)
-		ar_GameEntities->GetCollisionComponent()->GetPosition()->x = 10000 - lo_Size.width;
-	if (ar_GameEntities->GetCollisionComponent()->GetPosition()->y + lo_Size.height > 10000)
-		ar_GameEntities->GetCollisionComponent()->GetPosition()->y = 0 + lo_Size.height;
-	if (ar_GameEntities->GetCollisionComponent()->GetPosition()->y - lo_Size.height < 0)
-		ar_GameEntities->GetCollisionComponent()->GetPosition()->y = 10000 - lo_Size.height;
 }

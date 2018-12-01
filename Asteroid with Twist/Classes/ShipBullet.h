@@ -13,5 +13,9 @@ public:
 
 	//Member functions
 	void Update(const float& ar_DeltaTime) override;
+
+	//Collision Resolver
+	void ResolveCollision(GameEntities* ar_Entity) override;
+	void ResolveCollision(SmallAsteroid* ar_SmallAsteroid) override;
 };
 

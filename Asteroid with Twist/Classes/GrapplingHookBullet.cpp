@@ -36,3 +36,17 @@ void GrapplingHookBullet::Update(const float& ar_DeltaTime)
 		GameEntitiesSingleton::GetInstance()->GetSpaceShip()->ChangeToNormalMode();
 	}
 }
+
+void GrapplingHookBullet::ResolveCollision(GameEntities* ar_Entity)
+{
+	ar_Entity->ResolveCollision(this);
+}
+
+/*
+ *
+ */
+void GrapplingHookBullet::ResolveCollision(SmallAsteroid* ar_SmallAsteroid)
+{
+	pr_Lives -= 1;
+	GameEntitiesSingleton::GetInstance()->GetSpaceShip()->ChangeToNormalMode();
+}

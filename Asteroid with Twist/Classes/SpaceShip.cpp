@@ -3,7 +3,7 @@
 #include "NormalGunMode.h"
 
 
-SpaceShip::SpaceShip() : GameEntities("ship.png"), pr_Speed(300)
+SpaceShip::SpaceShip() : GameEntities("ship.png"), pr_Speed(300), pr_Shield(4), pr_Lives(3)
 {
 	pr_CurrentState = new SpaceShipNormalState;
 	pr_CurrentGunMode = new NormalGunMode;
@@ -169,5 +169,21 @@ void SpaceShip::RotateRight()
 void SpaceShip::ShootBullet()
 {
 	pr_CurrentGunMode->ShootBullets(this);
+}
+
+/*
+ *
+ */
+void SpaceShip::ResolveCollision(GameEntities* ar_Entity)
+{
+	ar_Entity->ResolveCollision(this);
+}
+
+/*
+ *
+ */
+void SpaceShip::ResolveCollision(SmallAsteroid* ar_SmallAsteroid)
+{
+	pr_Shield -= 2;
 }
 

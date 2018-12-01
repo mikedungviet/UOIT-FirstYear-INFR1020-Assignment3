@@ -1,5 +1,6 @@
 #include "ShipBullet.h"
 #include "SpaceShip.h"
+#include "SmallAsteroid.h"
 #include "GameEntitiesSingleton.h"
 
 /*
@@ -25,7 +26,11 @@ ShipBullet::~ShipBullet()
 {/*Empty*/}
 
 /*
- *@brief 
+ *@brief This function Updates the position of the bullet using
+ *the kinematic and dynamic physics equation
+ *
+ *@param ar_DeltaTim The time difference between current frame and the
+ *last frame
  */
 void ShipBullet::Update(const float& ar_DeltaTime)
 {
@@ -34,4 +39,21 @@ void ShipBullet::Update(const float& ar_DeltaTime)
 	if (pr_LifeTime <= 0)
 		GameEntitiesSingleton::GetInstance()->DeleteEntity(this);
 }
+
+/*
+ *
+ */
+void ShipBullet::ResolveCollision(GameEntities* ar_Entity)
+{
+	ar_Entity->ResolveCollision(this);
+}
+
+/*
+ *
+ */
+void ShipBullet::ResolveCollision(SmallAsteroid* ar_SmallAsteroid)
+{
+	pr_Lives -= 1;
+}
+
 

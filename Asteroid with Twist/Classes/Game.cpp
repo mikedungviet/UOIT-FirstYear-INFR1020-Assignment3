@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "InputDetection.h"
 #include "GameEntitiesSingleton.h"
+#include "CollisionDetection.h"
 using namespace cocos2d;
 
 Scene* Game::Create()
@@ -39,10 +40,6 @@ bool Game::init()
 	lo_EventListener->pr_Keyboard->onKeyReleased = CC_CALLBACK_2(Game::OnKeyReleased, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(lo_EventListener->pr_Keyboard, this);
 
-
-	//the map layer follows the spaceship
-	pr_MapLayer->runAction(Follow::create(pr_SpaceShip->GetSprite()));
-
 	//create a testing label
 	lo_Label1 = Label::createWithSystemFont("X: ", "Time News Roman", 50);
 	lo_Label1->setAnchorPoint(Vec2(0.0, 0.0));
@@ -52,6 +49,11 @@ bool Game::init()
 	lo_Label2->setAnchorPoint(Vec2(0.0, 0.0));
 	lo_Label2->setPosition(0, 51);
 	this->addChild(lo_Label2);
+
+	pr_SmallAsteroid = new SmallAsteroid;
+
+	//the map layer follows the spaceship
+	pr_MapLayer->runAction(Follow::create(pr_SpaceShip->GetSprite()));
 
 	//update schedule
 	this->scheduleUpdate();
@@ -63,11 +65,20 @@ void Game::update(const float ar_DeltaTime)
 	auto lo_TempVec = GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector();
 	pr_SpaceShip->Update(ar_DeltaTime);
 
+	//Update all Objects
 	for(auto lo_I:lo_TempVec)
 	{
 		lo_I->Update(ar_DeltaTime);
 	}
 
+
+	//Update all enemies States
+
+	//Detect and Resolve Collision
+	CollisionDetection::LoopAndDetectCollision();
+
+
+	//Update Labels
 	const auto lo_X = *(pr_SpaceShip->GetAngle());
 	const auto lo_Y = pr_SpaceShip->GetMovementComponent()->GetVelocity()->y;
 
