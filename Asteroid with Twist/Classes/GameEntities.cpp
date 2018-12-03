@@ -191,8 +191,12 @@ void GameEntities::ChangeEntityDirection(Vector2& ar_NewDirection)
 	//Calculate the angle between Vector [0,1] with the new direction
 	const float lo_DotProduct = ar_NewDirection.CalculateDotProduct(Vector2(0, 1));
 	const float lo_ProductsOfLength = 1/(Vector2(0, 1).CalculateLength() * ar_NewDirection.CalculateLength());
-	const float lo_AngleInDegree = std::acos(lo_DotProduct*lo_ProductsOfLength) * 180 / PI;
+	float lo_AngleInDegree = std::acos(lo_DotProduct*lo_ProductsOfLength) * 180 / PI;
 
+	if (ar_NewDirection.x < 0)
+	{
+		lo_AngleInDegree = 360 - lo_AngleInDegree;
+	}
 	//Set the sprite to this new angle
 	pr_ObjectGraphic->setRotation(lo_AngleInDegree);
 }

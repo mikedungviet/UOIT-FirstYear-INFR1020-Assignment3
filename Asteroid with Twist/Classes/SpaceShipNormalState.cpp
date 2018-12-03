@@ -106,8 +106,8 @@ void SpaceShipNormalState::ApplyForceLeft(SpaceShip* ar_Ship)
 	//Finding the normal vector
 	auto lo_TempVector = *ar_Ship->GetMovementComponent()->GetDirectionVector();
 	const auto lo_TempFloat = lo_TempVector.x;
-	lo_TempVector.x = lo_TempVector.y*-1; //Set the y to negative
-	lo_TempVector.y = lo_TempFloat;
+	lo_TempVector.x = lo_TempVector.y; //Set the y to negative
+	lo_TempVector.y = -lo_TempFloat;
 
 	ar_Ship->GetMovementComponent()->SetAppliedForce(-ar_Ship->GetSpeed());
 	*ar_Ship->GetForceDirection() = lo_TempVector;
@@ -117,15 +117,15 @@ void SpaceShipNormalState::ApplyForceLeft(SpaceShip* ar_Ship)
  *@brief This function find the normal of the direction, and apply force
  *at that direction.
  *
- *The normal vector is for left direction has a opposite sign for x
+ *The normal vector is for right direction has a opposite sign for x
  */
 void SpaceShipNormalState::ApplyForceRight(SpaceShip* ar_Ship)
 {
 	//Finding the normal vector
 	auto lo_TempVector = *ar_Ship->GetMovementComponent()->GetDirectionVector();
 	const auto lo_TempFloat = lo_TempVector.x;
-	lo_TempVector.x = lo_TempVector.y;
-	lo_TempVector.y = lo_TempFloat * -1; //Set the y to negative
+	lo_TempVector.x = -lo_TempVector.y;
+	lo_TempVector.y = lo_TempFloat; //Set the y to negative
 
 	ar_Ship->GetMovementComponent()->SetAppliedForce(-ar_Ship->GetSpeed());
 	*ar_Ship->GetForceDirection() = lo_TempVector;

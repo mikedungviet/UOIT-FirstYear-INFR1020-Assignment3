@@ -6,7 +6,7 @@ class SpaceShipHookState :
 	public SpaceShipState
 {
 private:
-	float pr_DistanceToAsteroid; //Radius
+	float pr_DistanceToAsteroid, pr_Friction; //Radius
 	mutable Vector2 pr_CentripetalDirection;
 
 	//Member functions
@@ -22,5 +22,6 @@ public:
 
 	//Movement
 	void ApplyForceForward(SpaceShip* ar_Ship) override;
+	void ApplyForceBackward(SpaceShip* ar_Ship) override;
 };
 

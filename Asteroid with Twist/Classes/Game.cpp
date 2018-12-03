@@ -79,10 +79,10 @@ void Game::update(const float ar_DeltaTime)
 
 
 	//Update Labels
-	const auto lo_X = *(pr_SpaceShip->GetAngle());
+	const auto lo_X = *pr_SpaceShip->GetMovementComponent()->GetDirectionVector();
 	const auto lo_Y = pr_SpaceShip->GetMovementComponent()->GetVelocity()->y;
 
-	lo_Label1->setString("Velocity X: "+ std::to_string(lo_X));
+	lo_Label1->setString("Velocity X: "+ std::to_string(lo_X.x) + std::to_string(lo_X.y));
 	lo_Label2->setString("Velocity Y: " + std::to_string(lo_Y));
 }
 

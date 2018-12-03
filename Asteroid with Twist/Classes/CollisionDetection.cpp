@@ -25,9 +25,19 @@ void CollisionDetection::LoopAndDetectCollision()
 				if (lo_EntitiesSingleton->GetEntity(lo_I)->GetLives() == 0)
 					lo_EntitiesSingleton->DeleteEntity(lo_EntitiesSingleton->GetEntity(lo_I));
 
+				int lo_NewIndex;
 				//Because the entity 
-				if (lo_EntitiesSingleton->GetEntity(lo_J-1)->GetLives() == 0)
-					lo_EntitiesSingleton->DeleteEntity(lo_EntitiesSingleton->GetEntity(lo_J - 1));
+				for (unsigned lo_K = 0; lo_K< lo_EntitiesSingleton->GetGameEntitiesVector().size(); lo_K++)
+				{
+					if (lo_EntitiesSingleton->GetEntity(lo_K) == lo_EntityAtJ)
+					{
+						lo_NewIndex = lo_K;
+						break;
+					}
+				}
+
+				if (lo_EntitiesSingleton->GetEntity(lo_NewIndex)->GetLives() == 0)
+					lo_EntitiesSingleton->DeleteEntity(lo_EntitiesSingleton->GetEntity(lo_NewIndex));
 
 				lo_I--;
 				break;
