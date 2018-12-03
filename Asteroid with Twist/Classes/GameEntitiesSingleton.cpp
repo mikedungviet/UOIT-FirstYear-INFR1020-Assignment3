@@ -1,7 +1,9 @@
 #include "GameEntitiesSingleton.h"
 
 
-
+/*
+ * @brief Constructor for the GameEntitiesSingleton. It sets all pointers to nullptr.
+ */
 GameEntitiesSingleton::GameEntitiesSingleton(): pr_SpaceShip{nullptr}, pr_GameMapLayer{nullptr}, 
 pr_PositionOfHookedAsteroid{nullptr}
 {/*Empty*/}
@@ -86,6 +88,8 @@ void GameEntitiesSingleton::SetSpaceShip(SpaceShip* ar_Ship)
 
 /*
  *@brief This function sets the memory address of game map to another
+ *
+ *@param ar_Layer The pointer to set the map layer pointer to
  */
 void GameEntitiesSingleton::SetMapLayer(cocos2d::Layer* ar_Layer)
 {

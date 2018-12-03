@@ -3,15 +3,16 @@
 #include "SpaceShip.h"
 #include "InputDetection.h"
 #include "SmallAsteroid.h"
+#include "BlackHoles.h"
 
 class Game : public cocos2d::Scene
 {
 private:
 	cocos2d::Layer *pr_MapLayer;
 	SpaceShip* pr_SpaceShip;
-	cocos2d::Label *lo_Label1, *lo_Label2;
 	InputDetection *lo_EventListener;
 	SmallAsteroid *pr_SmallAsteroid;
+	BlackHoles *pr_BlackHoles;
 public:
 	static Scene* Create();
 	bool init() override;

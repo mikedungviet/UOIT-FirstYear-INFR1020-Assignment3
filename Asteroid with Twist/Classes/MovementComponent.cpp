@@ -11,7 +11,7 @@ MovementComponent::MovementComponent()
 	pr_Acceleration = new Vector2;
 	pr_Velocity = new Vector2;
 	pr_AppliedForce = new float;
-
+	pr_OtherForce = new Vector2;
 	//Set variables
 	*pr_AppliedForce = 0;
 }
@@ -156,6 +156,14 @@ void MovementComponent::SetAppliedForce(const float& ar_NewForce) const
 }
 
 /*
+ * @brief This function add a force to the current 
+ */
+void MovementComponent::AddOtherForce(const Vector2& ar_OtherForce)
+{
+	*pr_OtherForce = ar_OtherForce;
+}
+
+/*
  * @brief This function calculates the new direction (with length equals 1) of
  * the movement using matrix rotation
  *
@@ -184,6 +192,6 @@ void MovementComponent::Update(const float& ar_DeltaTime) const
 	                                    *pr_AppliedForce * pr_Direction->y);
 
 	//Update kinematic equations
-	*pr_Acceleration = lo_AppliedForceVector;
+	*pr_Acceleration = lo_AppliedForceVector + *pr_OtherForce;
 	*pr_Velocity += *pr_Acceleration * ar_DeltaTime;
 }

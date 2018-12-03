@@ -8,7 +8,7 @@
 class MovementComponent
 {
 private:
-	Vector2 *pr_Direction, *pr_Acceleration, *pr_Velocity;
+	Vector2 *pr_Direction, *pr_Acceleration, *pr_Velocity, *pr_OtherForce;
 	float *pr_AppliedForce;
 public:
 	//Constructors and Destructor
@@ -31,6 +31,8 @@ public:
 	void SetAppliedForce(const float &ar_NewForce) const;
 
 	//Member Functions
+	void AddOtherForce(const Vector2& ar_OtherForce);
+	void AddOtherForce(const float& ar_OtherX, const float& ar_OtherY){}
 	void UpdateDirection(const float &ar_AngleChanges) const;
 	void Update(const float& ar_DeltaTime) const;
 };
