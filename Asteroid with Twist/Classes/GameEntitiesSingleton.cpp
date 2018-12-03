@@ -2,9 +2,9 @@
 
 
 
-GameEntitiesSingleton::GameEntitiesSingleton()
-{/*Empty*/
-}
+GameEntitiesSingleton::GameEntitiesSingleton(): pr_SpaceShip{nullptr}, pr_GameMapLayer{nullptr}, 
+pr_PositionOfHookedAsteroid{nullptr}
+{/*Empty*/}
 
 GameEntitiesSingleton *GameEntitiesSingleton::pr_Instance = nullptr;
 
@@ -65,6 +65,13 @@ cocos2d::Layer* GameEntitiesSingleton::GetMapLayer() const
 	return pr_GameMapLayer;
 }
 
+/*
+ *
+ */
+Vector2* GameEntitiesSingleton::GetAsteroidPosition() const
+{
+	return pr_PositionOfHookedAsteroid;
+}
 
 
 /*
@@ -83,6 +90,11 @@ void GameEntitiesSingleton::SetSpaceShip(SpaceShip* ar_Ship)
 void GameEntitiesSingleton::SetMapLayer(cocos2d::Layer* ar_Layer)
 {
 	pr_GameMapLayer = ar_Layer;
+}
+
+void GameEntitiesSingleton::SetHookedAsteroidPosition(Vector2* ar_Position)
+{
+	pr_PositionOfHookedAsteroid = ar_Position;
 }
 
 /*

@@ -78,8 +78,10 @@ float* MovementComponent::GetAppliedForce() const
  *
  * @param ar_NewForce This is the new Vector2 to set the force to
  */
-void MovementComponent::SetDirectionVector(const Vector2& ar_NewDirection) const
+void MovementComponent::SetDirectionVector(Vector2& ar_NewDirection) const
 {
+	if (ar_NewDirection.CalculateLength() > 1)
+		ar_NewDirection = ar_NewDirection.NormalizeVector();
 	(*pr_Direction).x = ar_NewDirection.x;
 	(*pr_Direction).y = ar_NewDirection.y;
 }

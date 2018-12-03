@@ -41,6 +41,7 @@ void SmallAsteroid::ResolveCollision(SpaceShip* ar_SpaceShip)
  */
 void SmallAsteroid::ResolveCollision(GrapplingHookBullet* ar_Hook)
 {
-	pr_Lives -= 1;
+	pr_Movement->SetVelocity(0, 0);
+	GameEntitiesSingleton::GetInstance()->SetHookedAsteroidPosition(pr_Collision->GetPosition());
 }
 

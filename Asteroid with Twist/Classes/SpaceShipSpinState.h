@@ -11,7 +11,7 @@ public:
 	~SpaceShipSpinState();
 
 	//Member Functions
-	void Update(const float& ar_DeltaTime, SpaceShip* ar_Entity) const override;
+	void Update(const float& ar_DeltaTime, SpaceShip* ar_Entity) override;
 	void ChangeToNormalState(SpaceShip *ar_Entity) const override;
 };
 

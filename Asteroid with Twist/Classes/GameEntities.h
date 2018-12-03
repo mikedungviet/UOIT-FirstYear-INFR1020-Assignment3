@@ -38,6 +38,7 @@ public:
 	virtual void Update(const float& ar_DeltaTime);
 	void CheckPositionOutOfMap() const;
 	void AddAngle(const float& ar_Angle) const;
+	void ChangeEntityDirection(Vector2 & ar_NewDirection);
 
 	//Collision Resolver
 	virtual void ResolveCollision(GameEntities *ar_Entity) = 0;

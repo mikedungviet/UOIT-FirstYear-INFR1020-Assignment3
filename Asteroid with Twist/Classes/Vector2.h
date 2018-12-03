@@ -23,7 +23,7 @@ public:
 	float CalculateDotProduct(const Vector2& ar_OtherVec2) const;
 
 	//Static methods
-	static Vector2 CalculateNormalizedVector(const Vector2 *ar_VectorToCalculate);
+	static Vector2 CalculateNormalizedVector(Vector2 ar_VectorToCalculate);
 	static float CalculateDistanceSquareBetweenTwoVectors(const Vector2 &ar_Vec1, const Vector2 &ar_Vec2);
 	static float CalculateDistanceBetweenTwoVectors(const Vector2 &ar_Vec1, const Vector2 &ar_Vec2);
 

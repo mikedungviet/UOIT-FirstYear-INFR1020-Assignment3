@@ -1,4 +1,5 @@
 #include "GameEntities.h"
+#include "spine/extension.h"
 
 /*
  * @brief Constructor for GameEntities class.
@@ -173,4 +174,25 @@ void GameEntities::AddAngle(const float& ar_Angle) const
 
 	pr_Movement->UpdateDirection(ar_Angle);
 	pr_ObjectGraphic->setRotation(*pr_Theta);
+}
+
+/*
+ *
+ */
+void GameEntities::ChangeEntityDirection(Vector2& ar_NewDirection)
+{
+	if(ar_NewDirection.CalculateLength()>1)
+	{
+		ar_NewDirection = ar_NewDirection.NormalizeVector();
+	}
+	//Set the new direction for the space ship
+	pr_Movement->SetDirectionVector(ar_NewDirection);
+
+	//Calculate the angle between Vector [0,1] with the new direction
+	const float lo_DotProduct = ar_NewDirection.CalculateDotProduct(Vector2(0, 1));
+	const float lo_ProductsOfLength = 1/(Vector2(0, 1).CalculateLength() * ar_NewDirection.CalculateLength());
+	const float lo_AngleInDegree = std::acos(lo_DotProduct*lo_ProductsOfLength) * 180 / PI;
+
+	//Set the sprite to this new angle
+	pr_ObjectGraphic->setRotation(lo_AngleInDegree);
 }

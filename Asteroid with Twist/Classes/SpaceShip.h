@@ -20,6 +20,7 @@ public:
 
 	//Getters
 	Vector2* GetForceDirection() const;
+	float GetSpeed() const;
 
 	//Setters
 	void SetState(SpaceShipState *ar_NewState);
@@ -27,8 +28,11 @@ public:
 
 	//Member Functions
 	void Update(const float& ar_DeltaTime) override;
+
+	//State Changer
 	void ChangeToNormalState();
 	void ChangeToSpinState();
+	void ChangeToHookState();
 	void ChangeToNormalMode();
 	void ChangeToHookMode();
 

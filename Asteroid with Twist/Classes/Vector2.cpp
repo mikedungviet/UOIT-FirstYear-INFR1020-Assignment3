@@ -93,9 +93,9 @@ float Vector2::CalculateDotProduct(const Vector2& ar_OtherVec2) const
  * 
  * @return Return the normalized Vector as Vector2
  */
-Vector2 Vector2::CalculateNormalizedVector(const Vector2* ar_VectorToCalculate)
+Vector2 Vector2::CalculateNormalizedVector(Vector2 ar_VectorToCalculate)
 {
-	return *ar_VectorToCalculate * (1 / ar_VectorToCalculate->CalculateLength());
+	return ar_VectorToCalculate * (1 / ar_VectorToCalculate.CalculateLength());
 }
 
 

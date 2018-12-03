@@ -99,6 +99,9 @@
     <ClCompile Include="..\Classes\CollisionDetection.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\SpaceShipHookState.cpp">
+      <Filter>Game Entities\SpaceShip\Ship</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -163,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\CollisionDetection.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SpaceShipHookState.h">
+      <Filter>Game Entities\SpaceShip\Ship</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

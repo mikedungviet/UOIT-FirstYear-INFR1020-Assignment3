@@ -28,6 +28,14 @@ Vector2* SpaceShip::GetForceDirection() const
 	return pr_ForceDirection;
 }
 
+/*
+ *
+ */
+float SpaceShip::GetSpeed() const
+{
+	return pr_Speed;
+}
+
 
 /*
  *@brief This function changes the SpaceShip State to a new one
@@ -76,8 +84,13 @@ void SpaceShip::ChangeToSpinState()
 	pr_CurrentState->ChangeToSpinState(this);
 }
 
+void SpaceShip::ChangeToHookState()
+{
+	pr_CurrentState->ChangeToHookState(this);
+}
+
 /*
- *
+ * @brief This function sets the current state to normal state
  */
 void SpaceShip::ChangeToNormalMode()
 {
@@ -97,8 +110,7 @@ void SpaceShip::ChangeToHookMode()
  */
 void SpaceShip::ApplyForceForward()
 {
-	pr_Movement->SetAppliedForce(pr_Speed);
-	*pr_ForceDirection = *pr_Movement->GetDirectionVector();
+	pr_CurrentState->ApplyForceForward(this);
 }
 
 /*
@@ -107,8 +119,7 @@ void SpaceShip::ApplyForceForward()
  */
 void SpaceShip::ApplyForceBackward()
 {
-	pr_Movement->SetAppliedForce(-pr_Speed);
-	*pr_ForceDirection = *pr_Movement->GetDirectionVector();
+	pr_CurrentState->ApplyForceBackward(this);
 }
 
 /*
@@ -119,52 +130,38 @@ void SpaceShip::ApplyForceBackward()
  */
 void SpaceShip::ApplyForceLeft()
 {
-	//Finding the normal vector
-	auto lo_TempVector = *pr_Movement->GetDirectionVector();
-	const auto lo_TempFloat = lo_TempVector.x;
-	lo_TempVector.x = lo_TempVector.y*-1; //Set the y to negative
-	lo_TempVector.y = lo_TempFloat;
-
-	pr_Movement->SetAppliedForce(pr_Speed);
-	*pr_ForceDirection = lo_TempVector;
+	pr_CurrentState->ApplyForceLeft(this);
 }
 
 /*
- *@brief This function find the normal of the direction, and apply force
- *at that direction.
- *
- *The normal vector is for left direction has a opposite sign for x
+ *@brief This function calls the ApplyForceRight of the current
+ *state
  */
 void SpaceShip::ApplyForceRight()
 {
-	//Finding the normal vector
-	auto lo_TempVector = *pr_Movement->GetDirectionVector();
-	const auto lo_TempFloat = lo_TempVector.x;
-	lo_TempVector.x = lo_TempVector.y;
-	lo_TempVector.y = lo_TempFloat * -1; //Set the y to negative
-
-	pr_Movement->SetAppliedForce(pr_Speed);
-	*pr_ForceDirection = lo_TempVector;
+	pr_CurrentState->ApplyForceRight(this);
 }
 
 /*
- *@brief This function rotate the sprite by a degree to the left
+ *@brief This function calls Rotate Left of the current state
  */
 void SpaceShip::RotateLeft()
 {
-	AddAngle(-20);
+	pr_CurrentState->RotateLeft(this);
 }
 
 /*
- *@brief This function rotates the sprite by a degree to the right
+ *@brief This function calls Rotate Right of the current state
  */
 void SpaceShip::RotateRight()
 {
-	AddAngle(20);
+	pr_CurrentState->RotateRight(this);
 }
 
 /*
- *
+ *@brief This functions shoot a bullet. The type of the bullet depends
+ *on what gun mode the ship has. The ship can change the gun mode by 
+ *getting power ups
  */
 void SpaceShip::ShootBullet()
 {

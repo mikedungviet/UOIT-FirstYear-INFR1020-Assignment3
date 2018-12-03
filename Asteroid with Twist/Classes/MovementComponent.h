@@ -22,7 +22,7 @@ public:
 	float* GetAppliedForce() const;
 
 	//Setters
-	void SetDirectionVector(const Vector2& ar_NewDirection) const;
+	void SetDirectionVector(Vector2& ar_NewDirection) const;
 	void SetDirectionVector(const float& ar_NewX, const float& ar_NewY) const;
 	void SetAcceleration(const Vector2& ar_NewAcceleration) const;
 	void SetAcceleration(const float& ar_NewX, const float& ar_NewY) const;

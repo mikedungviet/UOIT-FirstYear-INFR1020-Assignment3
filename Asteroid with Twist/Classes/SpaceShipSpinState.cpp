@@ -19,7 +19,7 @@ SpaceShipSpinState::~SpaceShipSpinState(){/*Empty*/}
 /*
  * @brief This state spins the ship around for 5 seconds
  */
-void SpaceShipSpinState::Update(const float& ar_DeltaTime, SpaceShip* ar_Entity) const
+void SpaceShipSpinState::Update(const float& ar_DeltaTime, SpaceShip* ar_Entity)
 {
 	pr_TotalTime -= ar_DeltaTime;
 	ar_Entity->GetMovementComponent()->SetVelocity(0, 0);
