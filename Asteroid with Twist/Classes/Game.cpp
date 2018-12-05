@@ -35,11 +35,12 @@ bool Game::init()
 	//and display the part of the map
 	pr_SpaceShip = new SpaceShip;
 	pr_SpaceShip->SetPosition(200, 100);
-	GameEntitiesSingleton::GetInstance()->AddEntity(pr_SpaceShip);
+	//GameEntitiesSingleton::GetInstance()->AddEntity(pr_SpaceShip);
+	pr_MapLayer->addChild(pr_SpaceShip->GetSprite());
 	GameEntitiesSingleton::GetInstance()->SetSpaceShip(pr_SpaceShip);
 
 	//
-	pr_ShootingEnemy = new ShootingEnemy;
+	//pr_ShootingEnemy = new ShootingEnemy;
 
 	//init keyboard function
 	lo_EventListener = new InputDetection;
@@ -47,7 +48,7 @@ bool Game::init()
 	lo_EventListener->pr_Keyboard->onKeyReleased = CC_CALLBACK_2(Game::OnKeyReleased, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(lo_EventListener->pr_Keyboard, this);
 
-	pr_SmallAsteroid = new SmallAsteroid;
+	//pr_SmallAsteroid = new SmallAsteroid;
 	pr_LargeAsteroid = new LargeAsteroid;
 
 	//the map layer follows the spaceship

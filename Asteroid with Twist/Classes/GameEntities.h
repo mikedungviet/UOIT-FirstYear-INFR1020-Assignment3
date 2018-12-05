@@ -11,7 +11,7 @@ class LargeAsteroid;
 class GrapplingHookBullet;
 class BlackHoles;
 class EnemyBullet;
-class BlackHoles;
+class PowerUps;
 
 class GameEntities
 {
@@ -25,7 +25,7 @@ protected: //Child class inheritance variables
 	int pr_Lives;
 	GameEntities(const std::string& ar_FileName);
 public:
-	~GameEntities();
+	virtual ~GameEntities();
 
 	//Getters
 	cocos2d::Sprite* GetSprite() const;
@@ -51,5 +51,6 @@ public:
 	virtual void ResolveCollision(LargeAsteroid *ar_LargeAsteroid) {}
 	virtual void ResolveCollision(SpaceShip *ar_SpaceShip){}
 	virtual void ResolveCollision(GrapplingHookBullet *ar_Hook){}
-	virtual void ResolveCollision(BlackHoles *ar_BlackHole);
+	virtual void ResolveCollision(BlackHoles *ar_BlackHole) {}
+	virtual void ResolveCollision(PowerUps* ar_PowerUp) {}
 };

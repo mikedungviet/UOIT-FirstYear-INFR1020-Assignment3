@@ -5,7 +5,7 @@
 
 ShootingEnemy::ShootingEnemy():Enemies("EnemyShootingShip.png")
 {
-	SetPosition(500, 500);
+	SetPosition(1500, 500);
 	pr_CurrentState = new EnemyMovingState(this);
 }
 

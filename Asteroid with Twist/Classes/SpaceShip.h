@@ -53,5 +53,6 @@ public:
 	void ResolveCollision(SmallAsteroid* ar_SmallAsteroid) override;
 	void ResolveCollision(LargeAsteroid* ar_LargeAsteroid) override;
 	void ResolveCollision(BlackHoles *ar_BlackHole) override;
+	void ResolveCollision(PowerUps* ar_PowerUp) override;
 	
 };

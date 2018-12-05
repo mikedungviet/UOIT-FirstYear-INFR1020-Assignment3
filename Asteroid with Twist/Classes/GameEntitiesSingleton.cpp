@@ -80,7 +80,6 @@ Vector2* GameEntitiesSingleton::GetAsteroidPosition() const
 	return pr_PositionOfHookedAsteroid;
 }
 
-
 /*
  * @brief Set the address of the spaceship to the singleton spaceship
  * 
@@ -126,7 +125,6 @@ void GameEntitiesSingleton::AddEnemy(Enemies* ar_EnemyToAdd)
 	pr_EnemyList.push_back(ar_EnemyToAdd);
 	pr_GameMapLayer->addChild(ar_EnemyToAdd->GetSprite());
 }
-
 /*
  * @brief This function deletes the object in the parameter from
  * the object game list and also from the running scene
@@ -139,7 +137,6 @@ void GameEntitiesSingleton::DeleteEntity(GameEntities* ar_EntityToDelete)
 	pr_GameMapLayer->removeChild(ar_EntityToDelete->GetSprite(), true);
 	delete ar_EntityToDelete;
 }
-}
 /*
 
  * @brief This function deletes the object in the parameter from
@@ -147,9 +144,11 @@ void GameEntitiesSingleton::DeleteEntity(GameEntities* ar_EntityToDelete)
  *
  * @param ar_EnemyToDelete The address of the enemy to be deleted
  */
-{
+
 void GameEntitiesSingleton::DeleteEnemy(Enemies* ar_EnemyToDelete)
+{
 	pr_GameEntitiesList.erase(std::find(pr_GameEntitiesList.begin(), pr_GameEntitiesList.end(), ar_EnemyToDelete));
 	pr_EnemyList.erase(std::find(pr_EnemyList.begin(), pr_EnemyList.end(), ar_EnemyToDelete));
 	pr_GameMapLayer->removeChild(ar_EnemyToDelete->GetSprite(), true);
 	delete ar_EnemyToDelete;
+}

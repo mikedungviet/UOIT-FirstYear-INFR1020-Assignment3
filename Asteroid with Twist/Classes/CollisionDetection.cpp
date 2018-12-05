@@ -45,36 +45,40 @@ void CollisionDetection::LoopEntitiesWithEntities()
 	{
 		for (auto lo_J = lo_I + 1; lo_J < lo_EntitiesSingleton->GetGameEntitiesVector().size(); lo_J++)
 		{
-			auto lo_Size = lo_EntitiesSingleton->GetGameEnemyVector().size();
-			if (CheckCollision(lo_EntitiesSingleton->GetEntity(lo_I)->GetCollisionComponent(),
-				lo_EntitiesSingleton->GetEntity(lo_J)->GetCollisionComponent()))
+			auto lo_Size = lo_EntitiesSingleton->GetGameEntitiesVector().size();
+			if (CheckCollision(lo_EntitiesSingleton->GetEntity(lo_I)->GetCollisionComponent(), lo_EntitiesSingleton->GetEntity(lo_J)->GetCollisionComponent()))
 			{
 				//Resolving Collision
-				lo_EntitiesSingleton->GetEntity(lo_I)->ResolveCollision(lo_EntitiesSingleton->GetEntity(lo_J));
+	 			lo_EntitiesSingleton->GetEntity(lo_I)->ResolveCollision(lo_EntitiesSingleton->GetEntity(lo_J));
 				lo_EntitiesSingleton->GetEntity(lo_J)->ResolveCollision(lo_EntitiesSingleton->GetEntity(lo_I));
 
 				const auto lo_EntityAtJ = lo_EntitiesSingleton->GetEntity(lo_J);
 
 				//If the two colliding entities have lives equal 0, then delete both
-				if (lo_EntitiesSingleton->GetEntity(lo_I)->GetLives() == 0)
+				
+				if (lo_EntitiesSingleton->GetEntity(lo_I)->GetLives() == 0 || lo_EntitiesSingleton->GetEntity(lo_J)->GetLives() == 0) {
 					lo_EntitiesSingleton->DeleteEntity(lo_EntitiesSingleton->GetEntity(lo_I));
 
-				int lo_NewIndex;
-				//Because the entity 
-				for (unsigned lo_K = 0; lo_K < lo_EntitiesSingleton->GetGameEntitiesVector().size(); lo_K++)
-				{
-					if (lo_EntitiesSingleton->GetEntity(lo_K) == lo_EntityAtJ)
+					int lo_NewIndex;
+					//Because the entity 
+					for (unsigned lo_K = 0; lo_K < lo_EntitiesSingleton->GetGameEntitiesVector().size(); lo_K++)
 					{
-						lo_NewIndex = lo_K;
-						break;
+						if (lo_EntitiesSingleton->GetEntity(lo_K) == lo_EntityAtJ)
+						{
+							lo_NewIndex = lo_K;
+							break;
+						}
 					}
-				}
-				if (lo_EntitiesSingleton->GetEntity(lo_NewIndex)->GetLives() == 0)
-					lo_EntitiesSingleton->DeleteEntity(lo_EntitiesSingleton->GetEntity(lo_NewIndex));
+					if (lo_EntitiesSingleton->GetEntity(lo_NewIndex)->GetLives() == 0)
+						lo_EntitiesSingleton->DeleteEntity(lo_EntitiesSingleton->GetEntity(lo_NewIndex));
 
-				if (lo_Size > lo_EntitiesSingleton->GetGameEnemyVector().size())
-					lo_I--;
-				break;
+					lo_I = 0;
+					lo_J = 0;
+				}
+				else
+					continue;
+				
+				//break;
 			}
 		}
 	}

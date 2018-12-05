@@ -194,6 +194,8 @@ void SpaceShip::ResolveCollision(SmallAsteroid* ar_SmallAsteroid)
 	pr_Shield -= 1;
 	if (pr_Shield == 0)
 		DecreaseLivesAndReset();
+}
+
 void SpaceShip::ResolveCollision(LargeAsteroid* ar_LargeAsteroid)
 {
 	pr_Shield -= 2;
@@ -206,4 +208,25 @@ void SpaceShip::ResolveCollision(BlackHoles* ar_BlackHole)
 {
 	DecreaseLivesAndReset();
 }
+
+void SpaceShip::ResolveCollision(PowerUps* ar_PowerUp)
+{
+	int power = (rand() % 6 + 1);
+	switch (power)
+	{
+	default:
+	case 1:
+		ChangeToSpinState;
+	case 2:
+		pr_Lives += 1;
+	case 3:
+		pr_Shield += 1;
+	case 4:
+
+	case 5:
+	case 6:
+		break;
+	}
+}
+
 
