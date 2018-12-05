@@ -154,6 +154,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\BlackHolesSingleton.cpp" />
     <ClCompile Include="..\Classes\CollisionComponent.cpp" />
     <ClCompile Include="..\Classes\CollisionDetection.cpp" />
+    <ClCompile Include="..\Classes\Enemies.cpp" />
+    <ClCompile Include="..\Classes\EnemyBullet.cpp" />
+    <ClCompile Include="..\Classes\EnemyMovingState.cpp" />
+    <ClCompile Include="..\Classes\EnemyShootingState.cpp" />
+    <ClCompile Include="..\Classes\EnemyState.cpp" />
     <ClCompile Include="..\Classes\Game.cpp" />
     <ClCompile Include="..\Classes\GameEntities.cpp" />
     <ClCompile Include="..\Classes\GameEntitiesSingleton.cpp" />
@@ -165,6 +170,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\MovementComponent.cpp" />
     <ClCompile Include="..\Classes\NormalGunMode.cpp" />
     <ClCompile Include="..\Classes\ShipBullet.cpp" />
+    <ClCompile Include="..\Classes\ShootingEnemy.cpp" />
     <ClCompile Include="..\Classes\SmallAsteroid.cpp" />
     <ClCompile Include="..\Classes\SpaceShip.cpp" />
     <ClCompile Include="..\Classes\SpaceShipHookState.cpp" />
@@ -180,6 +186,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\BlackHolesSingleton.h" />
     <ClInclude Include="..\Classes\CollisionComponent.h" />
     <ClInclude Include="..\Classes\CollisionDetection.h" />
+    <ClInclude Include="..\Classes\Enemies.h" />
+    <ClInclude Include="..\Classes\EnemyBullet.h" />
+    <ClInclude Include="..\Classes\EnemyMovingState.h" />
+    <ClInclude Include="..\Classes\EnemyShootingState.h" />
+    <ClInclude Include="..\Classes\EnemyState.h" />
     <ClInclude Include="..\Classes\Game.h" />
     <ClInclude Include="..\Classes\GameEntities.h" />
     <ClInclude Include="..\Classes\GameEntitiesSingleton.h" />
@@ -191,6 +202,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\MovementComponent.h" />
     <ClInclude Include="..\Classes\NormalGunMode.h" />
     <ClInclude Include="..\Classes\ShipBullet.h" />
+    <ClInclude Include="..\Classes\ShootingEnemy.h" />
     <ClInclude Include="..\Classes\SmallAsteroid.h" />
     <ClInclude Include="..\Classes\SpaceShip.h" />
     <ClInclude Include="..\Classes\SpaceShipHookState.h" />

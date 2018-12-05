@@ -3,6 +3,8 @@
 #include "GameEntitiesSingleton.h"
 #include "CollisionDetection.h"
 #include "BlackHolesSingleton.h"
+#include "ShootingEnemy.h"
+
 using namespace cocos2d;
 
 Scene* Game::Create()
@@ -37,7 +39,7 @@ bool Game::init()
 	GameEntitiesSingleton::GetInstance()->SetSpaceShip(pr_SpaceShip);
 
 	//
-	pr_BlackHoles = new BlackHoles;
+	pr_ShootingEnemy = new ShootingEnemy;
 
 	//init keyboard function
 	lo_EventListener = new InputDetection;
@@ -72,9 +74,9 @@ void Game::update(const float ar_DeltaTime)
 	}
 
 	//Update all Objects
-	for(auto lo_I:lo_TempVec)
+	for(unsigned lo_I=0; lo_I < GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector().size(); lo_I++)
 	{
-		lo_I->Update(ar_DeltaTime);
+		GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector()[lo_I]->Update(ar_DeltaTime);
 	}
 
 	//Update all enemies States

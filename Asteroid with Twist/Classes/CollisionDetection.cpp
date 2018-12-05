@@ -7,13 +7,35 @@ void CollisionDetection::LoopAndDetectCollision()
 
 	auto lo_EntitiesSingleton = GameEntitiesSingleton::GetInstance();
 
+	for (unsigned lo_I = 0; lo_I < lo_BlackHoleSingleton->GetBlackHoleVector().size(); lo_I++)
+	{
+
+		for (unsigned lo_J = 0; lo_J < lo_EntitiesSingleton->GetGameEntitiesVector().size();)
+		{
+			if (CheckCollision(lo_EntitiesSingleton->GetEntity(lo_J)->GetCollisionComponent(),
+				lo_BlackHoleSingleton->GetSingleBlackHole(lo_I)->GetCollision()))
+				lo_BlackHoleSingleton->GetSingleBlackHole(lo_I)->ResolveCollision(lo_EntitiesSingleton->GetEntity(lo_J));
+			else
+				lo_J++;
+		}
+	}
+}
+
+/*
+ *
+ */
+void CollisionDetection::LoopEntitiesWithEntities()
+{
+	auto lo_EntitiesSingleton = GameEntitiesSingleton::GetInstance();
+
 	//Loop through the loop and check for collision
 	for (unsigned lo_I = 0; lo_I < lo_EntitiesSingleton->GetGameEntitiesVector().size(); lo_I++)
 	{
 		for (auto lo_J = lo_I + 1; lo_J < lo_EntitiesSingleton->GetGameEntitiesVector().size(); lo_J++)
 		{
+			auto lo_Size = lo_EntitiesSingleton->GetGameEnemyVector().size();
 			if (CheckCollision(lo_EntitiesSingleton->GetEntity(lo_I)->GetCollisionComponent(),
-			                   lo_EntitiesSingleton->GetEntity(lo_J)->GetCollisionComponent()))
+				lo_EntitiesSingleton->GetEntity(lo_J)->GetCollisionComponent()))
 			{
 				//Resolving Collision
 				lo_EntitiesSingleton->GetEntity(lo_I)->ResolveCollision(lo_EntitiesSingleton->GetEntity(lo_J));
@@ -39,7 +61,9 @@ void CollisionDetection::LoopAndDetectCollision()
 				if (lo_EntitiesSingleton->GetEntity(lo_NewIndex)->GetLives() == 0)
 					lo_EntitiesSingleton->DeleteEntity(lo_EntitiesSingleton->GetEntity(lo_NewIndex));
 
-				lo_I--;
+
+				if (lo_Size > lo_EntitiesSingleton->GetGameEnemyVector().size())
+					lo_I--;
 				break;
 			}
 		}
@@ -54,15 +78,15 @@ void CollisionDetection::LoopAndDetectCollision()
  *@return False if the circles aren't overlapping
  */
 bool CollisionDetection::CheckCollision(const CollisionComponent* ar_CollisionComponent1,
-                                        const CollisionComponent* ar_CollisionComponent2)
+	const CollisionComponent* ar_CollisionComponent2)
 {
 	//Calculate the distance square between two circles
 	const auto lo_DistanceSquareBetweenTwoEntities = Vector2::CalculateDistanceSquareBetweenTwoVectors
-		(*ar_CollisionComponent1->GetPosition(), *ar_CollisionComponent2->GetPosition());
+	(*ar_CollisionComponent1->GetPosition(), *ar_CollisionComponent2->GetPosition());
 
 	//Calculate the sum of Radii square
 	const auto lo_SumOfRadii = std::pow((*ar_CollisionComponent1->GetRadius() + *ar_CollisionComponent2->GetRadius()),
-	                                    2);
+		2);
 
 	//Compare
 	return lo_DistanceSquareBetweenTwoEntities < lo_SumOfRadii;

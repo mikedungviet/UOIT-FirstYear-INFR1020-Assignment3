@@ -58,6 +58,11 @@ GameEntities* GameEntitiesSingleton::GetEntity(const int& ar_Index) const
 	return pr_GameEntitiesList[ar_Index];
 }
 
+std::vector<Enemies*> GameEntitiesSingleton::GetGameEnemyVector() const
+{
+	return pr_EnemyList;
+}
+
 /*
  * @brief This function returns the memory address of the game
  * map layer
@@ -112,6 +117,17 @@ void GameEntitiesSingleton::AddEntity(GameEntities* ar_EntityToAdd)
 }
 
 /*
+ * @brief This function adds the enemy pointer in the parameter to the
+ * object game list and also to the current scene
+ */
+void GameEntitiesSingleton::AddEnemy(Enemies* ar_EnemyToAdd)
+{
+	pr_GameEntitiesList.push_back(ar_EnemyToAdd);
+	pr_EnemyList.push_back(ar_EnemyToAdd);
+	pr_GameMapLayer->addChild(ar_EnemyToAdd->GetSprite());
+}
+
+/*
  * @brief This function deletes the object in the parameter from
  * the object game list and also from the running scene
  * 
@@ -123,3 +139,17 @@ void GameEntitiesSingleton::DeleteEntity(GameEntities* ar_EntityToDelete)
 	pr_GameMapLayer->removeChild(ar_EntityToDelete->GetSprite(), true);
 	delete ar_EntityToDelete;
 }
+}
+/*
+
+ * @brief This function deletes the object in the parameter from
+ * the object game list, the enemy List, and  also from the running scene
+ *
+ * @param ar_EnemyToDelete The address of the enemy to be deleted
+ */
+{
+void GameEntitiesSingleton::DeleteEnemy(Enemies* ar_EnemyToDelete)
+	pr_GameEntitiesList.erase(std::find(pr_GameEntitiesList.begin(), pr_GameEntitiesList.end(), ar_EnemyToDelete));
+	pr_EnemyList.erase(std::find(pr_EnemyList.begin(), pr_EnemyList.end(), ar_EnemyToDelete));
+	pr_GameMapLayer->removeChild(ar_EnemyToDelete->GetSprite(), true);
+	delete ar_EnemyToDelete;

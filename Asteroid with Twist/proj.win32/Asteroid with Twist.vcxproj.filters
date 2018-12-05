@@ -108,6 +108,24 @@
     <ClCompile Include="..\Classes\BlackHolesSingleton.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\EnemyMovingState.cpp">
+      <Filter>Game Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EnemyState.cpp">
+      <Filter>Game Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Enemies.cpp">
+      <Filter>Game Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EnemyBullet.cpp">
+      <Filter>Game Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ShootingEnemy.cpp">
+      <Filter>Game Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EnemyShootingState.cpp">
+      <Filter>Game Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -181,6 +199,24 @@
     </ClInclude>
     <ClInclude Include="..\Classes\BlackHolesSingleton.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Enemies.h">
+      <Filter>Game Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EnemyMovingState.h">
+      <Filter>Game Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EnemyState.h">
+      <Filter>Game Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EnemyBullet.h">
+      <Filter>Game Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ShootingEnemy.h">
+      <Filter>Game Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EnemyShootingState.h">
+      <Filter>Game Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
