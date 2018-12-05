@@ -1,10 +1,42 @@
 #include "CollisionDetection.h"
+#include "BlackHolesSingleton.h"
+#include "BlackHoles.h"
 
+/*
+ *
+ */
 void CollisionDetection::LoopAndDetectCollision()
 {
-	//Load the Vector
-	//auto lo_AllEntities = GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector().size();
+	LoopEntitiesWithBlackHoles();
+	LoopEntitiesWithEntities();
+}
 
+/*
+ *
+ */
+void CollisionDetection::LoopEntitiesWithBlackHoles()
+{
+	auto lo_EntitiesSingleton = GameEntitiesSingleton::GetInstance();
+	auto lo_BlackHoleSingleton = BlackHolesSingleton::GetInstance();
+
+	for (unsigned lo_I = 0; lo_I < lo_BlackHoleSingleton->GetBlackHoleVector().size(); lo_I++)
+	{
+		for (unsigned lo_J = 0; lo_J < lo_EntitiesSingleton->GetGameEntitiesVector().size();)
+		{
+			if (CheckCollision(lo_EntitiesSingleton->GetEntity(lo_J)->GetCollisionComponent(),
+			                   lo_BlackHoleSingleton->GetSingleBlackHole(lo_I)->GetCollision()))
+				lo_BlackHoleSingleton->GetSingleBlackHole(lo_I)->ResolveCollision(lo_EntitiesSingleton->GetEntity(lo_J));
+			else
+				lo_J++;
+		}
+	}
+}
+
+/*
+ *
+ */
+void CollisionDetection::LoopEntitiesWithEntities()
+{
 	auto lo_EntitiesSingleton = GameEntitiesSingleton::GetInstance();
 
 	//Loop through the loop and check for collision
@@ -27,7 +59,7 @@ void CollisionDetection::LoopAndDetectCollision()
 
 				int lo_NewIndex;
 				//Because the entity 
-				for (unsigned lo_K = 0; lo_K< lo_EntitiesSingleton->GetGameEntitiesVector().size(); lo_K++)
+				for (unsigned lo_K = 0; lo_K < lo_EntitiesSingleton->GetGameEntitiesVector().size(); lo_K++)
 				{
 					if (lo_EntitiesSingleton->GetEntity(lo_K) == lo_EntityAtJ)
 					{
@@ -35,10 +67,8 @@ void CollisionDetection::LoopAndDetectCollision()
 						break;
 					}
 				}
-
 				if (lo_EntitiesSingleton->GetEntity(lo_NewIndex)->GetLives() == 0)
 					lo_EntitiesSingleton->DeleteEntity(lo_EntitiesSingleton->GetEntity(lo_NewIndex));
-
 				lo_I--;
 				break;
 			}
