@@ -45,3 +45,12 @@ void SmallAsteroid::ResolveCollision(GrapplingHookBullet* ar_Hook)
 	GameEntitiesSingleton::GetInstance()->SetHookedAsteroidPosition(pr_Collision->GetPosition());
 }
 
+void SmallAsteroid::ResolveCollision(LargeAsteroid* ar_LargeAsteroid)
+{
+
+}
+
+void SmallAsteroid::ResolveCollision(SmallAsteroid* ar_SmallAsteroid)
+{
+
+}

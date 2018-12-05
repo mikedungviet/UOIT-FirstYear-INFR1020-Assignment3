@@ -11,5 +11,7 @@ public:
 	void ResolveCollision(ShipBullet* ar_Bullet) override;
 	void ResolveCollision(SpaceShip* ar_SpaceShip) override;
 	void ResolveCollision(GrapplingHookBullet* ar_Hook) override;
+	void ResolveCollision(SmallAsteroid* ar_SmallAsteroid) override;
+	void ResolveCollision(LargeAsteroid* ar_LargeAsteroid) override;
 };
 

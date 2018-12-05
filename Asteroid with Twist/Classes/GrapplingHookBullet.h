@@ -19,5 +19,6 @@ public:
 	//Collision Detection
 	void ResolveCollision(GameEntities* ar_Entity) override;
 	void ResolveCollision(SmallAsteroid* ar_SmallAsteroid) override;
+	void ResolveCollision(LargeAsteroid* ar_LargeAsteroid) override;
 };
 

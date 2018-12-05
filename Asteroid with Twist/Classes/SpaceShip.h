@@ -51,6 +51,7 @@ public:
 	//Collision Resolver
 	void ResolveCollision(GameEntities* ar_Entity) override;
 	void ResolveCollision(SmallAsteroid* ar_SmallAsteroid) override;
+	void ResolveCollision(LargeAsteroid* ar_LargeAsteroid) override;
 	void ResolveCollision(BlackHoles *ar_BlackHole) override;
 	
 };

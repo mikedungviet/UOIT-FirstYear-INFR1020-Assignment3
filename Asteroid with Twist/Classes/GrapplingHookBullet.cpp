@@ -1,6 +1,7 @@
 #include "GrapplingHookBullet.h"
 #include "SpaceShip.h"
 #include "SmallAsteroid.h"
+#include "LargeAsteroid.h"
 
 /*
  * @brief This Constructor creates a bullet when called. When a bullet is created, it has the ship's
@@ -54,3 +55,13 @@ void GrapplingHookBullet::ResolveCollision(SmallAsteroid* ar_SmallAsteroid)
 	GameEntitiesSingleton::GetInstance()->GetSpaceShip()->ChangeToNormalMode();
 	GameEntitiesSingleton::GetInstance()->GetSpaceShip()->ChangeToHookState();
 }
+
+void GrapplingHookBullet::ResolveCollision(LargeAsteroid* ar_LargeAsteroid)
+{
+	pr_Lives -= 1;
+	GameEntitiesSingleton::GetInstance()->SetHookedAsteroidPosition(ar_LargeAsteroid->GetCollisionComponent()->
+		GetPosition());
+	GameEntitiesSingleton::GetInstance()->GetSpaceShip()->ChangeToNormalMode();
+	GameEntitiesSingleton::GetInstance()->GetSpaceShip()->ChangeToHookState();
+}
+

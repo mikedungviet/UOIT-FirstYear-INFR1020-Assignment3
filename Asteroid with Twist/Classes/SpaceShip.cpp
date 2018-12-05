@@ -194,6 +194,9 @@ void SpaceShip::ResolveCollision(SmallAsteroid* ar_SmallAsteroid)
 	pr_Shield -= 1;
 	if (pr_Shield == 0)
 		DecreaseLivesAndReset();
+void SpaceShip::ResolveCollision(LargeAsteroid* ar_LargeAsteroid)
+{
+	pr_Shield -= 2;
 }
 
 /*
