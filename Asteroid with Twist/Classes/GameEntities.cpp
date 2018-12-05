@@ -1,5 +1,6 @@
 #include "GameEntities.h"
 #include "spine/extension.h"
+#include "GameEntitiesSingleton.h"
 
 /*
  * @brief Constructor for GameEntities class.
@@ -211,4 +212,13 @@ void GameEntities::ChangeEntityDirection(Vector2& ar_NewDirection)
 
 	//Set the sprite to this new angle
 	pr_ObjectGraphic->setRotation(lo_AngleInDegree);
+}
+
+/*
+ * @brief This function resolves the collision between the game entity and 
+ * the black hole
+ */
+void GameEntities::ResolveCollision(BlackHoles* ar_BlackHole)
+{
+	GameEntitiesSingleton::GetInstance()->DeleteEntity(this);
 }

@@ -2,12 +2,22 @@
 #include "SpaceShipNormalState.h"
 #include "NormalGunMode.h"
 
+/*
+ *
+ */
+void SpaceShip::DecreaseLivesAndReset()
+{
+	pr_Shield = 4;
+	pr_Lives -= 1;
+	SetPosition(5000, 5000);
+}
 
-SpaceShip::SpaceShip() : GameEntities("ship.png"), pr_Speed(300), pr_Shield(4), pr_Lives(3)
+SpaceShip::SpaceShip() : GameEntities("ship.png"), pr_Speed(300), pr_Shield(4)
 {
 	pr_CurrentState = new SpaceShipNormalState;
 	pr_CurrentGunMode = new NormalGunMode;
 	pr_ForceDirection = new Vector2;
+	pr_Lives = 3;
 }
 
 
@@ -181,6 +191,16 @@ void SpaceShip::ResolveCollision(GameEntities* ar_Entity)
  */
 void SpaceShip::ResolveCollision(SmallAsteroid* ar_SmallAsteroid)
 {
-	pr_Shield -= 2;
+	pr_Shield -= 1;
+	if (pr_Shield == 0)
+		DecreaseLivesAndReset();
+}
+
+/*
+ *
+ */
+void SpaceShip::ResolveCollision(BlackHoles* ar_BlackHole)
+{
+	DecreaseLivesAndReset();
 }
 

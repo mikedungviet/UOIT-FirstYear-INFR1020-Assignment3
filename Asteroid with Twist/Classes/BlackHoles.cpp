@@ -121,3 +121,8 @@ void BlackHoles::AddAdditionalForceToEntity(GameEntities* ar_Entity)
 	ar_Entity->GetMovementComponent()->AddOtherForce(CalculateAddingForce(ar_Entity->GetCollisionComponent(),
 	                                                                      lo_DistanceBetweenEntityAndHole));
 }
+
+void BlackHoles::ResolveCollision(GameEntities* ar_Entity)
+{
+	ar_Entity->ResolveCollision(this);
+}

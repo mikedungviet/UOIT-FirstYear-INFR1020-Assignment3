@@ -10,6 +10,7 @@ class SmallAsteroid;
 class GrapplingHookBullet;
 class BlackHoles;
 class EnemyBullet;
+class BlackHoles;
 
 class GameEntities
 {
