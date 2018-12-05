@@ -61,7 +61,16 @@ void Game::update(const float ar_DeltaTime)
 	auto lo_TempVec = GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector();
 	pr_SpaceShip->Update(ar_DeltaTime);
 
-	//Update 
+	//Loop through each black hole and game entity to apply force to the game entity
+	for(unsigned lo_I=0;lo_I < BlackHolesSingleton::GetInstance()->GetBlackHoleVector().size(); lo_I++)
+	{
+		for(unsigned lo_J = 0; lo_J < GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector().size(); lo_J++)
+		{
+			BlackHolesSingleton::GetInstance()->GetSingleBlackHole(lo_J)->AddAdditionalForceToEntity(
+				GameEntitiesSingleton::GetInstance()->GetEntity(lo_J));
+		}
+	}
+
 	//Update all Objects
 	for(auto lo_I:lo_TempVec)
 	{

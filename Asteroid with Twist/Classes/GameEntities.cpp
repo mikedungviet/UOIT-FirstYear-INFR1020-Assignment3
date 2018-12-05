@@ -133,24 +133,31 @@ void GameEntities::Update(const float& ar_DeltaTime)
 }
 
 /*
- * @brief Check if the object goes out of the map size
+ * @brief Check if the object goes out of the map size (currently
+ * hard coded) and set the position to the opposite side of the map
  */
 void GameEntities::CheckPositionOutOfMap() const
 {
+	//Check the size of the current entity
 	const auto lo_Size = pr_ObjectGraphic->getBoundingBox().size;
+
+	
 	if (pr_Collision->GetPosition()->x + lo_Size.width > 10000)
 		pr_Collision->GetPosition()->x = 0 + lo_Size.width;
+
 	if (pr_Collision->GetPosition()->x - lo_Size.width < 0)
 		pr_Collision->GetPosition()->x = 10000 - lo_Size.width;
+
 	if (pr_Collision->GetPosition()->y + lo_Size.height > 10000)
 		pr_Collision->GetPosition()->y = 0 + lo_Size.height;
+
 	if (pr_Collision->GetPosition()->y - lo_Size.height < 0)
 		pr_Collision->GetPosition()->y = 10000 - lo_Size.height;
 }
 
 /*
  * @brief This function calculate the radius base
- * on the Sprite size
+ * on the Sprite size by using pythagorean theorem
  */
 float GameEntities::CalculateSpriteRadius() const
 {
@@ -177,14 +184,15 @@ void GameEntities::AddAngle(const float& ar_Angle) const
 }
 
 /*
+ *@brief This function re-calculates the pr_Theta when given a direction
+ *vector by finding the angle between the starting direction [0,1] and 
+ *the current direction. Then apply the rotation to the sprite component of
+ *the entity
  *
+ *@param ar_NewDirection The reference of the the entity's new diriction
  */
 void GameEntities::ChangeEntityDirection(Vector2& ar_NewDirection)
 {
-	if(ar_NewDirection.CalculateLength()>1)
-	{
-		ar_NewDirection = ar_NewDirection.NormalizeVector();
-	}
 	//Set the new direction for the space ship
 	pr_Movement->SetDirectionVector(ar_NewDirection);
 
@@ -193,10 +201,14 @@ void GameEntities::ChangeEntityDirection(Vector2& ar_NewDirection)
 	const float lo_ProductsOfLength = 1/(Vector2(0, 1).CalculateLength() * ar_NewDirection.CalculateLength());
 	float lo_AngleInDegree = std::acos(lo_DotProduct*lo_ProductsOfLength) * 180 / PI;
 
+	//Because we want the angle to be clockwise, therefore negative direction x wise
+	//need to be recalculated
 	if (ar_NewDirection.x < 0)
 	{
 		lo_AngleInDegree = 360 - lo_AngleInDegree;
 	}
+	*pr_Theta = lo_AngleInDegree;
+
 	//Set the sprite to this new angle
 	pr_ObjectGraphic->setRotation(lo_AngleInDegree);
 }

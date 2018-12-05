@@ -1,6 +1,6 @@
 #pragma once
-#include "CollisionComponent.h"
 #include "cocos2d.h"
+#include "GameEntities.h"
 
 class BlackHoles
 {
@@ -11,6 +11,7 @@ private:
 	const float pr_AffectedDistance;
 
 	//Functions
+	Vector2 CalculateAddingForce(const CollisionComponent* ar_Collision, const float &ar_Distance) const;
 	float CalculateSpriteRadius() const;
 public:
 	BlackHoles();
@@ -25,6 +26,6 @@ public:
 	void SetPosition(const float& ar_NewX, const float& ar_NewY) const;
 
 	//Member functions
-	Vector2 CalculateAddingForce(const CollisionComponent* ar_EntityCollisionComponent){}
+	void AddAdditionalForceToEntity(GameEntities *ar_Entity);
 };
 
