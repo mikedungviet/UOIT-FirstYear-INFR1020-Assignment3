@@ -26,7 +26,7 @@ void ShootingEnemy::ChangeToIdleState()
 
 void ShootingEnemy::ChangeToActionState()
 {
-	pr_CurrentState->ChangeToSuicideState();
+	pr_CurrentState->ChangeToShootingState();
 }
 
 void ShootingEnemy::ResolveCollision(GameEntities* ar_Entity)

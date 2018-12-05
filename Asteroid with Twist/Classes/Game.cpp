@@ -4,7 +4,7 @@
 #include "CollisionDetection.h"
 #include "BlackHolesSingleton.h"
 #include "ShootingEnemy.h"
-//#include "KamikazeShip.h"
+#include "KamikazeEnemy.h"
 
 using namespace cocos2d;
 
@@ -40,7 +40,8 @@ bool Game::init()
 	GameEntitiesSingleton::GetInstance()->SetSpaceShip(pr_SpaceShip);
 
 	//
-	pr_ShootingEnemy = new ShootingEnemy;
+	//pr_ShootingEnemy = new ShootingEnemy;
+	auto pr_SuicideEnemy = new KamikazeEnemy;
 
 	//init keyboard function
 	lo_EventListener = new InputDetection;

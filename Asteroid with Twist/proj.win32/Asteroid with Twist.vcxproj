@@ -167,6 +167,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\GunMode.cpp" />
     <ClCompile Include="..\Classes\HookGunMode.cpp" />
     <ClCompile Include="..\Classes\InputDetection.cpp" />
+    <ClCompile Include="..\Classes\KamikazeEnemy.cpp" />
     <ClCompile Include="..\Classes\Matrix2.cpp" />
     <ClCompile Include="..\Classes\MovementComponent.cpp" />
     <ClCompile Include="..\Classes\NormalGunMode.cpp" />
@@ -200,6 +201,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\GunMode.h" />
     <ClInclude Include="..\Classes\HookGunMode.h" />
     <ClInclude Include="..\Classes\InputDetection.h" />
+    <ClInclude Include="..\Classes\KamikazeEnemy.h" />
     <ClInclude Include="..\Classes\Matrix2.h" />
     <ClInclude Include="..\Classes\MovementComponent.h" />
     <ClInclude Include="..\Classes\NormalGunMode.h" />
