@@ -68,7 +68,14 @@ void Game::update(const float ar_DeltaTime)
 	}
 
 	//Update all enemies States
-	
+	for(auto lo_Enemy : GameEntitiesSingleton::GetInstance()->GetGameEnemyVector())
+	{
+		if (Vector2::CalculateDistanceSquareBetweenTwoVectors(*pr_SpaceShip->GetCollisionComponent()->GetPosition(),
+			*lo_Enemy->GetCollisionComponent()->GetPosition()) < std::pow(400, 2))
+			lo_Enemy->ChangeToActionState();
+		else
+			lo_Enemy->ChangeToIdleState();
+	}
 	//Detect and Resolve Collision
 	CollisionDetection::LoopAndDetectCollision();
 
