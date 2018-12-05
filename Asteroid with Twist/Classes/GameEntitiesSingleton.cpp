@@ -123,13 +123,3 @@ void GameEntitiesSingleton::DeleteEntity(GameEntities* ar_EntityToDelete)
 	pr_GameMapLayer->removeChild(ar_EntityToDelete->GetSprite(), true);
 	delete ar_EntityToDelete;
 }
-
-
-
-
-
-
-
-
-
-

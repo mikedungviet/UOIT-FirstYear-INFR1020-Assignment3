@@ -46,6 +46,7 @@ bool Game::init()
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(lo_EventListener->pr_Keyboard, this);
 
 	pr_SmallAsteroid = new SmallAsteroid;
+	pr_LargeAsteroid = new LargeAsteroid;
 
 	//the map layer follows the spaceship
 	pr_MapLayer->runAction(Follow::create(pr_SpaceShip->GetSprite()));

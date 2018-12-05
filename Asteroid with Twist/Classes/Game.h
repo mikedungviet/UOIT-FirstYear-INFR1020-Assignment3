@@ -3,6 +3,7 @@
 #include "SpaceShip.h"
 #include "InputDetection.h"
 #include "SmallAsteroid.h"
+#include "LargeAsteroid.h"
 #include "BlackHoles.h"
 
 class Game : public cocos2d::Scene
@@ -12,6 +13,7 @@ private:
 	SpaceShip* pr_SpaceShip;
 	InputDetection *lo_EventListener;
 	SmallAsteroid *pr_SmallAsteroid;
+	LargeAsteroid *pr_LargeAsteroid;
 	BlackHoles *pr_BlackHoles;
 public:
 	static Scene* Create();
