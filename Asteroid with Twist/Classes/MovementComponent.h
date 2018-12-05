@@ -8,7 +8,7 @@
 class MovementComponent
 {
 private:
-	Vector2 *pr_Direction, *pr_Acceleration, *pr_Velocity, *pr_OtherForce;
+	Vector2 *pr_Direction, *pr_Acceleration, *pr_Velocity, *pr_NetForce;
 	float *pr_AppliedForce;
 public:
 	//Constructors and Destructor

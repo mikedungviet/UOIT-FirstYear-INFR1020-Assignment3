@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "SpaceShip.h"
 #include "InputDetection.h"
+#include "Enemies.h"
 #include "SmallAsteroid.h"
 #include "LargeAsteroid.h"
 #include "BlackHoles.h"
@@ -12,6 +13,8 @@ private:
 	cocos2d::Layer *pr_MapLayer;
 	SpaceShip* pr_SpaceShip;
 	InputDetection *lo_EventListener;
+	Enemies *pr_ShootingEnemy;
+	
 	SmallAsteroid *pr_SmallAsteroid;
 	LargeAsteroid *pr_LargeAsteroid;
 	BlackHoles *pr_BlackHoles;

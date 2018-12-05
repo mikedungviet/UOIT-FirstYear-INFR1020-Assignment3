@@ -10,6 +10,7 @@ class SpaceShip;
 class SmallAsteroid;
 class GrapplingHookBullet;
 class BlackHoles;
+class EnemyBullet;
 
 class GameEntities
 {
@@ -48,5 +49,6 @@ public:
 	virtual void ResolveCollision(SmallAsteroid *ar_SmallAsteroid) {}
 	virtual void ResolveCollision(SpaceShip *ar_SpaceShip){}
 	virtual void ResolveCollision(GrapplingHookBullet *ar_Hook){}
+	virtual void ResolveCollision(EnemyBullet *ar_EnemyBullet){}
 	virtual void ResolveCollision(BlackHoles *ar_BlackHole);
 };

@@ -17,7 +17,7 @@ Vector2 BlackHoles::CalculateAddingForce(const CollisionComponent* ar_Collision,
 		*ar_Collision->GetPosition());
 
 	//Calculate the magnitude.
-	const auto lo_Magnitude = 10000 / ar_Distance;
+	const auto lo_Magnitude = 100000 / ar_Distance;
 
 	return lo_Direction * lo_Magnitude;
 }
@@ -43,7 +43,7 @@ BlackHoles::BlackHoles() : pr_AffectedDistance(750)
 	pr_Collision = new CollisionComponent;
 	pr_Sprite = cocos2d::Sprite::create("BubbleTea.png");
 
-	pr_Collision->SetRadius(CalculateSpriteRadius());
+	pr_Collision->SetRadius(70);
 	SetPosition(750, 750);
 	BlackHolesSingleton::GetInstance()->AddBlackHole(this);
 }

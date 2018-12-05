@@ -3,6 +3,8 @@
 #include "GameEntitiesSingleton.h"
 #include "CollisionDetection.h"
 #include "BlackHolesSingleton.h"
+#include "ShootingEnemy.h"
+
 using namespace cocos2d;
 
 Scene* Game::Create()
@@ -33,20 +35,17 @@ bool Game::init()
 	//and display the part of the map
 	pr_SpaceShip = new SpaceShip;
 	pr_SpaceShip->SetPosition(200, 100);
-	GameEntitiesSingleton::GetInstance()->AddEntity(pr_SpaceShip);
+	pr_MapLayer->addChild(pr_SpaceShip->GetSprite());
 	GameEntitiesSingleton::GetInstance()->SetSpaceShip(pr_SpaceShip);
 
 	//
-	pr_BlackHoles = new BlackHoles;
+	pr_ShootingEnemy = new ShootingEnemy;
 
 	//init keyboard function
 	lo_EventListener = new InputDetection;
 	lo_EventListener->pr_Keyboard->onKeyPressed = CC_CALLBACK_2(Game::OnKeyPressed, this);
 	lo_EventListener->pr_Keyboard->onKeyReleased = CC_CALLBACK_2(Game::OnKeyReleased, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(lo_EventListener->pr_Keyboard, this);
-
-	pr_SmallAsteroid = new SmallAsteroid;
-	pr_LargeAsteroid = new LargeAsteroid;
 
 	//the map layer follows the spaceship
 	pr_MapLayer->runAction(Follow::create(pr_SpaceShip->GetSprite()));
@@ -61,20 +60,11 @@ void Game::update(const float ar_DeltaTime)
 	auto lo_TempVec = GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector();
 	pr_SpaceShip->Update(ar_DeltaTime);
 
-	//Loop through each black hole and game entity to apply force to the game entity
-	for(unsigned lo_I=0;lo_I < BlackHolesSingleton::GetInstance()->GetBlackHoleVector().size(); lo_I++)
-	{
-		for(unsigned lo_J = 0; lo_J < GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector().size(); lo_J++)
-		{
-			BlackHolesSingleton::GetInstance()->GetSingleBlackHole(lo_I)->AddAdditionalForceToEntity(
-				GameEntitiesSingleton::GetInstance()->GetEntity(lo_J));
-		}
-	}
 
 	//Update all Objects
-	for(auto lo_I:lo_TempVec)
+	for(unsigned lo_I=0; lo_I < GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector().size(); lo_I++)
 	{
-		lo_I->Update(ar_DeltaTime);
+		GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector()[lo_I]->Update(ar_DeltaTime);
 	}
 
 	//Update all enemies States

@@ -11,7 +11,7 @@ MovementComponent::MovementComponent()
 	pr_Acceleration = new Vector2;
 	pr_Velocity = new Vector2;
 	pr_AppliedForce = new float;
-	pr_OtherForce = new Vector2;
+	pr_NetForce = new Vector2;
 	//Set variables
 	*pr_AppliedForce = 0;
 }
@@ -160,7 +160,7 @@ void MovementComponent::SetAppliedForce(const float& ar_NewForce) const
  */
 void MovementComponent::AddOtherForce(const Vector2& ar_OtherForce)
 {
-	*pr_OtherForce = ar_OtherForce;
+	*pr_NetForce += ar_OtherForce;
 }
 
 /*
@@ -191,7 +191,11 @@ void MovementComponent::Update(const float& ar_DeltaTime) const
 	const Vector2 lo_AppliedForceVector(*pr_AppliedForce * pr_Direction->x,
 	                                    *pr_AppliedForce * pr_Direction->y);
 
+	*pr_NetForce += lo_AppliedForceVector;
+
 	//Update kinematic equations
-	*pr_Acceleration = lo_AppliedForceVector + *pr_OtherForce;
+	*pr_Acceleration = *pr_NetForce;
 	*pr_Velocity += *pr_Acceleration * ar_DeltaTime;
+
+	*pr_NetForce = Vector2(0, 0);
 }
