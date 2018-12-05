@@ -13,5 +13,6 @@ public:
 	void Update(const float& ar_DeltaTime) override;
 
 	void ChangeToShootingState() override;
+	void ChangeToSuicideState() override;
 };
 

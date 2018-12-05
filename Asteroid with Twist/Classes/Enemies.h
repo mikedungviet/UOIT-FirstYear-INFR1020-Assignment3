@@ -7,9 +7,17 @@ class Enemies :
 {
 protected:
 	EnemyState *pr_CurrentState;
+	float pr_ActionRange;
+
 	Enemies(std::string ar_FileName);
 public:
 	~Enemies();
+
+
+	//Getters
+	float GetActionRange() const;
+
+	//Setters
 	void SetState(EnemyState *ar_NewState);
 
 	virtual void ChangeToIdleState() = 0;

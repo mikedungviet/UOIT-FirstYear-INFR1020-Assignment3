@@ -1,6 +1,7 @@
 #include "EnemyMovingState.h"
 #include "Enemies.h"
 #include "EnemyShootingState.h"
+#include "EnemySuicideState.h"
 
 
 EnemyMovingState::EnemyMovingState(Enemies *ar_Enemy)
@@ -25,6 +26,12 @@ void EnemyMovingState::Update(const float& ar_DeltaTime)
 void EnemyMovingState::ChangeToShootingState()
 {
 	pr_Enemy->SetState(new EnemyShootingState(pr_Enemy));
+	delete this;
+}
+
+void EnemyMovingState::ChangeToSuicideState()
+{
+	pr_Enemy->SetState(new EnemySuicideState(pr_Enemy));
 	delete this;
 }
 

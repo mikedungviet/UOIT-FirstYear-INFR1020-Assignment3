@@ -159,6 +159,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\EnemyMovingState.cpp" />
     <ClCompile Include="..\Classes\EnemyShootingState.cpp" />
     <ClCompile Include="..\Classes\EnemyState.cpp" />
+    <ClCompile Include="..\Classes\EnemySuicideState.cpp" />
     <ClCompile Include="..\Classes\Game.cpp" />
     <ClCompile Include="..\Classes\GameEntities.cpp" />
     <ClCompile Include="..\Classes\GameEntitiesSingleton.cpp" />
@@ -191,6 +192,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\EnemyMovingState.h" />
     <ClInclude Include="..\Classes\EnemyShootingState.h" />
     <ClInclude Include="..\Classes\EnemyState.h" />
+    <ClInclude Include="..\Classes\EnemySuicideState.h" />
     <ClInclude Include="..\Classes\Game.h" />
     <ClInclude Include="..\Classes\GameEntities.h" />
     <ClInclude Include="..\Classes\GameEntitiesSingleton.h" />

@@ -126,6 +126,9 @@
     <ClCompile Include="..\Classes\EnemyShootingState.cpp">
       <Filter>Game Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\EnemySuicideState.cpp">
+      <Filter>Game Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -216,6 +219,9 @@
       <Filter>Game Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\EnemyShootingState.h">
+      <Filter>Game Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EnemySuicideState.h">
       <Filter>Game Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,6 +4,7 @@
 #include "CollisionDetection.h"
 #include "BlackHolesSingleton.h"
 #include "ShootingEnemy.h"
+//#include "KamikazeShip.h"
 
 using namespace cocos2d;
 
@@ -35,7 +36,7 @@ bool Game::init()
 	//and display the part of the map
 	pr_SpaceShip = new SpaceShip;
 	pr_SpaceShip->SetPosition(200, 100);
-	pr_MapLayer->addChild(pr_SpaceShip->GetSprite());
+	GameEntitiesSingleton::GetInstance()->AddEntity(pr_SpaceShip);
 	GameEntitiesSingleton::GetInstance()->SetSpaceShip(pr_SpaceShip);
 
 	//
@@ -57,9 +58,14 @@ bool Game::init()
 
 void Game::update(const float ar_DeltaTime)
 {
-	auto lo_TempVec = GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector();
-	pr_SpaceShip->Update(ar_DeltaTime);
-
+	//Loop through each black hole and game entity to apply force to the game entity
+	for (auto lo_I : BlackHolesSingleton::GetInstance()->GetBlackHoleVector())
+	{
+		for (auto lo_J : GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector())
+		{
+			lo_I->AddAdditionalForceToEntity(lo_J);
+		}
+	}
 
 	//Update all Objects
 	for(unsigned lo_I=0; lo_I < GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector().size(); lo_I++)
@@ -67,18 +73,20 @@ void Game::update(const float ar_DeltaTime)
 		GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector()[lo_I]->Update(ar_DeltaTime);
 	}
 
-	//Update all enemies States
-	for(auto lo_Enemy : GameEntitiesSingleton::GetInstance()->GetGameEnemyVector())
+	//Update all enemies States depends on the position of the ship
+	for(auto lo_I : GameEntitiesSingleton::GetInstance()->GetGameEnemyVector())
 	{
-		if (Vector2::CalculateDistanceSquareBetweenTwoVectors(*pr_SpaceShip->GetCollisionComponent()->GetPosition(),
-			*lo_Enemy->GetCollisionComponent()->GetPosition()) < std::pow(400, 2))
-			lo_Enemy->ChangeToActionState();
+		if (Vector2::CalculateDistanceSquareBetweenTwoVectors(*lo_I->GetCollisionComponent()->GetPosition(),
+			*pr_SpaceShip->GetCollisionComponent()->GetPosition()) < std::pow(lo_I->GetActionRange(),2))
+		{
+			lo_I->ChangeToActionState();
+		}
 		else
-			lo_Enemy->ChangeToIdleState();
+			lo_I->ChangeToIdleState();
 	}
+
 	//Detect and Resolve Collision
 	CollisionDetection::LoopAndDetectCollision();
-
 }
 
 /*

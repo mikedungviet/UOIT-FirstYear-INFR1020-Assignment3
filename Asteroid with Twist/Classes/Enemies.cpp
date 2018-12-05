@@ -12,6 +12,11 @@ Enemies::~Enemies()
 	delete pr_CurrentState;
 }
 
+float Enemies::GetActionRange() const
+{
+	return pr_ActionRange;
+}
+
 
 void Enemies::SetState(EnemyState* ar_NewState)
 {
