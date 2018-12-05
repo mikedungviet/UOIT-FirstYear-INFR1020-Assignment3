@@ -7,12 +7,15 @@ class SpaceShip :
 	public GameEntities
 {
 private:
+	//Variables
 	SpaceShipState *pr_CurrentState;
 	GunMode *pr_CurrentGunMode;
 	const float pr_Speed;
 	Vector2 *pr_ForceDirection;
+	int pr_Shield;
 
-	int pr_Shield, pr_Lives;
+	//Functions
+	void DecreaseLivesAndReset();
 public:
 	//Constructors and Destructor
 	SpaceShip();
@@ -48,5 +51,6 @@ public:
 	//Collision Resolver
 	void ResolveCollision(GameEntities* ar_Entity) override;
 	void ResolveCollision(SmallAsteroid* ar_SmallAsteroid) override;
+	void ResolveCollision(BlackHoles *ar_BlackHole) override;
 	
 };

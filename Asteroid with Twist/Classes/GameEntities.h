@@ -3,11 +3,13 @@
 #include "MovementComponent.h"
 #include "cocos2d.h"
 
+class BlackHoles;
 //All entity
 class ShipBullet;
 class SpaceShip;
 class SmallAsteroid;
 class GrapplingHookBullet;
+class BlackHoles;
 
 class GameEntities
 {
@@ -46,4 +48,5 @@ public:
 	virtual void ResolveCollision(SmallAsteroid *ar_SmallAsteroid) {}
 	virtual void ResolveCollision(SpaceShip *ar_SpaceShip){}
 	virtual void ResolveCollision(GrapplingHookBullet *ar_Hook){}
+	virtual void ResolveCollision(BlackHoles *ar_BlackHole);
 };

@@ -33,7 +33,7 @@ bool Game::init()
 	//and display the part of the map
 	pr_SpaceShip = new SpaceShip;
 	pr_SpaceShip->SetPosition(200, 100);
-	pr_MapLayer->addChild(pr_SpaceShip->GetSprite());
+	GameEntitiesSingleton::GetInstance()->AddEntity(pr_SpaceShip);
 	GameEntitiesSingleton::GetInstance()->SetSpaceShip(pr_SpaceShip);
 
 	//
@@ -65,7 +65,7 @@ void Game::update(const float ar_DeltaTime)
 	{
 		for(unsigned lo_J = 0; lo_J < GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector().size(); lo_J++)
 		{
-			BlackHolesSingleton::GetInstance()->GetSingleBlackHole(lo_J)->AddAdditionalForceToEntity(
+			BlackHolesSingleton::GetInstance()->GetSingleBlackHole(lo_I)->AddAdditionalForceToEntity(
 				GameEntitiesSingleton::GetInstance()->GetEntity(lo_J));
 		}
 	}

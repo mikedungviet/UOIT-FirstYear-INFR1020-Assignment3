@@ -27,5 +27,8 @@ public:
 
 	//Member functions
 	void AddAdditionalForceToEntity(GameEntities *ar_Entity);
+
+	//
+	void ResolveCollision(GameEntities *ar_Entity);
 };
 
