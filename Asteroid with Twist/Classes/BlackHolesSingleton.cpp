@@ -51,7 +51,7 @@ std::vector<BlackHoles*> BlackHolesSingleton::GetBlackHoleVector()
  */
 BlackHoles* BlackHolesSingleton::GetSingleBlackHole(int ar_IndexToGet)
 {
-	if (ar_IndexToGet <= pr_BlackHolesList.size())
+	if (ar_IndexToGet >= pr_BlackHolesList.size())
 		return nullptr;
 	return pr_BlackHolesList[ar_IndexToGet];
 }
