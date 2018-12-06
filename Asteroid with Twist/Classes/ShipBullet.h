@@ -21,5 +21,6 @@ public:
 	void ResolveCollision(KamikazeEnemy* ar_Enemy) override;
 	void ResolveCollision(PlannetEnemy* ar_Planet) override;
 	void ResolveCollision(ShootingEnemy* ar_Enemy) override;
+	void ResolveCollision(Boss* ar_Boss) override;
 };
 

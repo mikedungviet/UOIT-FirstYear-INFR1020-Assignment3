@@ -1,14 +1,14 @@
 #include "Boss.h"
 #include "GameEntitiesSingleton.h"
-#include "EnemyMovingState.h"
+#include "EnemyStandStillState.h"
 
 
-Boss::Boss() :Enemies("EnemyShootingShip.png")
+Boss::Boss() :Enemies("Boss.png")
 {
-	SetPosition(500, 500);
-	pr_CurrentState = new EnemyMovingState(this);
-	pr_ActionRange = 600;
-	Health = 50;
+	SetPosition(5000, 5000);
+	pr_CurrentState = new EnemyStandStillState(this);
+	pr_ActionRange = 100;
+	Health = 100;
 	pr_Lives = 3;
 }
 
@@ -23,7 +23,7 @@ void Boss::Update(const float& ar_DeltaTime)
 
 void Boss::ChangeToIdleState()
 {
-	pr_CurrentState->ChangeToMovingState();
+	pr_CurrentState->ChangeToStandStillState();
 }
 
 void Boss::ChangeToActionState()
@@ -42,6 +42,7 @@ void Boss::ResolveCollision(ShipBullet* ar_Bullet)
 	if (Health == 0)
 	{
 		pr_Lives--;
-		Health = 50;
+		Health = 100;
+		pr_ActionRange += 100;
 	}
 }

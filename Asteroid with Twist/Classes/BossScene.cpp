@@ -23,7 +23,15 @@ bool BossScene::init()
 	lo_EventListener->pr_Keyboard->onKeyReleased = CC_CALLBACK_2(BossScene::OnKeyReleased, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(lo_EventListener->pr_Keyboard, this);
 
+
+	this->scheduleUpdate();
+
 	return true;
+}
+
+void Update(float& ar_DeltaTime)
+{
+	
 }
 
 void BossScene::OnKeyPressed(cocos2d::EventKeyboard::KeyCode ar_KeyCode, cocos2d::Event* ar_Event)

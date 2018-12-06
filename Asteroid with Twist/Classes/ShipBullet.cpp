@@ -76,4 +76,9 @@ void ShipBullet::ResolveCollision(ShootingEnemy* ar_Enemy)
 	pr_Lives -= 1;
 }
 
+void ShipBullet::ResolveCollision(Boss* ar_Boss)
+{
+	pr_Lives--;
+}
+
 

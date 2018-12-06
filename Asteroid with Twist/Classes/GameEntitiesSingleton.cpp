@@ -160,4 +160,9 @@ void GameEntitiesSingleton::ClearVector()
 	{
 		DeleteEntity(pr_GameEntitiesList[i]);
 	}
+
+	for (auto i =0 ; i< pr_EnemyList.size(); i++)
+	{
+		pr_EnemyList.erase(pr_EnemyList.begin(), pr_EnemyList.end());
+	}
 }

@@ -89,6 +89,11 @@ void Game::update(const float ar_DeltaTime)
 
 	//Detect and Resolve Collision
 	CollisionDetection::LoopAndDetectCollision();
+
+	if (GameEntitiesSingleton::GetInstance()->GetSpaceShip() == nullptr)
+	{
+		exit(1);
+	}
 }
 
 /*

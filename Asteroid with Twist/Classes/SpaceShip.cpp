@@ -1,7 +1,8 @@
 #include "SpaceShip.h"
 #include "SpaceShipNormalState.h"
 #include "NormalGunMode.h"
-#include "BossScene.h"
+#include "GameEntitiesSingleton.h"
+#include "Boss.h"
 
 /*
  *
@@ -13,7 +14,7 @@ void SpaceShip::DecreaseLivesAndReset()
 	SetPosition(5000, 5000);
 }
 
-SpaceShip::SpaceShip() : GameEntities("ship.png"), pr_Speed(300), pr_Shield(4), pr_Cubes(0)
+SpaceShip::SpaceShip() : GameEntities("ship.png"), pr_Speed(300), pr_Shield(4), pr_Cubes(10)
 {
 	pr_CurrentState = new SpaceShipNormalState;
 	pr_CurrentGunMode = new NormalGunMode;
@@ -77,6 +78,12 @@ void SpaceShip::SetGunMode(GunMode* ar_NewMode)
 void SpaceShip::Update(const float& ar_DeltaTime)
 {
 	pr_CurrentState->Update(ar_DeltaTime, this);
+	if (pr_Cubes == 10)
+	{
+		GameEntitiesSingleton::GetInstance()->ClearVector();
+		auto lo_Boss = new Boss;
+		pr_Cubes = 0;
+	}
 }
 
 /*
@@ -232,12 +239,6 @@ void SpaceShip::ResolveCollision(PowerUps* ar_PowerUp)
 		break;
 	default:
 		break;
-	}
-
-	if(pr_Cubes == 10)
-	{
-
-		cocos2d::Director::getInstance()->replaceScene(BossScene::create());
 	}
 }
 

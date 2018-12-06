@@ -42,9 +42,6 @@ void InputDetection::OnKeyPressed(cocos2d::EventKeyboard::KeyCode ar_KeyCode, co
 	case EventKeyboard::KeyCode::KEY_M:
 		lo_SpaceShip->ShootBullet();
 		break;
-	case EventKeyboard::KeyCode::KEY_0:
-		GameEntitiesSingleton::GetInstance()->GetGameEnemyVector()[0]->ChangeToActionState();
-		break;
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		exit(1);
 	default:
