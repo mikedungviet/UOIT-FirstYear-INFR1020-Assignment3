@@ -13,6 +13,5 @@ public:
 	void ChangeToActionState() override;
 
 	void ResolveCollision(GameEntities* ar_Entity) override;
-
 };
 

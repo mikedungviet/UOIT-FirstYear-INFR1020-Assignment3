@@ -10,6 +10,13 @@ SmallAsteroid::SmallAsteroid():GameEntities("SmallAsteroid.png")
 	GameEntitiesSingleton::GetInstance()->AddEntity(this);
 }
 
+SmallAsteroid::SmallAsteroid(const Vector2 *ar_Position) :GameEntities("SmallAsteroid.png")
+{
+	SetPosition(*ar_Position);
+	pr_Movement->SetVelocity(Vector2(rand() % 300 - 100, rand() % 300 - 100));
+	GameEntitiesSingleton::GetInstance()->AddEntity(this);
+}
+
 SmallAsteroid::~SmallAsteroid()
 {
 }
@@ -43,5 +50,10 @@ void SmallAsteroid::ResolveCollision(GrapplingHookBullet* ar_Hook)
 {
 	pr_Movement->SetVelocity(0, 0);
 	GameEntitiesSingleton::GetInstance()->SetHookedAsteroidPosition(pr_Collision->GetPosition());
+}
+
+void SmallAsteroid::ResolveCollision(EnemyBullet* ar_EnemyBullet)
+{
+	pr_Lives--;
 }
 

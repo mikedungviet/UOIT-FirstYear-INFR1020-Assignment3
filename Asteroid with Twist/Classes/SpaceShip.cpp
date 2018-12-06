@@ -1,6 +1,7 @@
 #include "SpaceShip.h"
 #include "SpaceShipNormalState.h"
 #include "NormalGunMode.h"
+#include "proj.win32/BossScene.h"
 
 /*
  *
@@ -12,7 +13,7 @@ void SpaceShip::DecreaseLivesAndReset()
 	SetPosition(5000, 5000);
 }
 
-SpaceShip::SpaceShip() : GameEntities("ship.png"), pr_Speed(300), pr_Shield(4)
+SpaceShip::SpaceShip() : GameEntities("ship.png"), pr_Speed(300), pr_Shield(4), pr_Cubes(0)
 {
 	pr_CurrentState = new SpaceShipNormalState;
 	pr_CurrentGunMode = new NormalGunMode;
@@ -207,4 +208,63 @@ void SpaceShip::ResolveCollision(BlackHoles* ar_BlackHole)
 void SpaceShip::ResolveCollision(PlannetEnemy* ar_Planet)
 {
 	DecreaseLivesAndReset();
+}
+
+void SpaceShip::ResolveCollision(PowerUps* ar_PowerUp)
+{
+	unsigned power = (rand() % 5 + 1);
+	switch (power)
+	{
+	case 1:
+		ChangeToSpinState();
+		break;
+	case 2:
+		pr_Lives += 1;
+		break;
+	case 3:
+		pr_Shield += 1;
+		break;
+	case 4:
+		ChangeToHookMode();
+		break;
+	case 5:
+		pr_Cubes++;
+		break;
+	default:
+		break;
+	}
+
+	if(pr_Cubes == 10)
+	{
+
+		cocos2d::Director::getInstance()->replaceScene(BossScene::create());
+	}
+}
+
+void SpaceShip::ResolveCollision(LargeAsteroid* ar_Asteroid)
+{
+	pr_Shield -= 2;
+	if (pr_Shield == 0)
+		DecreaseLivesAndReset();
+}
+
+void SpaceShip::ResolveCollision(EnemyBullet* ar_EnemyBullet)
+{
+	pr_Shield -= 1;
+	if (pr_Shield == 0)
+		DecreaseLivesAndReset();
+}
+
+void SpaceShip::ResolveCollision(KamikazeEnemy* ar_Enemy)
+{
+	pr_Shield -= 2;
+	if (pr_Shield == 0)
+		DecreaseLivesAndReset();
+}
+
+void SpaceShip::ResolveCollision(ShootingEnemy* ar_Enemy)
+{
+	pr_Shield -= 2;
+	if (pr_Shield == 0)
+		DecreaseLivesAndReset();
 }

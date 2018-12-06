@@ -12,7 +12,7 @@ private:
 	GunMode *pr_CurrentGunMode;
 	const float pr_Speed;
 	Vector2 *pr_ForceDirection;
-	int pr_Shield;
+	int pr_Shield, pr_Cubes;
 
 	//Functions
 	void DecreaseLivesAndReset();
@@ -52,5 +52,10 @@ public:
 	void ResolveCollision(GameEntities* ar_Entity) override;
 	void ResolveCollision(SmallAsteroid* ar_SmallAsteroid) override;
 	void ResolveCollision(BlackHoles *ar_BlackHole) override;
-	
+	void ResolveCollision(PlannetEnemy *ar_Planet) override;
+	void ResolveCollision(PowerUps* ar_PowerUp) override;
+	void ResolveCollision(LargeAsteroid* ar_Asteroid) override;
+	void ResolveCollision(EnemyBullet* ar_EnemyBullet) override;
+	void ResolveCollision(KamikazeEnemy* ar_Enemy) override;
+	void ResolveCollision(ShootingEnemy* ar_Enemy) override;
 };

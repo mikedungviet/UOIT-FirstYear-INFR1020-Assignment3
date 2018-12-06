@@ -152,6 +152,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\BlackHoles.cpp" />
     <ClCompile Include="..\Classes\BlackHolesSingleton.cpp" />
+    <ClCompile Include="..\Classes\Boss.cpp" />
     <ClCompile Include="..\Classes\CollisionComponent.cpp" />
     <ClCompile Include="..\Classes\CollisionDetection.cpp" />
     <ClCompile Include="..\Classes\Enemies.cpp" />
@@ -169,10 +170,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\HookGunMode.cpp" />
     <ClCompile Include="..\Classes\InputDetection.cpp" />
     <ClCompile Include="..\Classes\KamikazeEnemy.cpp" />
+    <ClCompile Include="..\Classes\LargeAsteroid.cpp" />
     <ClCompile Include="..\Classes\Matrix2.cpp" />
     <ClCompile Include="..\Classes\MovementComponent.cpp" />
     <ClCompile Include="..\Classes\NormalGunMode.cpp" />
     <ClCompile Include="..\Classes\PlannetEnemy.cpp" />
+    <ClCompile Include="..\Classes\PowerUps.cpp" />
     <ClCompile Include="..\Classes\ShipBullet.cpp" />
     <ClCompile Include="..\Classes\ShootingEnemy.cpp" />
     <ClCompile Include="..\Classes\SmallAsteroid.cpp" />
@@ -182,12 +185,14 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\SpaceShipSpinState.cpp" />
     <ClCompile Include="..\Classes\State.cpp" />
     <ClCompile Include="..\Classes\Vector2.cpp" />
+    <ClCompile Include="BossScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\BlackHoles.h" />
     <ClInclude Include="..\Classes\BlackHolesSingleton.h" />
+    <ClInclude Include="..\Classes\Boss.h" />
     <ClInclude Include="..\Classes\CollisionComponent.h" />
     <ClInclude Include="..\Classes\CollisionDetection.h" />
     <ClInclude Include="..\Classes\Enemies.h" />
@@ -205,10 +210,12 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\HookGunMode.h" />
     <ClInclude Include="..\Classes\InputDetection.h" />
     <ClInclude Include="..\Classes\KamikazeEnemy.h" />
+    <ClInclude Include="..\Classes\LargeAsteroid.h" />
     <ClInclude Include="..\Classes\Matrix2.h" />
     <ClInclude Include="..\Classes\MovementComponent.h" />
     <ClInclude Include="..\Classes\NormalGunMode.h" />
     <ClInclude Include="..\Classes\PlannetEnemy.h" />
+    <ClInclude Include="..\Classes\PowerUps.h" />
     <ClInclude Include="..\Classes\ShipBullet.h" />
     <ClInclude Include="..\Classes\ShootingEnemy.h" />
     <ClInclude Include="..\Classes\SmallAsteroid.h" />
@@ -218,6 +225,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\SpaceShipSpinState.h" />
     <ClInclude Include="..\Classes\State.h" />
     <ClInclude Include="..\Classes\Vector2.h" />
+    <ClInclude Include="BossScene.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

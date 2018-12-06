@@ -6,11 +6,12 @@
 #include "SpaceShip.h"
 #include "EnemyStandStillState.h"
 
-EnemyShootingState::EnemyShootingState(Enemies *ar_Enemy) : pr_BulletSpawningCounter(0)
+EnemyShootingState::EnemyShootingState(Enemies *ar_Enemy, const int &ar_ShootSpeed ) : pr_BulletSpawningCounter(0)
 {
 	pr_SpaceShipCollisionComponent = GameEntitiesSingleton::GetInstance()->GetSpaceShip()->GetCollisionComponent();
 	pr_Enemy = ar_Enemy;
 	pr_Enemy->GetMovementComponent()->SetVelocity(0, 0);
+	pr_ShotSpeed = ar_ShootSpeed;
 }
 
 
@@ -27,7 +28,7 @@ void EnemyShootingState::Update(const float& ar_DeltaTime)
 
 	//Some sort of randomness/ counter to spawn bullets
 	pr_BulletSpawningCounter++;
-	if (pr_BulletSpawningCounter == 50) {
+	if (pr_BulletSpawningCounter <= pr_ShotSpeed) {
 		//Create a bullet
 		auto lo_TempEnemyBullet = new EnemyBullet;
 		lo_TempEnemyBullet->SetPosition(*pr_Enemy->GetCollisionComponent()->GetPosition());

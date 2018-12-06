@@ -1,4 +1,5 @@
 #include "LargeAsteroid.h"
+#include "SmallAsteroid.h"
 #include "GameEntitiesSingleton.h"
 
 /*
@@ -12,20 +13,7 @@ LargeAsteroid::LargeAsteroid():GameEntities("LargeAsteroid.png")
 
 LargeAsteroid::~LargeAsteroid()
 {
-	//Sprite *newLAsteroid = new Sprite(*largeAsteroidDefault);
-	//if (rand() % 2)
-	//{
-	//	newLAsteroid->setPosition(rand() % 1920, -40);
-	//}
-	//else
-	//{
-	//	newLAsteroid->setPosition(-40, rand() % 1080);
-	//}
 
-	////newLAsteroid->velocity = Vector3(100, 100, 0.0f) * 300;
-	//newLAsteroid->velocity = Vector3(rand() % 500 - 250, rand() % 500 - 250, 0);
-	//largeAsteroids.push_back(newLAsteroid);
-	//this->addSpriteToDrawList(newLAsteroid);
 }
 
 
@@ -40,6 +28,8 @@ void LargeAsteroid::ResolveCollision(GameEntities* ar_Entity)
 void LargeAsteroid::ResolveCollision(ShipBullet* ar_Bullet)
 {
 	pr_Lives -= 1;
+	for(int i = 0 ; i < rand() % 4 + 2 ; i ++)
+		auto lo_Temp1 = new SmallAsteroid(pr_Collision->GetPosition());
 }
 
 /*
@@ -59,3 +49,15 @@ void LargeAsteroid::ResolveCollision(GrapplingHookBullet* ar_Hook)
 	GameEntitiesSingleton::GetInstance()->SetHookedAsteroidPosition(pr_Collision->GetPosition());
 }
 
+void LargeAsteroid::ResolveCollision(EnemyBullet* ar_Bullet)
+{
+	pr_Lives--;
+	for (int i = 0; i < rand() % 4 + 2; i++)
+		auto lo_Temp1 = new SmallAsteroid(pr_Collision->GetPosition());
+}
+
+void LargeAsteroid::ResolveCollision(PlannetEnemy* ar_Planet)
+{
+	for(int i = 0 ; i < rand() % 4 + 2 ; i ++)
+		auto lo_Temp1 = new SmallAsteroid(pr_Collision->GetPosition());
+}

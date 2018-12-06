@@ -14,5 +14,7 @@ public:
 
 	void ResolveCollision(GameEntities* ar_Entity) override;
 	void ResolveCollision(PlannetEnemy* ar_Planet) override;
+	void ResolveCollision(SpaceShip *ar_Ship) override;
+	
 };
 

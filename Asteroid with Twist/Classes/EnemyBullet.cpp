@@ -27,3 +27,13 @@ void EnemyBullet::ResolveCollision(GameEntities* ar_Entity)
 {
 	ar_Entity->ResolveCollision(this);
 }
+
+void EnemyBullet::ResolveCollision(PlannetEnemy* ar_Planet)
+{
+	pr_Lives--;
+}
+
+void EnemyBullet::ResolveCollision(SpaceShip* ar_Ship)
+{
+	pr_Lives--;
+}

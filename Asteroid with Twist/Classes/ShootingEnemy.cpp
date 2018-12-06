@@ -35,5 +35,15 @@ void ShootingEnemy::ResolveCollision(GameEntities* ar_Entity)
 	ar_Entity->ResolveCollision(this);
 }
 
+void ShootingEnemy::ResolveCollision(SpaceShip* ar_Ship)
+{
+	pr_Lives--;
+}
+
+void ShootingEnemy::ResolveCollision(ShipBullet* ar_Bullet)
+{
+	pr_Lives--;
+}
+
 
 

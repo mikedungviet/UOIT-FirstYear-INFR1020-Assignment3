@@ -33,3 +33,8 @@ void KamikazeEnemy::ResolveCollision(GameEntities* ar_Entity)
 {
 	ar_Entity->ResolveCollision(this);
 }
+
+void KamikazeEnemy::ResolveCollision(SpaceShip* ar_Ship)
+{
+	pr_Lives--;
+}

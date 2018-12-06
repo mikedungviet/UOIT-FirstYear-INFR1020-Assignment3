@@ -144,6 +144,16 @@
     <ClCompile Include="..\Classes\PlannetEnemy.cpp">
       <Filter>Game Entities\Enemies\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\LargeAsteroid.cpp">
+      <Filter>Game Entities\Asteroids</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PowerUps.cpp">
+      <Filter>Game Entities\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Boss.cpp">
+      <Filter>Game Entities\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="BossScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -248,6 +258,16 @@
     <ClInclude Include="..\Classes\PlannetEnemy.h">
       <Filter>Game Entities\Enemies\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\LargeAsteroid.h">
+      <Filter>Game Entities\Asteroids</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PowerUps.h">
+      <Filter>Game Entities\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Boss.h">
+      <Filter>Game Entities\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="BossScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">

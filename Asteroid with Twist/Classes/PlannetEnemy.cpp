@@ -33,3 +33,4 @@ void PlannetEnemy::ResolveCollision(GameEntities* ar_Entity)
 	ar_Entity->ResolveCollision(this);
 }
 
+

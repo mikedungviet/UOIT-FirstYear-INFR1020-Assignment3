@@ -42,5 +42,6 @@ public:
 	void AddEnemy(Enemies *ar_EnemyToAdd);
 	void DeleteEntity(GameEntities *ar_EntityToDelete);
 	void DeleteEnemy(Enemies *ar_EnemyToDelete);
+	void ClearVector();
 };
 

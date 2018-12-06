@@ -17,5 +17,9 @@ public:
 	//Collision Resolver
 	void ResolveCollision(GameEntities* ar_Entity) override;
 	void ResolveCollision(SmallAsteroid* ar_SmallAsteroid) override;
+	void ResolveCollision(LargeAsteroid* ar_Asteroid) override;
+	void ResolveCollision(KamikazeEnemy* ar_Enemy) override;
+	void ResolveCollision(PlannetEnemy* ar_Planet) override;
+	void ResolveCollision(ShootingEnemy* ar_Enemy) override;
 };
 

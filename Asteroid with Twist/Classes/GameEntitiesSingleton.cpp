@@ -153,3 +153,11 @@ void GameEntitiesSingleton::DeleteEnemy(Enemies* ar_EnemyToDelete)
 	pr_GameMapLayer->removeChild(ar_EnemyToDelete->GetSprite(), true);
 	delete ar_EnemyToDelete;
 }
+
+void GameEntitiesSingleton::ClearVector()
+{
+	for (auto i =1; i < pr_GameEntitiesList.size(); i ++)
+	{
+		DeleteEntity(pr_GameEntitiesList[i]);
+	}
+}
