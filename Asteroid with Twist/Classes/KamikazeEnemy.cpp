@@ -38,3 +38,8 @@ void KamikazeEnemy::ResolveCollision(SpaceShip* ar_Ship)
 {
 	pr_Lives--;
 }
+
+void KamikazeEnemy::ResolveCollision(ShipBullet* ar_Bullet)
+{
+	pr_Lives--;
+}

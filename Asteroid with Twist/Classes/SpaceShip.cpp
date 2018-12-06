@@ -1,7 +1,7 @@
 #include "SpaceShip.h"
 #include "SpaceShipNormalState.h"
 #include "NormalGunMode.h"
-#include "proj.win32/BossScene.h"
+#include "BossScene.h"
 
 /*
  *

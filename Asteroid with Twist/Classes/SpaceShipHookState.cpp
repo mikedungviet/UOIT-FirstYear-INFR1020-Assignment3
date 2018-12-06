@@ -73,7 +73,11 @@ void SpaceShipHookState::Update(const float& ar_DeltaTime, SpaceShip* ar_Entity)
 	*ar_Entity->GetMovementComponent()->GetVelocity() += *ar_Entity->GetMovementComponent()->GetAcceleration() *
 		ar_DeltaTime;
 	ar_Entity->GetCollisionComponent()->Update(ar_DeltaTime, ar_Entity->GetMovementComponent()->GetVelocity());
-	ar_Entity->CheckPositionOutOfMap();
+
+	if(ar_Entity->GetCollisionComponent()->GetPosition()->x < 0 || ar_Entity->GetCollisionComponent()->GetPosition()->x > 10000)
+	{
+		ChangeToNormalState(ar_Entity);
+	}
 
 	//Update Sprite Location
 	ar_Entity->GetSprite()->setPosition(ar_Entity->GetCollisionComponent()->GetPosition()->x,

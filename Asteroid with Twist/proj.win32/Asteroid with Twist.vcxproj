@@ -153,6 +153,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\BlackHoles.cpp" />
     <ClCompile Include="..\Classes\BlackHolesSingleton.cpp" />
     <ClCompile Include="..\Classes\Boss.cpp" />
+    <ClCompile Include="..\Classes\BossScene.cpp" />
     <ClCompile Include="..\Classes\CollisionComponent.cpp" />
     <ClCompile Include="..\Classes\CollisionDetection.cpp" />
     <ClCompile Include="..\Classes\Enemies.cpp" />
@@ -185,7 +186,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\SpaceShipSpinState.cpp" />
     <ClCompile Include="..\Classes\State.cpp" />
     <ClCompile Include="..\Classes\Vector2.cpp" />
-    <ClCompile Include="BossScene.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +193,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\BlackHoles.h" />
     <ClInclude Include="..\Classes\BlackHolesSingleton.h" />
     <ClInclude Include="..\Classes\Boss.h" />
+    <ClInclude Include="..\Classes\BossScene.h" />
     <ClInclude Include="..\Classes\CollisionComponent.h" />
     <ClInclude Include="..\Classes\CollisionDetection.h" />
     <ClInclude Include="..\Classes\Enemies.h" />
@@ -225,7 +226,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\SpaceShipSpinState.h" />
     <ClInclude Include="..\Classes\State.h" />
     <ClInclude Include="..\Classes\Vector2.h" />
-    <ClInclude Include="BossScene.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
