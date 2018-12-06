@@ -29,7 +29,7 @@ CollisionComponent::~CollisionComponent()
  */
 Vector2* CollisionComponent::GetPosition() const
 {
-	return pr_Position;
+return pr_Position;
 }
 
 /*

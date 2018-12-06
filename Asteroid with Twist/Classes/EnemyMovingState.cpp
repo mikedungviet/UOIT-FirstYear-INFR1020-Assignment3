@@ -7,7 +7,7 @@
 EnemyMovingState::EnemyMovingState(Enemies *ar_Enemy)
 {
 	//Give a random velocity
-	Vector2 lo_RandomVelocity(200, 0);
+	Vector2 lo_RandomVelocity(rand() % 300 - 100, rand() % 300 - 100);
 	pr_Enemy = ar_Enemy;
 	pr_Enemy->GetMovementComponent()->SetVelocity(lo_RandomVelocity);
 	pr_Enemy->ChangeEntityDirection(lo_RandomVelocity);

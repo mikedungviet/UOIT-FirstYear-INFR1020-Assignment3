@@ -31,7 +31,7 @@ protected: //Child class inheritance variables
 	int pr_Lives;
 	GameEntities(const std::string& ar_FileName);
 public:
-	~GameEntities();
+	virtual ~GameEntities();
 
 	//Getters
 	cocos2d::Sprite* GetSprite() const;

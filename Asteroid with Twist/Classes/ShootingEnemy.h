@@ -9,6 +9,7 @@ public:
 	ShootingEnemy();
 	~ShootingEnemy();
 
+	static unsigned int count;
 	//Updating Functions
 	void Update(const float& ar_DeltaTime) override;
 	void ChangeToIdleState() override;

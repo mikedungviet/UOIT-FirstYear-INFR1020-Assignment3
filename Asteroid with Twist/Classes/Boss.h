@@ -16,7 +16,7 @@ public:
 	void Update(const float& ar_DeltaTime) override;
 	void ChangeToIdleState() override;
 	void ChangeToActionState() override;
-
+	static bool bossSpawned;
 	void ChangeState();
 
 	//Resolving Collision

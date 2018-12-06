@@ -4,6 +4,7 @@
 
 PlannetEnemy::PlannetEnemy(): Enemies("Planet.png")
 {
+	SetPosition(rand() % 10000 + 500, rand() % 10000 + 500);
 	pr_CurrentState = new EnemyStandStillState(this);
 	pr_ActionRange = 1000;
 }

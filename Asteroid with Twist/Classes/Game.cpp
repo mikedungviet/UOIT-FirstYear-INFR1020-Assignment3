@@ -40,9 +40,16 @@ bool Game::init()
 	GameEntitiesSingleton::GetInstance()->AddEntity(pr_SpaceShip);
 	GameEntitiesSingleton::GetInstance()->SetSpaceShip(pr_SpaceShip);
 
-	//
-	//pr_ShootingEnemy = new ShootingEnemy;
-	auto pr_SuicideEnemy = new PlannetEnemy;
+	
+	pr_ShootingEnemy = new ShootingEnemy;
+	for (int i = 0; i < 3; i++)
+	{
+		auto pr_PlanetEnemy = new PlannetEnemy;
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		auto pr_BlackHoles = new BlackHoles;
+	}
 
 	//init keyboard function
 	lo_EventListener = new InputDetection;
@@ -60,6 +67,23 @@ bool Game::init()
 
 void Game::update(const float ar_DeltaTime)
 {
+
+	if(LargeAsteroid::count < 100)
+	{
+		auto pr_LargeAsteroid = new LargeAsteroid;
+		LargeAsteroid::count++;
+	}
+	if(KamikazeEnemy::count < 10)
+	{
+		auto pr_KamikazeEnemy = new KamikazeEnemy;
+		KamikazeEnemy::count++;
+	}
+	if(ShootingEnemy::count < 10)
+	{
+		auto pr_ShootingEnemy = new ShootingEnemy;
+		ShootingEnemy::count++;
+	}
+
 	//Loop through each black hole and game entity to apply force to the game entity
 	for (auto lo_I : BlackHolesSingleton::GetInstance()->GetBlackHoleVector())
 	{

@@ -2,20 +2,22 @@
 #include "SmallAsteroid.h"
 #include "GameEntitiesSingleton.h"
 
+unsigned int LargeAsteroid::count = 0;
 /*
  * @brief Constructor for Small Asteroid
  */
 LargeAsteroid::LargeAsteroid():GameEntities("LargeAsteroid.png")
 {
-	SetPosition(500, 500);
+	SetPosition(rand() % 10000 + 500, rand() % 10000 + 500);
+	pr_Movement->SetVelocity(Vector2(rand() % 200 - 100, rand() % 200 - 100));
 	GameEntitiesSingleton::GetInstance()->AddEntity(this);
+	count++;
 }
 
 LargeAsteroid::~LargeAsteroid()
 {
-
+	count--;
 }
-
 
 void LargeAsteroid::ResolveCollision(GameEntities* ar_Entity)
 {
@@ -52,12 +54,10 @@ void LargeAsteroid::ResolveCollision(GrapplingHookBullet* ar_Hook)
 void LargeAsteroid::ResolveCollision(EnemyBullet* ar_Bullet)
 {
 	pr_Lives--;
-	for (int i = 0; i < rand() % 4 + 2; i++)
-		auto lo_Temp1 = new SmallAsteroid(pr_Collision->GetPosition());
+	
 }
 
 void LargeAsteroid::ResolveCollision(PlannetEnemy* ar_Planet)
 {
-	for(int i = 0 ; i < rand() % 4 + 2 ; i ++)
-		auto lo_Temp1 = new SmallAsteroid(pr_Collision->GetPosition());
+	pr_Lives--;
 }

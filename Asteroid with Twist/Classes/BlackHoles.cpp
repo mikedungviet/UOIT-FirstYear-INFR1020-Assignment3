@@ -41,10 +41,9 @@ float BlackHoles::CalculateSpriteRadius() const
 BlackHoles::BlackHoles() : pr_AffectedDistance(750)
 {
 	pr_Collision = new CollisionComponent;
-	pr_Sprite = cocos2d::Sprite::create("BubbleTea.png");
-
+	pr_Sprite = cocos2d::Sprite::create("BlackHole.png");
 	pr_Collision->SetRadius(70);
-	SetPosition(750, 750);
+	SetPosition(rand() % 10000 + 500, rand() % 10000 + 500);
 	BlackHolesSingleton::GetInstance()->AddBlackHole(this);
 }
 

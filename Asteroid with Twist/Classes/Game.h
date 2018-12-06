@@ -6,6 +6,9 @@
 #include "SmallAsteroid.h"
 #include "LargeAsteroid.h"
 #include "BlackHoles.h"
+#include "PlannetEnemy.h"
+#include "KamikazeEnemy.h"
+#include "ShootingEnemy.h"
 
 class Game : public cocos2d::Scene
 {
@@ -14,10 +17,12 @@ private:
 	SpaceShip* pr_SpaceShip;
 	InputDetection *lo_EventListener;
 	Enemies *pr_ShootingEnemy;
-	
 	SmallAsteroid *pr_SmallAsteroid;
 	LargeAsteroid *pr_LargeAsteroid;
 	BlackHoles *pr_BlackHoles;
+	KamikazeEnemy *pr_KamikazeEnemy;
+	PlannetEnemy *pr_PlanetEnemy;
+	
 public:
 	static Scene* Create();
 	bool init() override;

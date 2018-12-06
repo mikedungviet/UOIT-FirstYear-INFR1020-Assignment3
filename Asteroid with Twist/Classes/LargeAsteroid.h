@@ -7,6 +7,7 @@ public:
 	LargeAsteroid();
 	~LargeAsteroid();
 
+	static unsigned int count;
 	void ResolveCollision(GameEntities* ar_Entity) override;
 	void ResolveCollision(ShipBullet* ar_Bullet) override;
 	void ResolveCollision(SpaceShip* ar_SpaceShip) override;

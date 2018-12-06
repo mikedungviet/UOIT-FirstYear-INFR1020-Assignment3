@@ -2,6 +2,7 @@
 #include "GameEntitiesSingleton.h"
 #include "EnemyStandStillState.h"
 
+bool Boss::bossSpawned = false;
 
 Boss::Boss() :Enemies("Boss.png")
 {
@@ -10,6 +11,7 @@ Boss::Boss() :Enemies("Boss.png")
 	pr_ActionRange = 100;
 	Health = 100;
 	pr_Lives = 3;
+	bossSpawned = true;
 }
 
 Boss::~Boss()
@@ -29,6 +31,10 @@ void Boss::ChangeToIdleState()
 void Boss::ChangeToActionState()
 {
 	pr_CurrentState->ChangeToShootingState();
+}
+
+void Boss::ChangeState()
+{
 }
 
 void Boss::ResolveCollision(GameEntities* ar_Entity)

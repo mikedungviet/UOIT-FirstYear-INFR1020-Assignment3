@@ -2,10 +2,10 @@
 #include "GameEntitiesSingleton.h"
 #include "EnemyMovingState.h"
 
-
+unsigned int ShootingEnemy::count = 0;
 ShootingEnemy::ShootingEnemy():Enemies("EnemyShootingShip.png")
 {
-	SetPosition(500, 500);
+	SetPosition(rand() % 10000 + 500, rand() % 10000 + 500);
 	pr_CurrentState = new EnemyMovingState(this);
 	pr_ActionRange = 300;
 }
@@ -13,6 +13,7 @@ ShootingEnemy::ShootingEnemy():Enemies("EnemyShootingShip.png")
 
 ShootingEnemy::~ShootingEnemy()
 {
+	count--;
 }
 
 void ShootingEnemy::Update(const float& ar_DeltaTime)

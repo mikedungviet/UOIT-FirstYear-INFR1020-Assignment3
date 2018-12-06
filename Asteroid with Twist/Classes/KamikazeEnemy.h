@@ -8,6 +8,8 @@ public:
 	KamikazeEnemy();
 	~KamikazeEnemy();
 
+	static unsigned int count;
+
 	void Update(const float& ar_DeltaTime) override;
 
 	void ChangeToIdleState() override;
