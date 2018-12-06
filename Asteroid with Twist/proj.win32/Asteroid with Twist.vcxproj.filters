@@ -1,227 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="win32">
-      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="resource">
-      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src">
-      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Physics">
-      <UniqueIdentifier>{27a187ba-61c0-4b9e-97ba-8d5825fa7d4a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Entities">
-      <UniqueIdentifier>{99cc709f-f330-450b-b1b6-73e9d4b30b09}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Entities\SpaceShip">
-      <UniqueIdentifier>{b3091d1b-767c-4081-950c-8cbfc38e3b3d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Entities\Enemies">
-      <UniqueIdentifier>{c27d9a8d-c4f4-4e6a-95f8-d15028462078}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Entities\Misc">
-      <UniqueIdentifier>{28c7c12c-1b49-4c10-b75e-86fa68eb935c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Entities\SpaceShip\Bullet">
-      <UniqueIdentifier>{89a8ba7d-0bad-4e80-a29e-afdbc218b860}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Entities\SpaceShip\Ship">
-      <UniqueIdentifier>{ab331a3e-4a3f-41b4-81b1-5a07b56ac57c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game Entities\Asteroids">
-      <UniqueIdentifier>{9524348c-70d6-4b1c-be18-08652cf340a2}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\BlackHoles.cpp" />
+    <ClCompile Include="..\Classes\BlackHolesSingleton.cpp" />
+    <ClCompile Include="..\Classes\CollisionComponent.cpp" />
+    <ClCompile Include="..\Classes\CollisionDetection.cpp" />
+    <ClCompile Include="..\Classes\Enemies.cpp" />
+    <ClCompile Include="..\Classes\EnemyBullet.cpp" />
+    <ClCompile Include="..\Classes\EnemyMovingState.cpp" />
+    <ClCompile Include="..\Classes\EnemyShootingState.cpp" />
+    <ClCompile Include="..\Classes\EnemyState.cpp" />
+    <ClCompile Include="..\Classes\Game.cpp" />
+    <ClCompile Include="..\Classes\GameEntities.cpp" />
+    <ClCompile Include="..\Classes\GameEntitiesSingleton.cpp" />
+    <ClCompile Include="..\Classes\GrapplingHookBullet.cpp" />
+    <ClCompile Include="..\Classes\GunMode.cpp" />
+    <ClCompile Include="..\Classes\HookGunMode.cpp" />
+    <ClCompile Include="..\Classes\InputDetection.cpp" />
+    <ClCompile Include="..\Classes\LargeAsteroid.cpp" />
+    <ClCompile Include="..\Classes\Matrix2.cpp" />
+    <ClCompile Include="..\Classes\MovementComponent.cpp" />
+    <ClCompile Include="..\Classes\NormalGunMode.cpp" />
+    <ClCompile Include="..\Classes\ShipBullet.cpp" />
+    <ClCompile Include="..\Classes\ShootingEnemy.cpp" />
+    <ClCompile Include="..\Classes\SmallAsteroid.cpp" />
+    <ClCompile Include="..\Classes\SpaceShip.cpp" />
+    <ClCompile Include="..\Classes\SpaceShipHookState.cpp" />
+    <ClCompile Include="..\Classes\SpaceShipNormalState.cpp" />
+    <ClCompile Include="..\Classes\SpaceShipSpinState.cpp" />
+    <ClCompile Include="..\Classes\State.cpp" />
+    <ClCompile Include="..\Classes\Vector2.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\Classes\PowerUps.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Game.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Matrix2.cpp">
-      <Filter>Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Vector2.cpp">
-      <Filter>Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\MovementComponent.cpp">
-      <Filter>Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CollisionComponent.cpp">
-      <Filter>Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameEntities.cpp">
-      <Filter>Game Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\InputDetection.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameEntitiesSingleton.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GunMode.cpp">
-      <Filter>Game Entities\SpaceShip\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ShipBullet.cpp">
-      <Filter>Game Entities\SpaceShip\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\NormalGunMode.cpp">
-      <Filter>Game Entities\SpaceShip\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SpaceShip.cpp">
-      <Filter>Game Entities\SpaceShip\Ship</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SpaceShipNormalState.cpp">
-      <Filter>Game Entities\SpaceShip\Ship</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SpaceShipSpinState.cpp">
-      <Filter>Game Entities\SpaceShip\Ship</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\State.cpp">
-      <Filter>Game Entities\SpaceShip\Ship</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GrapplingHookBullet.cpp">
-      <Filter>Game Entities\SpaceShip\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\HookGunMode.cpp">
-      <Filter>Game Entities\SpaceShip\Bullet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SmallAsteroid.cpp">
-      <Filter>Game Entities\Asteroids</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\CollisionDetection.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\SpaceShipHookState.cpp">
-      <Filter>Game Entities\SpaceShip\Ship</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BlackHoles.cpp">
-      <Filter>Game Entities\Misc</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\BlackHolesSingleton.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\EnemyMovingState.cpp">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\EnemyState.cpp">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Enemies.cpp">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\EnemyBullet.cpp">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\ShootingEnemy.cpp">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\EnemyShootingState.cpp">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClCompile>
+    <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\BlackHoles.h" />
+    <ClInclude Include="..\Classes\BlackHolesSingleton.h" />
+    <ClInclude Include="..\Classes\CollisionComponent.h" />
+    <ClInclude Include="..\Classes\CollisionDetection.h" />
+    <ClInclude Include="..\Classes\Enemies.h" />
+    <ClInclude Include="..\Classes\EnemyBullet.h" />
+    <ClInclude Include="..\Classes\EnemyMovingState.h" />
+    <ClInclude Include="..\Classes\EnemyShootingState.h" />
+    <ClInclude Include="..\Classes\EnemyState.h" />
+    <ClInclude Include="..\Classes\Game.h" />
+    <ClInclude Include="..\Classes\GameEntities.h" />
+    <ClInclude Include="..\Classes\GameEntitiesSingleton.h" />
+    <ClInclude Include="..\Classes\GrapplingHookBullet.h" />
+    <ClInclude Include="..\Classes\GunMode.h" />
+    <ClInclude Include="..\Classes\HookGunMode.h" />
+    <ClInclude Include="..\Classes\InputDetection.h" />
+    <ClInclude Include="..\Classes\LargeAsteroid.h" />
+    <ClInclude Include="..\Classes\Matrix2.h" />
+    <ClInclude Include="..\Classes\MovementComponent.h" />
+    <ClInclude Include="..\Classes\NormalGunMode.h" />
+    <ClInclude Include="..\Classes\ShipBullet.h" />
+    <ClInclude Include="..\Classes\ShootingEnemy.h" />
+    <ClInclude Include="..\Classes\SmallAsteroid.h" />
+    <ClInclude Include="..\Classes\SpaceShip.h" />
+    <ClInclude Include="..\Classes\SpaceShipHookState.h" />
+    <ClInclude Include="..\Classes\SpaceShipNormalState.h" />
+    <ClInclude Include="..\Classes\SpaceShipSpinState.h" />
+    <ClInclude Include="..\Classes\State.h" />
+    <ClInclude Include="..\Classes\Vector2.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="..\Classes\PowerUps.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Game.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Matrix2.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Vector2.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\MovementComponent.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CollisionComponent.h">
-      <Filter>Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameEntities.h">
-      <Filter>Game Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\InputDetection.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameEntitiesSingleton.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GunMode.h">
-      <Filter>Game Entities\SpaceShip\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ShipBullet.h">
-      <Filter>Game Entities\SpaceShip\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\NormalGunMode.h">
-      <Filter>Game Entities\SpaceShip\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SpaceShip.h">
-      <Filter>Game Entities\SpaceShip\Ship</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SpaceShipNormalState.h">
-      <Filter>Game Entities\SpaceShip\Ship</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SpaceShipSpinState.h">
-      <Filter>Game Entities\SpaceShip\Ship</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\State.h">
-      <Filter>Game Entities\SpaceShip\Ship</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GrapplingHookBullet.h">
-      <Filter>Game Entities\SpaceShip\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\HookGunMode.h">
-      <Filter>Game Entities\SpaceShip\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SmallAsteroid.h">
-      <Filter>Game Entities\Asteroids</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\CollisionDetection.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\SpaceShipHookState.h">
-      <Filter>Game Entities\SpaceShip\Ship</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BlackHoles.h">
-      <Filter>Game Entities\Misc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\BlackHolesSingleton.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Enemies.h">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\EnemyMovingState.h">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\EnemyState.h">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\EnemyBullet.h">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\ShootingEnemy.h">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\EnemyShootingState.h">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="game.rc">
-      <Filter>resource</Filter>
-    </ResourceCompile>
+    <ResourceCompile Include="game.rc" />
   </ItemGroup>
 </Project>

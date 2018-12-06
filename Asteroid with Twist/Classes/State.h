@@ -1,6 +1,6 @@
 #pragma once
 
-extern class SpaceShip;
+class SpaceShip;
 
 class SpaceShipState
 {

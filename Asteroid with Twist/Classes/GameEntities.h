@@ -43,7 +43,7 @@ public:
 	void CheckPositionOutOfMap() const;
 	void AddAngle(const float& ar_Angle) const;
 	void ChangeEntityDirection(Vector2 & ar_NewDirection);
-
+	
 	//Collision Resolver
 	virtual void ResolveCollision(GameEntities *ar_Entity) = 0;
 	virtual void ResolveCollision(ShipBullet *ar_Bullet) {}
@@ -51,6 +51,6 @@ public:
 	virtual void ResolveCollision(LargeAsteroid *ar_LargeAsteroid) {}
 	virtual void ResolveCollision(SpaceShip *ar_SpaceShip){}
 	virtual void ResolveCollision(GrapplingHookBullet *ar_Hook){}
-	virtual void ResolveCollision(BlackHoles *ar_BlackHole) {}
+	virtual void ResolveCollision(BlackHoles *ar_BlackHole);
 	virtual void ResolveCollision(PowerUps* ar_PowerUp) {}
 };

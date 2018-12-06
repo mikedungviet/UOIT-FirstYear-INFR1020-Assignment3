@@ -4,6 +4,7 @@
 #include "CollisionDetection.h"
 #include "BlackHolesSingleton.h"
 #include "ShootingEnemy.h"
+#include "PowerUps.h"
 
 using namespace cocos2d;
 
@@ -35,8 +36,8 @@ bool Game::init()
 	//and display the part of the map
 	pr_SpaceShip = new SpaceShip;
 	pr_SpaceShip->SetPosition(200, 100);
-	//GameEntitiesSingleton::GetInstance()->AddEntity(pr_SpaceShip);
-	pr_MapLayer->addChild(pr_SpaceShip->GetSprite());
+	GameEntitiesSingleton::GetInstance()->AddEntity(pr_SpaceShip);
+	//pr_MapLayer->addChild(pr_SpaceShip->GetSprite());
 	GameEntitiesSingleton::GetInstance()->SetSpaceShip(pr_SpaceShip);
 
 	//
@@ -51,6 +52,8 @@ bool Game::init()
 	//pr_SmallAsteroid = new SmallAsteroid;
 	pr_LargeAsteroid = new LargeAsteroid;
 
+	auto pu_PowerUps = new PowerUps;
+	
 	//the map layer follows the spaceship
 	pr_MapLayer->runAction(Follow::create(pr_SpaceShip->GetSprite()));
 
@@ -62,7 +65,6 @@ bool Game::init()
 void Game::update(const float ar_DeltaTime)
 {
 	auto lo_TempVec = GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector();
-	pr_SpaceShip->Update(ar_DeltaTime);
 
 	//Loop through each black hole and game entity to apply force to the game entity
 	for(unsigned lo_I=0;lo_I < BlackHolesSingleton::GetInstance()->GetBlackHoleVector().size(); lo_I++)

@@ -166,9 +166,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\GunMode.cpp" />
     <ClCompile Include="..\Classes\HookGunMode.cpp" />
     <ClCompile Include="..\Classes\InputDetection.cpp" />
+    <ClCompile Include="..\Classes\LargeAsteroid.cpp" />
     <ClCompile Include="..\Classes\Matrix2.cpp" />
     <ClCompile Include="..\Classes\MovementComponent.cpp" />
     <ClCompile Include="..\Classes\NormalGunMode.cpp" />
+    <ClCompile Include="..\Classes\PowerUps.cpp" />
     <ClCompile Include="..\Classes\ShipBullet.cpp" />
     <ClCompile Include="..\Classes\ShootingEnemy.cpp" />
     <ClCompile Include="..\Classes\SmallAsteroid.cpp" />
@@ -198,9 +200,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\GunMode.h" />
     <ClInclude Include="..\Classes\HookGunMode.h" />
     <ClInclude Include="..\Classes\InputDetection.h" />
+    <ClInclude Include="..\Classes\LargeAsteroid.h" />
     <ClInclude Include="..\Classes\Matrix2.h" />
     <ClInclude Include="..\Classes\MovementComponent.h" />
     <ClInclude Include="..\Classes\NormalGunMode.h" />
+    <ClInclude Include="..\Classes\PowerUps.h" />
     <ClInclude Include="..\Classes\ShipBullet.h" />
     <ClInclude Include="..\Classes\ShootingEnemy.h" />
     <ClInclude Include="..\Classes\SmallAsteroid.h" />

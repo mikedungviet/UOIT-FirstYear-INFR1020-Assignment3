@@ -57,7 +57,8 @@ void CollisionDetection::LoopEntitiesWithEntities()
 				//If the two colliding entities have lives equal 0, then delete both
 				
 				if (lo_EntitiesSingleton->GetEntity(lo_I)->GetLives() == 0 || lo_EntitiesSingleton->GetEntity(lo_J)->GetLives() == 0) {
-					lo_EntitiesSingleton->DeleteEntity(lo_EntitiesSingleton->GetEntity(lo_I));
+					if(lo_EntitiesSingleton->GetEntity(lo_I)->GetLives() == 0)
+						lo_EntitiesSingleton->DeleteEntity(lo_EntitiesSingleton->GetEntity(lo_I));
 
 					int lo_NewIndex;
 					//Because the entity 

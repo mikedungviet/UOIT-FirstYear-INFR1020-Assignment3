@@ -211,20 +211,28 @@ void SpaceShip::ResolveCollision(BlackHoles* ar_BlackHole)
 
 void SpaceShip::ResolveCollision(PowerUps* ar_PowerUp)
 {
-	int power = (rand() % 6 + 1);
+	unsigned power = (rand() % 5 + 1);
 	switch (power)
 	{
-	default:
 	case 1:
-		ChangeToSpinState;
+		ChangeToSpinState();
+		break;
 	case 2:
 		pr_Lives += 1;
+		break;
 	case 3:
 		pr_Shield += 1;
+		break;
 	case 4:
-
+		//insert stuff for changing controls state
+		break;
 	case 5:
+		ChangeToHookMode();
+		break;
 	case 6:
+		//energy cubes
+		break;
+	default:
 		break;
 	}
 }

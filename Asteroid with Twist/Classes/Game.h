@@ -6,6 +6,7 @@
 #include "SmallAsteroid.h"
 #include "LargeAsteroid.h"
 #include "BlackHoles.h"
+#include "PowerUps.h"
 
 class Game : public cocos2d::Scene
 {
@@ -18,6 +19,7 @@ private:
 	SmallAsteroid *pr_SmallAsteroid;
 	LargeAsteroid *pr_LargeAsteroid;
 	BlackHoles *pr_BlackHoles;
+	PowerUps *pr_PowerUps;
 public:
 	static Scene* Create();
 	bool init() override;
