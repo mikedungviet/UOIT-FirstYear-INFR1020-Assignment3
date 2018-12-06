@@ -113,6 +113,10 @@ void Game::update(const float ar_DeltaTime)
 
 	//Detect and Resolve Collision
 	CollisionDetection::LoopAndDetectCollision();
+	for (unsigned i = 0; i < GameEntitiesSingleton::GetInstance()->GetGameEnemyVector().size(); i++) {
+		if (GameEntitiesSingleton::GetInstance()->GetGameEnemyVector()[i] == nullptr)
+			GameEntitiesSingleton::GetInstance()->GetGameEnemyVector().erase(GameEntitiesSingleton::GetInstance()->GetGameEnemyVector().begin() + i);
+	}
 
 	if (GameEntitiesSingleton::GetInstance()->GetSpaceShip() == nullptr)
 	{

@@ -14,7 +14,7 @@ void SpaceShip::DecreaseLivesAndReset()
 	SetPosition(5000, 5000);
 }
 
-SpaceShip::SpaceShip() : GameEntities("ship.png"), pr_Speed(300), pr_Shield(4), pr_Cubes(10)
+SpaceShip::SpaceShip() : GameEntities("ship.png"), pr_Speed(300), pr_Shield(4), pr_Cubes(0)
 {
 	pr_CurrentState = new SpaceShipNormalState;
 	pr_CurrentGunMode = new NormalGunMode;
