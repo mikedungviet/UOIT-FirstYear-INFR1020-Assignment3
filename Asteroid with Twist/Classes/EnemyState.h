@@ -15,6 +15,8 @@ public:
 	//Changing State
 	virtual void ChangeToMovingState(){}
 	virtual void ChangeToShootingState(){}
+	virtual void ChangeToSuicideState(){}
+	virtual void ChangeToStandStillState(){}
 	
 };
 

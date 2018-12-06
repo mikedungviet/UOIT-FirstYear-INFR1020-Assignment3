@@ -13,5 +13,6 @@ public:
 	void Update(const float& ar_DeltaTime) override;
 
 	void ResolveCollision(GameEntities* ar_Entity) override;
+	void ResolveCollision(PlannetEnemy* ar_Planet) override;
 };
 

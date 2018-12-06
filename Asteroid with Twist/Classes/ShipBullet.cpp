@@ -56,6 +56,10 @@ void ShipBullet::ResolveCollision(SmallAsteroid* ar_SmallAsteroid)
 	pr_Lives -= 1;
 }
 
+void ShipBullet::ResolveCollision(PlannetEnemy* ar_Planet)
+{
+	pr_Lives -= 1;
+}
 void ShipBullet::ResolveCollision(LargeAsteroid* ar_LargeAsteroid)
 {
 	pr_Lives -= 1;

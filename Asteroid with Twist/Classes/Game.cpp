@@ -4,8 +4,9 @@
 #include "CollisionDetection.h"
 #include "BlackHolesSingleton.h"
 #include "ShootingEnemy.h"
+#include "KamikazeEnemy.h"
+#include "PlannetEnemy.h"
 #include "PowerUps.h"
-
 using namespace cocos2d;
 
 Scene* Game::Create()
@@ -42,6 +43,8 @@ bool Game::init()
 
 	//
 	//pr_ShootingEnemy = new ShootingEnemy;
+	//pr_ShootingEnemy = new ShootingEnemy;
+	auto pr_SuicideEnemy = new PlannetEnemy;
 
 	//init keyboard function
 	lo_EventListener = new InputDetection;
@@ -64,15 +67,12 @@ bool Game::init()
 
 void Game::update(const float ar_DeltaTime)
 {
-	auto lo_TempVec = GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector();
-
 	//Loop through each black hole and game entity to apply force to the game entity
-	for(unsigned lo_I=0;lo_I < BlackHolesSingleton::GetInstance()->GetBlackHoleVector().size(); lo_I++)
+	for (auto lo_I : BlackHolesSingleton::GetInstance()->GetBlackHoleVector())
 	{
-		for(unsigned lo_J = 0; lo_J < GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector().size(); lo_J++)
+		for (auto lo_J : GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector())
 		{
-			BlackHolesSingleton::GetInstance()->GetSingleBlackHole(lo_I)->AddAdditionalForceToEntity(
-				GameEntitiesSingleton::GetInstance()->GetEntity(lo_J));
+			lo_I->AddAdditionalForceToEntity(lo_J);
 		}
 	}
 
@@ -82,11 +82,20 @@ void Game::update(const float ar_DeltaTime)
 		GameEntitiesSingleton::GetInstance()->GetGameEntitiesVector()[lo_I]->Update(ar_DeltaTime);
 	}
 
-	//Update all enemies States
-	
+	//Update all enemies States depends on the position of the ship
+	for(auto lo_I : GameEntitiesSingleton::GetInstance()->GetGameEnemyVector())
+	{
+		if (Vector2::CalculateDistanceSquareBetweenTwoVectors(*lo_I->GetCollisionComponent()->GetPosition(),
+			*pr_SpaceShip->GetCollisionComponent()->GetPosition()) < std::pow(lo_I->GetActionRange(),2))
+		{
+			lo_I->ChangeToActionState();
+		}
+		else
+			lo_I->ChangeToIdleState();
+	}
+
 	//Detect and Resolve Collision
 	CollisionDetection::LoopAndDetectCollision();
-
 }
 
 /*

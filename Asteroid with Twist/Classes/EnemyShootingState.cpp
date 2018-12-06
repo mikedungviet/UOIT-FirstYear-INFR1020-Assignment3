@@ -4,6 +4,7 @@
 #include "EnemyBullet.h"
 #include "GameEntitiesSingleton.h"
 #include "SpaceShip.h"
+#include "EnemyStandStillState.h"
 
 EnemyShootingState::EnemyShootingState(Enemies *ar_Enemy) : pr_BulletSpawningCounter(0)
 {
@@ -40,5 +41,11 @@ void EnemyShootingState::Update(const float& ar_DeltaTime)
 void EnemyShootingState::ChangeToMovingState()
 {
 	pr_Enemy->SetState(new EnemyMovingState(pr_Enemy));
+	delete this;
+}
+
+void EnemyShootingState::ChangeToStandStillState()
+{
+	pr_Enemy->SetState(new EnemyStandStillState(pr_Enemy));
 	delete this;
 }

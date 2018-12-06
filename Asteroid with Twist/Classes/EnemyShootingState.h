@@ -15,5 +15,6 @@ public:
 	void Update(const float& ar_DeltaTime) override;
 
 	void ChangeToMovingState() override;
+	void ChangeToStandStillState() override;
 };
 

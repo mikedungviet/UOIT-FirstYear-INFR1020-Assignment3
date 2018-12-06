@@ -45,8 +45,8 @@ void CollisionDetection::LoopEntitiesWithEntities()
 	{
 		for (auto lo_J = lo_I + 1; lo_J < lo_EntitiesSingleton->GetGameEntitiesVector().size(); lo_J++)
 		{
-			auto lo_Size = lo_EntitiesSingleton->GetGameEntitiesVector().size();
-			if (CheckCollision(lo_EntitiesSingleton->GetEntity(lo_I)->GetCollisionComponent(), lo_EntitiesSingleton->GetEntity(lo_J)->GetCollisionComponent()))
+			if (CheckCollision(lo_EntitiesSingleton->GetEntity(lo_I)->GetCollisionComponent(),
+				lo_EntitiesSingleton->GetEntity(lo_J)->GetCollisionComponent()))
 			{
 				//Resolving Collision
 	 			lo_EntitiesSingleton->GetEntity(lo_I)->ResolveCollision(lo_EntitiesSingleton->GetEntity(lo_J));

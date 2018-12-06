@@ -209,6 +209,10 @@ void SpaceShip::ResolveCollision(BlackHoles* ar_BlackHole)
 	DecreaseLivesAndReset();
 }
 
+void SpaceShip::ResolveCollision(PlannetEnemy* ar_Planet)
+{
+	DecreaseLivesAndReset();
+}
 void SpaceShip::ResolveCollision(PowerUps* ar_PowerUp)
 {
 	unsigned power = (rand() % 5 + 1);
