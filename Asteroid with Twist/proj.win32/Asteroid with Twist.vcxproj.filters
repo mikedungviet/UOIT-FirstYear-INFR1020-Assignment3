@@ -34,6 +34,12 @@
     <Filter Include="Game Entities\Asteroids">
       <UniqueIdentifier>{9524348c-70d6-4b1c-be18-08652cf340a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Entities\Enemies\Enemy">
+      <UniqueIdentifier>{7c22d8ac-ea6c-4c75-b3e8-0f0d130f0e5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Entities\Enemies\Enemy State">
+      <UniqueIdentifier>{3e23175e-1e94-4e24-8107-a47c20b20abf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -108,29 +114,35 @@
     <ClCompile Include="..\Classes\BlackHolesSingleton.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\EnemyMovingState.cpp">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\EnemyState.cpp">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Enemies.cpp">
-      <Filter>Game Entities\Enemies</Filter>
+      <Filter>Game Entities\Enemies\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\EnemyBullet.cpp">
-      <Filter>Game Entities\Enemies</Filter>
+      <Filter>Game Entities\Enemies\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\ShootingEnemy.cpp">
-      <Filter>Game Entities\Enemies</Filter>
+    <ClCompile Include="..\Classes\EnemyMovingState.cpp">
+      <Filter>Game Entities\Enemies\Enemy State</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\EnemyShootingState.cpp">
-      <Filter>Game Entities\Enemies</Filter>
+      <Filter>Game Entities\Enemies\Enemy State</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EnemyState.cpp">
+      <Filter>Game Entities\Enemies\Enemy State</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\EnemySuicideState.cpp">
-      <Filter>Game Entities\Enemies</Filter>
+      <Filter>Game Entities\Enemies\Enemy State</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\KamikazeEnemy.cpp">
-      <Filter>Game Entities\Enemies</Filter>
+      <Filter>Game Entities\Enemies\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ShootingEnemy.cpp">
+      <Filter>Game Entities\Enemies\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EnemyStandStillState.cpp">
+      <Filter>Game Entities\Enemies\Enemy State</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PlannetEnemy.cpp">
+      <Filter>Game Entities\Enemies\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -207,28 +219,34 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Enemies.h">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\EnemyMovingState.h">
-      <Filter>Game Entities\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\EnemyState.h">
-      <Filter>Game Entities\Enemies</Filter>
+      <Filter>Game Entities\Enemies\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\EnemyBullet.h">
-      <Filter>Game Entities\Enemies</Filter>
+      <Filter>Game Entities\Enemies\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\ShootingEnemy.h">
-      <Filter>Game Entities\Enemies</Filter>
+    <ClInclude Include="..\Classes\EnemyMovingState.h">
+      <Filter>Game Entities\Enemies\Enemy State</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\EnemyShootingState.h">
-      <Filter>Game Entities\Enemies</Filter>
+      <Filter>Game Entities\Enemies\Enemy State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EnemyState.h">
+      <Filter>Game Entities\Enemies\Enemy State</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\EnemySuicideState.h">
-      <Filter>Game Entities\Enemies</Filter>
+      <Filter>Game Entities\Enemies\Enemy State</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\KamikazeEnemy.h">
-      <Filter>Game Entities\Enemies</Filter>
+      <Filter>Game Entities\Enemies\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ShootingEnemy.h">
+      <Filter>Game Entities\Enemies\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EnemyStandStillState.h">
+      <Filter>Game Entities\Enemies\Enemy State</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PlannetEnemy.h">
+      <Filter>Game Entities\Enemies\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

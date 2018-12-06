@@ -5,6 +5,7 @@
 #include "BlackHolesSingleton.h"
 #include "ShootingEnemy.h"
 #include "KamikazeEnemy.h"
+#include "PlannetEnemy.h"
 
 using namespace cocos2d;
 
@@ -41,7 +42,7 @@ bool Game::init()
 
 	//
 	//pr_ShootingEnemy = new ShootingEnemy;
-	auto pr_SuicideEnemy = new KamikazeEnemy;
+	auto pr_SuicideEnemy = new PlannetEnemy;
 
 	//init keyboard function
 	lo_EventListener = new InputDetection;

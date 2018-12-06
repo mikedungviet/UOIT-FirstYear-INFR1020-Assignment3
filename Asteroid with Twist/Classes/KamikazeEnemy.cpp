@@ -6,6 +6,7 @@ KamikazeEnemy::KamikazeEnemy(): Enemies("EnemyShootingShip.png")
 {
 	SetPosition(500, 500);
 	pr_CurrentState = new EnemyMovingState(this);
+	pr_ActionRange = 200;
 }
 
 

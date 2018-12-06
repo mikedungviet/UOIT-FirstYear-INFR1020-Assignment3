@@ -158,6 +158,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\EnemyBullet.cpp" />
     <ClCompile Include="..\Classes\EnemyMovingState.cpp" />
     <ClCompile Include="..\Classes\EnemyShootingState.cpp" />
+    <ClCompile Include="..\Classes\EnemyStandStillState.cpp" />
     <ClCompile Include="..\Classes\EnemyState.cpp" />
     <ClCompile Include="..\Classes\EnemySuicideState.cpp" />
     <ClCompile Include="..\Classes\Game.cpp" />
@@ -171,6 +172,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Matrix2.cpp" />
     <ClCompile Include="..\Classes\MovementComponent.cpp" />
     <ClCompile Include="..\Classes\NormalGunMode.cpp" />
+    <ClCompile Include="..\Classes\PlannetEnemy.cpp" />
     <ClCompile Include="..\Classes\ShipBullet.cpp" />
     <ClCompile Include="..\Classes\ShootingEnemy.cpp" />
     <ClCompile Include="..\Classes\SmallAsteroid.cpp" />
@@ -192,6 +194,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\EnemyBullet.h" />
     <ClInclude Include="..\Classes\EnemyMovingState.h" />
     <ClInclude Include="..\Classes\EnemyShootingState.h" />
+    <ClInclude Include="..\Classes\EnemyStandStillState.h" />
     <ClInclude Include="..\Classes\EnemyState.h" />
     <ClInclude Include="..\Classes\EnemySuicideState.h" />
     <ClInclude Include="..\Classes\Game.h" />
@@ -205,6 +208,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Matrix2.h" />
     <ClInclude Include="..\Classes\MovementComponent.h" />
     <ClInclude Include="..\Classes\NormalGunMode.h" />
+    <ClInclude Include="..\Classes\PlannetEnemy.h" />
     <ClInclude Include="..\Classes\ShipBullet.h" />
     <ClInclude Include="..\Classes\ShootingEnemy.h" />
     <ClInclude Include="..\Classes\SmallAsteroid.h" />

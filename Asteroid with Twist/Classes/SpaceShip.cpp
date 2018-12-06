@@ -204,3 +204,7 @@ void SpaceShip::ResolveCollision(BlackHoles* ar_BlackHole)
 	DecreaseLivesAndReset();
 }
 
+void SpaceShip::ResolveCollision(PlannetEnemy* ar_Planet)
+{
+	DecreaseLivesAndReset();
+}

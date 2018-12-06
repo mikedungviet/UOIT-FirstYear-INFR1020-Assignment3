@@ -3,7 +3,7 @@
 
 Enemies::Enemies(std::string ar_FileName): GameEntities(ar_FileName), pr_CurrentState(nullptr)
 {
-	SetPosition(500,500);
+	SetPosition(1500,1500);
 	GameEntitiesSingleton::GetInstance()->AddEnemy(this);
 }
 
