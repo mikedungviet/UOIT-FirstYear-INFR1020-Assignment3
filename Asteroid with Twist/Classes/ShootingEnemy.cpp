@@ -5,8 +5,9 @@
 
 ShootingEnemy::ShootingEnemy():Enemies("EnemyShootingShip.png")
 {
-	SetPosition(1500, 500);
+	SetPosition(500, 500);
 	pr_CurrentState = new EnemyMovingState(this);
+	pr_ActionRange = 300;
 }
 
 
@@ -33,6 +34,3 @@ void ShootingEnemy::ResolveCollision(GameEntities* ar_Entity)
 {
 	ar_Entity->ResolveCollision(this);
 }
-
-
-
